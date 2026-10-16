@@ -43,14 +43,14 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <section class="white"><div class="wrap">
 <div class="grid three steps">
 <article class="card step"><span class="num">01</span><h3>This form</h3><p>Your contact details and the basics of your business. About two minutes.</p></article>
-<article class="card step"><span class="num">02</span><h3>Secure payment</h3><p>Setup and your first month, paid securely through Stripe. No long-term contract.</p></article>
+<article class="card step"><span class="num">02</span><h3>Secure payment</h3><p>Your $29 setup, paid securely through Stripe. The $19 monthly fee starts after your first month. No long-term contract.</p></article>
 <article class="card step"><span class="num">03</span><h3>Build details</h3><p>The full form: greeting, voice, call rules, and your assistant's name. Then we build.</p></article>
 </div>
 <form action="https://formsubmit.co/info@layeronestaging.com" class="form-card" id="signup-form" method="POST">
 <input name="_subject" type="hidden" value="New Ringception AI signup"/>
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://buy.stripe.com/cNi5kDd5I8NeeF2aZG6c001"/>
+<input name="_next" type="hidden" value="https://buy.stripe.com/eVq7sL3v8gfG8gE1p66c00a"/>
 <fieldset>
 <legend>Your contact details</legend>
 <div class="two">
@@ -79,7 +79,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <p class="hint">Tone words that help: friendly, upbeat, calm, professional, warm, energetic. Add anything else about the personality you want callers to hear. You will hear the voice on your test call before anything goes live.</p>
 </fieldset>
 <button class="btn dark" id="signup-submit" type="submit">Continue to secure payment</button>
-<p class="fineprint">$49 setup plus $39/month platform.</p>
+<p class="fineprint">$29 setup, then $19/month after your first month. Your number is included.</p>
 <p class="fineprint">Secure payment by Stripe. No long-term contract. Cancel anytime.</p>
 </form>
 </div></section>
@@ -89,7 +89,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 (function(){
   var form = document.getElementById('signup-form');
   var button = document.getElementById('signup-submit');
-  var CHECKOUT = 'https://buy.stripe.com/cNi5kDd5I8NeeF2aZG6c001';
+  var CHECKOUT = 'https://buy.stripe.com/eVq7sL3v8gfG8gE1p66c00a';
   var ENDPOINT = 'https://formsubmit.co/ajax/info@layeronestaging.com';
   form.addEventListener('submit', function(event){
     event.preventDefault();
