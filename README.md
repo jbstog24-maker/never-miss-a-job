@@ -1,0 +1,21 @@
+# Never Miss a Job
+
+Working brand: **Never Miss a Job** (provisional, may be renamed).
+
+Landing page for an AI receptionist service for small businesses, contractors, freelancers, and solo operators. The receptionist answers the client's business phone 24/7 in the client's business name, takes messages and intake details, answers approved common questions, transfers urgent calls to the client's cell, and sends a call summary by text and email after every call.
+
+## Offer (Option A)
+
+- Setup: $49 one time
+- Platform fee: $39 per month
+- Talk time: $0.20 per minute, incoming and outgoing, billed per second
+- No long-term contract. Cancel anytime.
+
+## Repo layout
+
+- `index.html` - the entire site. A single self-contained HTML file with inline CSS, no external assets, no build step. Deploy the repo root as a static site.
+- `DESIGN_NOTES.md` - read this before redesigning. It lists what must survive any redesign (form endpoint placeholder, demo number placeholder, pricing, copy rules).
+
+## Status
+
+Staged for launch. The lead form's `action` is still `FORMSPREE_ENDPOINT_PLACEHOLDER`: the page renders and reads fully, but the form does not capture leads until a real Formspree endpoint is swapped in. The demo phone number on the page is likewise a placeholder (`DEMO_NUMBER_PLACEHOLDER`) pending a decision on publishing a live demo line.
