@@ -22,6 +22,8 @@ For whoever redesigns this page next. The design is intentionally simple right n
 
 Keep this order and these sections. A redesign may restyle, re-illustrate, and tighten wording, but it may not drop the honest-limits section or the FAQ; they are part of the offer's trust pitch.
 
+Note: a "For individuals" section (personal assistant plan, same Option A pricing) sits between "What is included" and "Pricing." Its text-message price line is pending James's approval; until he approves a number, the page publishes it only as "billed per message" with no price.
+
 ## Placeholders that must survive any redesign
 
 - The lead form must keep `action="FORMSPREE_ENDPOINT_PLACEHOLDER"` until a real Formspree endpoint is provided. Do not invent an endpoint, do not point the form at a mailto, and do not remove the form.
