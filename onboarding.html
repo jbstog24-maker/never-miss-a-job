@@ -12,7 +12,7 @@
 .eyebrow{font-size:.78rem;font-weight:850;letter-spacing:.15em;text-transform:uppercase;color:#23708e}.eyebrow.light{color:#82e7ee}
 h1,h2,h3,p{margin-top:0}h1,h2,h3{letter-spacing:-.04em;line-height:1.12}h1{font-size:clamp(2.2rem,6vw,3.6rem);margin:14px 0 18px}h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:10px 0 14px}h3{font-size:1.2rem;margin:10px 0}
 .sub{font-size:1.05rem;color:var(--muted);max-width:710px}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 24px;border-radius:12px;background:var(--gold);color:#101b31;text-decoration:none;font-weight:850;border:0;cursor:pointer;line-height:1.2;text-align:center}.btn:hover{background:#ffc49f}.btn.dark{background:#182d52;color:white}.btn.dark:hover{background:#284b7c}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 24px;border-radius:12px;background:var(--gold);color:#101b31;text-decoration:none;font-weight:850;border:0;cursor:pointer;line-height:1.2;text-align:center}.btn:hover{background:#ffc49f}.btn.dark{background:#182d52;color:white}.btn.dark:hover{background:#284b7c}.btn:disabled{opacity:.65;cursor:wait}
 .site-header{background:var(--deep);color:white;border-bottom:1px solid #ffffff23}.site-header .wrap{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-size:1.15rem;font-weight:900;letter-spacing:-.035em;line-height:1.05}.brand>span:last-child span{color:#67ddfa}
 .hero{position:relative;overflow:hidden;background:radial-gradient(circle at 85% 15%,#204f84 0,transparent 44%),linear-gradient(135deg,#0b1429,#152e55);color:white;padding:56px 0 64px}
@@ -45,7 +45,10 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <main>
 <section class="hero"><div class="wrap"><div class="eyebrow light">Step 3 of 3: Tell us about your business</div><h1>Payment done. Now let us build your receptionist.</h1><p class="lead">Payment done. This is the fun part: designing your receptionist. This form tells us everything we need to build your assistant: how your business runs, how you want calls handled, and the name you want your assistant to use. About five minutes, and we start building as soon as it lands. You can leave anything blank that you would rather talk through on your test call.</p></div></section>
 <section class="white"><div class="wrap">
-<form action="FORMSPREE_ONBOARDING_ENDPOINT_PLACEHOLDER" class="form-card" method="POST">
+<form action="https://formsubmit.co/info@layeronestaging.com" class="form-card" id="onboarding-form" method="POST">
+<input name="_subject" type="hidden" value="New Heylo AI onboarding"/>
+<input name="_template" type="hidden" value="table"/>
+<input name="_captcha" type="hidden" value="false"/>
 <fieldset>
 <legend>About you and your business</legend>
 <div class="two">
@@ -96,8 +99,9 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <label class="choice"><input name="phone_setup" type="radio" value="new_number"/><span><strong>Use my new Heylo number as my business number</strong><span>We assign your Heylo number and you publish it directly on your website, cards, and listings. No forwarding needed.</span></span></label>
 <label for="o-current">Your current business number (if you are keeping it)</label><input autocomplete="tel" id="o-current" name="current_number" type="tel"/>
 </fieldset>
-<button class="btn dark" type="submit">Send my business details</button>
+<button class="btn dark" id="onboarding-submit" type="submit">Send my business details</button>
 <p class="fineprint">We review every submission personally. Nothing goes live until you approve your assistant on a live test call.</p>
+<p class="fineprint" hidden="" id="onboarding-sent"><strong>Thank you, your details are in.</strong> We review every submission personally and will reach out with next steps and a time for your approval test call.</p>
 </form>
 </div></section>
 <section class="alt"><div class="wrap"><div class="eyebrow">What happens next</div><h2>From this form to a live receptionist</h2><div class="grid four">
@@ -119,6 +123,29 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
       if (field && saved[key] && !field.value) field.value = saved[key];
     });
   } catch (err) {}
+})();
+</script>
+<script>
+(function(){
+  var form = document.getElementById('onboarding-form');
+  var button = document.getElementById('onboarding-submit');
+  var sent = document.getElementById('onboarding-sent');
+  var ENDPOINT = 'https://formsubmit.co/ajax/info@layeronestaging.com';
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    button.disabled = true;
+    button.textContent = 'Sending your details...';
+    var data = {};
+    new FormData(form).forEach(function(value, key){ data[key] = value; });
+    data._subject = 'New Heylo AI onboarding: ' + (data.business_name || data.contact_name || 'new business');
+    data._template = 'table';
+    data._captcha = 'false';
+    var done = function(){
+      button.textContent = 'Details sent';
+      if (sent) { sent.hidden = false; }
+    };
+    fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)}).then(done, done);
+  });
 })();
 </script>
 </body></html>
