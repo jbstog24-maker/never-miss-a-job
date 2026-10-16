@@ -1,4 +1,4 @@
-# Design Notes - Heylo AI landing page
+# Design Notes - Ringception AI landing page
 
 For whoever redesigns this page next. The design is intentionally simple right now and is expected to be improved. The structure and copy rules below are not.
 
