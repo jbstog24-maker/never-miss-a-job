@@ -1,6 +1,6 @@
-# Never Miss a Job
+# Heylo AI
 
-Working brand: **Never Miss a Job** (provisional, may be renamed).
+Brand: **Heylo AI** (confirmed 2026-10-16). Note: the repo name (never-miss-a-job) is legacy from the provisional working name and stays unchanged.
 
 Landing page for an AI receptionist service for small businesses, contractors, freelancers, and solo operators. The receptionist answers the client's business phone 24/7 in the client's business name, takes messages and intake details, answers approved common questions, transfers urgent calls to the client's cell, and sends a call summary by text and email after every call.
 

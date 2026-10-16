@@ -1,4 +1,4 @@
-# Design Notes - Never Miss a Job landing page
+# Design Notes - Heylo AI landing page
 
 For whoever redesigns this page next. The design is intentionally simple right now and is expected to be improved. The structure and copy rules below are not.
 
