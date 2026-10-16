@@ -18,4 +18,4 @@ Landing page for an AI receptionist service for small businesses, contractors, f
 
 ## Status
 
-Staged for launch. The lead form's `action` is still `FORMSPREE_ENDPOINT_PLACEHOLDER`: the page renders and reads fully, but the form does not capture leads until a real Formspree endpoint is swapped in. The demo phone number on the page is likewise a placeholder (`DEMO_NUMBER_PLACEHOLDER`) pending a decision on publishing a live demo line.
+Staged for launch. All site forms (signup, onboarding, lead) deliver submissions via FormSubmit to info@layeronestaging.com as of 2026-10-16; no form placeholders remain. The demo phone number on the page is likewise a placeholder (`DEMO_NUMBER_PLACEHOLDER`) pending a decision on publishing a live demo line.
