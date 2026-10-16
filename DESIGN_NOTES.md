@@ -30,11 +30,11 @@ Note: a "For individuals" section (personal assistant plan, same Option A pricin
 - The demo section must keep the literal text `DEMO_NUMBER_PLACEHOLDER` where the demo phone number goes, until a real demo number is provided.
 - Form field names are wired to the intake process. Keep the existing `name` attributes on every field (name, business_name, business_type, phone, email, phone_setup, busiest_times, caller_needs, never_say_do, notes).
 
-## Pricing that must not change (Option A)
+## Pricing (Option A, as decided 2026-10-16)
 
-- Setup: $49 one time.
-- Platform fee: $39 per month.
-- Talk time: $0.20 per minute, incoming and outgoing, billed per second (never described as rounded up to the next minute).
+- Setup: $29 one time (new client promotion; the first month is the setup fee only).
+- Monthly fee: $19 per month per number after the first month, number included.
+- Talk time: $0.17 per minute, incoming and outgoing, billed per second (never described as rounded up to the next minute), drawn from prepaid credit.
 - No long-term contract, cancel anytime.
 
 Do not add discounts, tiers, strikethrough anchors, or limited-time language. The plain, flat pricing is the pitch.

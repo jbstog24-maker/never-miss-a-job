@@ -6,9 +6,9 @@ Landing page for an AI receptionist service for small businesses, contractors, f
 
 ## Offer (Option A)
 
-- Setup: $49 one time
-- Platform fee: $39 per month
-- Talk time: $0.20 per minute, incoming and outgoing, billed per second
+- Setup: $29 one time (new client promotion; the first month is the setup fee only)
+- Monthly fee: $19 per month per number after the first month, number included
+- Talk time: $0.17 per minute, incoming and outgoing, billed per second, from prepaid credit
 - No long-term contract. Cancel anytime.
 
 ## Repo layout
