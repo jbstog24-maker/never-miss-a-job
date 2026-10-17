@@ -13,7 +13,7 @@
 h1,h2,h3,p{margin-top:0}h1,h2,h3{letter-spacing:-.04em;line-height:1.12}h1{font-size:clamp(2.2rem,6vw,3.6rem);margin:14px 0 18px}h2{font-size:clamp(1.7rem,4vw,2.4rem);margin:10px 0 14px}h3{font-size:1.2rem;margin:10px 0}
 .sub{font-size:1.05rem;color:var(--muted);max-width:710px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 24px;border-radius:12px;background:var(--gold);color:#101b31;text-decoration:none;font-weight:850;border:0;cursor:pointer;line-height:1.2;text-align:center}.btn:hover{background:#ffc49f}.btn.dark{background:#182d52;color:white}.btn.dark:hover{background:#284b7c}.btn:disabled{opacity:.65;cursor:wait}
-.site-header{background:var(--deep);color:white;border-bottom:1px solid #ffffff23}.site-header .wrap{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-header{background:var(--deep);color:white;border-bottom:1px solid #ffffff23}.nav-login{display:inline-flex;align-items:center;background:var(--gold);color:var(--deep);font-weight:850;font-size:.9rem;line-height:1;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap}.nav-login:hover{text-decoration:none;filter:brightness(1.07)}.site-header .wrap{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-size:1.15rem;font-weight:900;letter-spacing:-.035em;line-height:1.05}.brand>span:last-child span{color:#67ddfa}
 .hero{position:relative;overflow:hidden;background:radial-gradient(circle at 85% 15%,#204f84 0,transparent 44%),linear-gradient(135deg,#0b1429,#152e55);color:white;padding:56px 0 64px}
 .hero p.lead{color:#e1eee7;font-size:clamp(1.05rem,2vw,1.25rem);max-width:640px}
@@ -26,7 +26,7 @@ section{padding:56px 0}.white{background:var(--paper)}
 .plan-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
 .plan-head h3{margin:0}
 .plan-price{font-size:1.45rem;font-weight:900;letter-spacing:-.03em;white-space:nowrap}
-.plan-price small{display:block;font-size:.82rem;color:var(--muted);font-weight:600;letter-spacing:0;text-align:right}
+.plan-price small{display:block;font-size:.82rem;color:var(--muted);font-weight:600;letter-spacing:0;text-align:right;white-space:normal}
 .badge{display:inline-block;background:var(--gold);color:#101b31;font-size:.72rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 10px;margin-bottom:8px}
 .plan-card ul{margin:12px 0 0;padding-left:20px;color:var(--muted)}
 .plan-card ul li{margin:6px 0}
@@ -61,17 +61,17 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 </style>
 </head>
 <body>
-<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><span style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span></div></header>
+<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><span style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a></div></header>
 <main>
-<section class="hero"><div class="wrap"><div class="eyebrow light">Sign up now</div><h1>Pick your plan. We build your receptionist.</h1><p class="lead">Choose what you want below and check out securely through Stripe. The $29 setup is the only fee in month one: your monthly fee starts in month two, after a 30-day trial. After payment, one more short form fine-tunes your assistant: its greeting, its call rules, and the name it uses.</p><p class="escape">Still deciding? Hear the live demo first: <a href="tel:+12147853805">(214) 785-3805</a></p></div></section>
+<section class="hero"><div class="wrap"><div class="eyebrow light">Sign up now</div><h1>Pick your plan. We build your receptionist.</h1><p class="lead">Choose what you want below and check out securely through Stripe. Getting started is $44, due at checkout: the $29 setup plus your first month at $15. After payment, one more short form fine-tunes your assistant: its greeting, its call rules, and the name it uses.</p><p class="escape">Still deciding? Hear the live demo first: <a href="tel:+12147853805">(214) 785-3805</a></p></div></section>
 <section class="white"><div class="wrap">
 <div class="picker" id="plan-picker">
 <div class="section-head"><div class="eyebrow">Choose your plan</div><h2>Start with the base package, add only what you want</h2></div>
 <article class="card plan-card">
 <span class="badge">Always included</span>
-<div class="plan-head"><h3>AI Receptionist base package</h3><div class="plan-price">$29 today<small>then $15/month per number</small></div></div>
+<div class="plan-head"><h3>AI Receptionist base package</h3><div class="plan-price">$44 today<small>$29 setup + $15 first month, then $15/month per number</small></div></div>
 <ul>
-<li>We build, tune, and test your receptionist with you. Your first month is the setup fee and nothing else.</li>
+<li>We build, tune, and test your receptionist with you. Your setup and your first month are due at signup.</li>
 <li>Your number is included, plus call summary delivery and one script tune-up per month.</li>
 <li>Talk time is $0.17 per minute, billed per second, and texts are 5&cent; each, both drawn from prepaid credit you control. You add credit up front, so there is never a surprise talk-time bill.</li>
 </ul>
@@ -79,7 +79,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <label class="card opt-card" id="campaigns-card">
 <div class="opt-row"><input id="opt-campaigns" type="checkbox"/>
 <div class="opt-text"><div class="plan-head"><h3>Follow-Up Campaigns add-on</h3><div class="plan-price">+$39<small>/month per business line</small></div></div>
-<p>Your receptionist follows up by email and text for you, in your business name: estimate nudges, review requests, appointment reminders, updates, and seasonal offers to your past customers and callers. Business lines only. Billed monthly from month two, after the same 30-day trial.</p></div></div>
+<p>Your receptionist follows up by email and text for you, in your business name: estimate nudges, review requests, appointment reminders, updates, and seasonal offers to your past customers and callers. Business lines only. Billed monthly starting at signup, with the first $39 due at checkout.</p></div></div>
 </label>
 <fieldset>
 <legend>Starter call credit (optional, one time)</legend>
@@ -93,10 +93,10 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 </fieldset>
 <div class="summary" id="picker-summary">
 <h3>Your summary</h3>
-<div class="sum-row"><span>Due today (setup, plus any starter credit)</span><span class="amt" id="sum-today">$29</span></div>
-<div class="sum-row"><span>Monthly from month two, per number</span><span class="amt" id="sum-monthly">$15/month</span></div>
-<p class="sum-note">Month one is the setup fee only. Monthly charges start after your 30-day trial. Talk time and texts draw from your prepaid credit as you use them.</p>
-<a class="btn" href="https://buy.stripe.com/8x24gzc1E5B240o6Jq6c00b" id="checkout-btn">Sign up now &#8599;</a>
+<div class="sum-row"><span>Due today (setup + first month, plus any add-on and starter credit)</span><span class="amt" id="sum-today">$44</span></div>
+<div class="sum-row"><span>Monthly, per number</span><span class="amt" id="sum-monthly">$15/month</span></div>
+<p class="sum-note">Your first month is included in today's charge. After that, your monthly charges bill on the same day each month. Talk time and texts draw from your prepaid credit as you use them.</p>
+<a class="btn" href="https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k" id="checkout-btn">Sign up now &#8599;</a>
 <p class="fineprint" style="color:#c6ddcf">Secure checkout by Stripe. No long-term contract. Cancel anytime.</p>
 </div>
 </div>
@@ -105,14 +105,14 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <div class="section-head" style="max-width:710px;margin-bottom:26px"><div class="eyebrow">Rather talk it through first?</div><h2>Request setup help</h2><p class="sub">Tell us a little about your business and we will set it up with you, including which options fit. This form starts a conversation, not a charge. When you continue from here, payment is the same secure Stripe checkout.</p></div>
 <div class="grid three steps">
 <article class="card step"><span class="num">01</span><h3>This form</h3><p>Your contact details and the basics of your business. About two minutes.</p></article>
-<article class="card step"><span class="num">02</span><h3>Secure payment</h3><p>Your $29 setup (new client promotion), paid securely through Stripe. The $15 monthly fee starts after your first month. No long-term contract.</p></article>
+<article class="card step"><span class="num">02</span><h3>Secure payment</h3><p>Your $29 setup plus your first month at $15 (new client promotion), paid securely through Stripe: $44 to get started. No long-term contract.</p></article>
 <article class="card step"><span class="num">03</span><h3>Build details</h3><p>The full form: greeting, voice, call rules, and your assistant's name. Then we build.</p></article>
 </div>
 <form action="https://formsubmit.co/info@layeronestaging.com" class="form-card" id="signup-form" method="POST">
 <input name="_subject" type="hidden" value="New Ringception AI signup"/>
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://buy.stripe.com/8x24gzc1E5B240o6Jq6c00b"/>
+<input name="_next" type="hidden" value="https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k"/>
 <fieldset>
 <legend>Your contact details</legend>
 <div class="two">
@@ -141,7 +141,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <p class="hint">Tone words that help: friendly, upbeat, calm, professional, warm, energetic. Add anything else about the personality you want callers to hear. You will hear the voice on your test call before anything goes live.</p>
 </fieldset>
 <button class="btn dark" id="signup-submit" type="submit">Continue to secure payment</button>
-<p class="fineprint">New client promotion: $29 setup, then $15/month after your first month. Your number is included.</p>
+<p class="fineprint">New client promotion: $29 setup plus $15 for your first month, due at signup, then $15/month. Your number is included.</p>
 <p class="fineprint">Secure payment by Stripe. No long-term contract. Cancel anytime.</p>
 </form>
 </div></section>
@@ -150,17 +150,19 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <script>
 (function(){
   // Plan picker: routes each selection to the Stripe payment link whose
-  // line items match it exactly. Mapping verified against Stripe read-backs
-  // 2026-10-17 (see STRIPE.md, "Plan picker links").
+  // line items match it exactly. No deferred billing on any link: the setup,
+  // the first month, and any add-on are all due at checkout (owner correction
+  // 2026-10-17). Mapping verified against Stripe read-backs 2026-10-17
+  // (see STRIPE.md, "Plan picker links").
   var PICKER_LINKS = {
-    'base':              'https://buy.stripe.com/8x24gzc1E5B240o6Jq6c00b',
-    'campaigns':         'https://buy.stripe.com/00w6oHc1Ed3ueF24Bi6c00d',
-    'pack20':            'https://buy.stripe.com/3cIbJ1e9M7Ja54saZG6c00e',
-    'pack50':            'https://buy.stripe.com/00waEX1n02oQ1Sg9VC6c00f',
-    'pack100':           'https://buy.stripe.com/fZu8wP6HkgfG40offW6c00g',
-    'campaigns_pack20':  'https://buy.stripe.com/9B628rfdQbZq2Wk9VC6c00h',
-    'campaigns_pack50':  'https://buy.stripe.com/9B6eVd2r4e7ybsQd7O6c00i',
-    'campaigns_pack100': 'https://buy.stripe.com/00w7sL6Hk9RigNa3xe6c00j'
+    'base':              'https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k',
+    'campaigns':         'https://buy.stripe.com/dRm7sL3v88Ne2Wk9VC6c00l',
+    'pack20':            'https://buy.stripe.com/cNi3cv8Pse7yfJ6d7O6c00m',
+    'pack50':            'https://buy.stripe.com/9B6dR90iWgfG9kI4Bi6c00n',
+    'pack100':           'https://buy.stripe.com/cNi00j6Hk6F6bsQ5Fm6c00o',
+    'campaigns_pack20':  'https://buy.stripe.com/28EeVd9TwgfG9kI5Fm6c00p',
+    'campaigns_pack50':  'https://buy.stripe.com/cNi6oHghU9Ri40o8Ry6c00q',
+    'campaigns_pack100': 'https://buy.stripe.com/9B600j1n05B254s4Bi6c00r'
   };
   var SETUP = 29, MONTHLY = 15, CAMPAIGNS = 39;
   function arrivalAudience(){
@@ -195,7 +197,8 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
   function refresh(){
     var campaigns = audience !== 'personal' && campaignsBox.checked;
     var pack = selectedPack();
-    sumToday.textContent = '$' + (SETUP + pack);
+    // No deferred billing: setup, first month, and any add-on are all due at checkout.
+    sumToday.textContent = '$' + (SETUP + MONTHLY + (campaigns ? CAMPAIGNS : 0) + pack);
     sumMonthly.textContent = '$' + (MONTHLY + (campaigns ? CAMPAIGNS : 0)) + '/month';
     var key;
     if (campaigns && pack) { key = 'campaigns_pack' + pack; }
@@ -220,7 +223,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 (function(){
   var form = document.getElementById('signup-form');
   var button = document.getElementById('signup-submit');
-  var CHECKOUT = 'https://buy.stripe.com/8x24gzc1E5B240o6Jq6c00b';
+  var CHECKOUT = 'https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k';
   var ENDPOINT = 'https://formsubmit.co/ajax/info@layeronestaging.com';
   form.addEventListener('submit', function(event){
     event.preventDefault();
