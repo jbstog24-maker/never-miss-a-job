@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="#0b1429" name="theme-color"/>
-<meta content="Ringception AI signup, step 1: tell us about your business, then continue to secure payment." name="description"/>
-<title>Ringception AI | Step 1: Tell Us About Your Business</title><link href="favicon.png" rel="icon" type="image/png"/><meta content="https://www.ringceptionai.com/logo.png" property="og:image"/>
+<meta content="Ringception AI sign up: choose your plan and check out securely. $29 setup, then $15/month per number, optional Follow-Up Campaigns and starter credit." name="description"/>
+<title>Ringception AI | Sign Up Now: Choose Your Plan</title><link href="favicon.png" rel="icon" type="image/png"/><meta content="https://www.ringceptionai.com/logo.png" property="og:image"/>
 <style>.brand-logo-img{height:56px;width:56px;border-radius:13px;display:block;flex:none}@media(max-width:759px){.brand-logo-img{height:46px;width:46px}}.footer-brand{display:inline-flex;align-items:center;gap:9px}.footer-brand img{height:30px;width:30px;border-radius:8px;display:block}
 :root{--pine:#142341;--deep:#0b1429;--mint:#e8f3fa;--cream:#f5f7fc;--paper:#ffffff;--gold:#ffad79;--ink:#182640;--muted:#586780;--line:#dce4ef;--radius:22px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 system-ui,-apple-system,'Segoe UI',sans-serif}a{color:inherit}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #db9d3d;outline-offset:3px}
@@ -22,6 +22,30 @@ section{padding:56px 0}.white{background:var(--paper)}
 .grid{display:grid;gap:18px}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 10px 30px #152d4c08}.card p{color:var(--muted);margin:0}
 .num{display:grid;place-items:center;width:46px;height:46px;background:#182d52;color:white;border-radius:15px;font-weight:850}
 .steps{margin-bottom:34px}
+.picker{max-width:860px;margin:auto;display:grid;gap:18px}
+.plan-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.plan-head h3{margin:0}
+.plan-price{font-size:1.45rem;font-weight:900;letter-spacing:-.03em;white-space:nowrap}
+.plan-price small{display:block;font-size:.82rem;color:var(--muted);font-weight:600;letter-spacing:0;text-align:right}
+.badge{display:inline-block;background:var(--gold);color:#101b31;font-size:.72rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:4px 10px;margin-bottom:8px}
+.plan-card ul{margin:12px 0 0;padding-left:20px;color:var(--muted)}
+.plan-card ul li{margin:6px 0}
+.opt-card{display:block;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.opt-card.selected{border-color:#182d52;box-shadow:0 0 0 2px #182d52,0 10px 30px #152d4c12}
+.opt-row{display:flex;gap:14px;align-items:flex-start}
+.opt-row input{width:22px;height:22px;flex:none;margin-top:4px;accent-color:#182d52;cursor:pointer}
+.opt-row .opt-text{flex:1}
+.opt-row .opt-text p{margin-top:4px}
+.picker fieldset{border:0;padding:0;margin:0}
+.picker legend{font-size:1.15rem;font-weight:850;letter-spacing:-.02em;color:var(--ink);padding:0 0 10px}
+.pack-grid{display:grid;gap:12px}
+.pack-card{padding:18px 22px}
+.summary{background:var(--deep);color:white;border-radius:var(--radius);padding:26px;box-shadow:0 20px 50px #0b142933}
+.summary h3{color:white;margin:0 0 14px}
+.sum-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0;border-top:1px solid #ffffff23}
+.sum-row .amt{font-size:1.35rem;font-weight:900;letter-spacing:-.02em;white-space:nowrap}
+.sum-note{color:#c6ddcf;font-size:.9rem;margin:12px 0 0}
+#checkout-btn{width:100%;margin-top:18px;font-size:1.05rem}
 .form-card{background:var(--paper);padding:24px;border-radius:24px;border:1px solid var(--line);box-shadow:0 20px 50px #173e3010;max-width:860px;margin:auto}
 form fieldset{border:0;padding:0;margin:0 0 10px}form legend{font-size:1.15rem;font-weight:850;letter-spacing:-.02em;color:var(--ink);padding:22px 0 2px}
 form label{display:block;font-weight:750;font-size:.91rem;margin:16px 0 6px}
@@ -32,15 +56,53 @@ form .btn{width:100%;margin-top:22px}
 .two{display:grid;gap:0 18px}
 .fineprint{font-size:.82rem;color:var(--muted);text-align:center;margin:13px 0 0}
 footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}footer p{margin:8px 0 0;max-width:440px;font-size:.92rem;color:#bad0c3}footer a{color:#82e7ee}
-@media(min-width:760px){.grid.three{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr 1fr}.form-card{padding:36px 42px}}
-@media(max-width:759px){.site-header .wrap{min-height:70px}section{padding:44px 0}.hero{padding:44px 0 52px}}
+@media(min-width:760px){.grid.three{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr 1fr}.form-card{padding:36px 42px}.pack-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:759px){.site-header .wrap{min-height:70px}section{padding:44px 0}.hero{padding:44px 0 52px}.plan-price small{text-align:left}}
 </style>
 </head>
 <body>
 <header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><span style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span></div></header>
 <main>
-<section class="hero"><div class="wrap"><div class="eyebrow light">Step 1 of 3: Tell us about your business</div><h1>Let's get your receptionist started.</h1><p class="lead">A few quick details so we can start building. The next step is secure payment, and after that a longer form where you fine-tune everything: your greeting, your call rules, and the name your assistant uses.</p><p class="escape">Still deciding? Hear the live demo first: <a href="tel:+12147853805">(214) 785-3805</a></p></div></section>
+<section class="hero"><div class="wrap"><div class="eyebrow light">Sign up now</div><h1>Pick your plan. We build your receptionist.</h1><p class="lead">Choose what you want below and check out securely through Stripe. The $29 setup is the only fee in month one: your monthly fee starts in month two, after a 30-day trial. After payment, one more short form fine-tunes your assistant: its greeting, its call rules, and the name it uses.</p><p class="escape">Still deciding? Hear the live demo first: <a href="tel:+12147853805">(214) 785-3805</a></p></div></section>
 <section class="white"><div class="wrap">
+<div class="picker" id="plan-picker">
+<div class="section-head"><div class="eyebrow">Choose your plan</div><h2>Start with the base package, add only what you want</h2></div>
+<article class="card plan-card">
+<span class="badge">Always included</span>
+<div class="plan-head"><h3>AI Receptionist base package</h3><div class="plan-price">$29 today<small>then $15/month per number</small></div></div>
+<ul>
+<li>We build, tune, and test your receptionist with you. Your first month is the setup fee and nothing else.</li>
+<li>Your number is included, plus call summary delivery and one script tune-up per month.</li>
+<li>Talk time is $0.17 per minute, billed per second, and texts are 5&cent; each, both drawn from prepaid credit you control. You add credit up front, so there is never a surprise talk-time bill.</li>
+</ul>
+</article>
+<label class="card opt-card" id="campaigns-card">
+<div class="opt-row"><input id="opt-campaigns" type="checkbox"/>
+<div class="opt-text"><div class="plan-head"><h3>Follow-Up Campaigns add-on</h3><div class="plan-price">+$39<small>/month per business line</small></div></div>
+<p>Your receptionist follows up by email and text for you, in your business name: estimate nudges, review requests, appointment reminders, updates, and seasonal offers to your past customers and callers. Business lines only. Billed monthly from month two, after the same 30-day trial.</p></div></div>
+</label>
+<fieldset>
+<legend>Starter call credit (optional, one time)</legend>
+<p class="hint" style="margin:0 0 12px">Credit pays for talk time and texts. Most businesses start with the $50 pack. You can add more credit anytime from your account.</p>
+<div class="pack-grid">
+<label class="card opt-card pack-card"><div class="opt-row"><input checked="" name="pack" type="radio" value="0"/><div class="opt-text"><h3 style="margin:0">No pack</h3><p>Add credit later.</p></div></div></label>
+<label class="card opt-card pack-card"><div class="opt-row"><input name="pack" type="radio" value="20"/><div class="opt-text"><h3 style="margin:0">$20 pack</h3><p>About 115 minutes of talk.</p></div></div></label>
+<label class="card opt-card pack-card"><div class="opt-row"><input name="pack" type="radio" value="50"/><div class="opt-text"><h3 style="margin:0">$50 pack</h3><p>About 290 minutes of talk.</p></div></div></label>
+<label class="card opt-card pack-card"><div class="opt-row"><input name="pack" type="radio" value="100"/><div class="opt-text"><h3 style="margin:0">$100 pack</h3><p>About 585 minutes of talk.</p></div></div></label>
+</div>
+</fieldset>
+<div class="summary" id="picker-summary">
+<h3>Your summary</h3>
+<div class="sum-row"><span>Due today (setup, plus any starter credit)</span><span class="amt" id="sum-today">$29</span></div>
+<div class="sum-row"><span>Monthly from month two, per number</span><span class="amt" id="sum-monthly">$15/month</span></div>
+<p class="sum-note">Month one is the setup fee only. Monthly charges start after your 30-day trial. Talk time and texts draw from your prepaid credit as you use them.</p>
+<a class="btn" href="https://buy.stripe.com/8x24gzc1E5B240o6Jq6c00b" id="checkout-btn">Sign up now &#8599;</a>
+<p class="fineprint" style="color:#c6ddcf">Secure checkout by Stripe. No long-term contract. Cancel anytime.</p>
+</div>
+</div>
+</div></section>
+<section><div class="wrap">
+<div class="section-head" style="max-width:710px;margin-bottom:26px"><div class="eyebrow">Rather talk it through first?</div><h2>Request setup help</h2><p class="sub">Tell us a little about your business and we will set it up with you, including which options fit. This form starts a conversation, not a charge. When you continue from here, payment is the same secure Stripe checkout.</p></div>
 <div class="grid three steps">
 <article class="card step"><span class="num">01</span><h3>This form</h3><p>Your contact details and the basics of your business. About two minutes.</p></article>
 <article class="card step"><span class="num">02</span><h3>Secure payment</h3><p>Your $29 setup (new client promotion), paid securely through Stripe. The $15 monthly fee starts after your first month. No long-term contract.</p></article>
@@ -85,6 +147,75 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 </div></section>
 </main>
 <footer><div class="wrap"><div><span class="footer-brand"><img alt="" src="logo.png"/><strong>Ringception AI</strong></span><p>AI call answering, warm follow-ups, and customer communication for small businesses. Built and run in the Dallas Fort Worth area.</p></div><div><strong>Hear it first</strong><p>Call the live demo line at (214) 785-3805 and talk to an assistant like the one we will build for you.</p></div></div></footer>
+<script>
+(function(){
+  // Plan picker: routes each selection to the Stripe payment link whose
+  // line items match it exactly. Mapping verified against Stripe read-backs
+  // 2026-10-17 (see STRIPE.md, "Plan picker links").
+  var PICKER_LINKS = {
+    'base':              'https://buy.stripe.com/8x24gzc1E5B240o6Jq6c00b',
+    'campaigns':         'https://buy.stripe.com/00w6oHc1Ed3ueF24Bi6c00d',
+    'pack20':            'https://buy.stripe.com/3cIbJ1e9M7Ja54saZG6c00e',
+    'pack50':            'https://buy.stripe.com/00waEX1n02oQ1Sg9VC6c00f',
+    'pack100':           'https://buy.stripe.com/fZu8wP6HkgfG40offW6c00g',
+    'campaigns_pack20':  'https://buy.stripe.com/9B628rfdQbZq2Wk9VC6c00h',
+    'campaigns_pack50':  'https://buy.stripe.com/9B6eVd2r4e7ybsQd7O6c00i',
+    'campaigns_pack100': 'https://buy.stripe.com/00w7sL6Hk9RigNa3xe6c00j'
+  };
+  var SETUP = 29, MONTHLY = 15, CAMPAIGNS = 39;
+  function arrivalAudience(){
+    var fromUrl = null;
+    try { fromUrl = new URLSearchParams(window.location.search).get('for'); } catch (e) {}
+    if (fromUrl === 'business' || fromUrl === 'personal') { return fromUrl; }
+    try {
+      var saved = window.localStorage.getItem('ringception-audience');
+      if (saved === 'business' || saved === 'personal') { return saved; }
+    } catch (e) {}
+    return 'business';
+  }
+  var audience = arrivalAudience();
+  var campaignsCard = document.getElementById('campaigns-card');
+  var campaignsBox = document.getElementById('opt-campaigns');
+  if (audience === 'personal') {
+    // Personal accounts cannot buy campaigns (business lines only): hide the
+    // toggle entirely and never let it enter the selection.
+    campaignsBox.checked = false;
+    campaignsCard.style.display = 'none';
+  }
+  var packInputs = document.querySelectorAll('input[name="pack"]');
+  var sumToday = document.getElementById('sum-today');
+  var sumMonthly = document.getElementById('sum-monthly');
+  var checkoutBtn = document.getElementById('checkout-btn');
+  function selectedPack(){
+    for (var i = 0; i < packInputs.length; i++) {
+      if (packInputs[i].checked) { return parseInt(packInputs[i].value, 10) || 0; }
+    }
+    return 0;
+  }
+  function refresh(){
+    var campaigns = audience !== 'personal' && campaignsBox.checked;
+    var pack = selectedPack();
+    sumToday.textContent = '$' + (SETUP + pack);
+    sumMonthly.textContent = '$' + (MONTHLY + (campaigns ? CAMPAIGNS : 0)) + '/month';
+    var key;
+    if (campaigns && pack) { key = 'campaigns_pack' + pack; }
+    else if (campaigns) { key = 'campaigns'; }
+    else if (pack) { key = 'pack' + pack; }
+    else { key = 'base'; }
+    checkoutBtn.href = PICKER_LINKS[key];
+    campaignsCard.classList.toggle('selected', campaigns);
+    Array.prototype.forEach.call(packInputs, function(input){
+      var card = input.closest('.opt-card');
+      if (card) { card.classList.toggle('selected', input.checked); }
+    });
+  }
+  campaignsBox.addEventListener('change', refresh);
+  Array.prototype.forEach.call(packInputs, function(input){
+    input.addEventListener('change', refresh);
+  });
+  refresh();
+})();
+</script>
 <script>
 (function(){
   var form = document.getElementById('signup-form');
