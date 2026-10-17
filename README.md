@@ -18,4 +18,4 @@ Landing page for an AI receptionist service for small businesses, contractors, f
 
 ## Status
 
-Staged for launch. All site forms (signup, onboarding, lead) deliver submissions via FormSubmit to info@layeronestaging.com as of 2026-10-16; no form placeholders remain. The demo phone number on the page is likewise a placeholder (`DEMO_NUMBER_PLACEHOLDER`) pending a decision on publishing a live demo line.
+Staged for launch. All site forms (the one customer form on signup.html, and the homepage lead form) deliver submissions via FormSubmit to info@ringceptionai.com as of 2026-10-17; no form placeholders remain. The demo phone number on the page is likewise a placeholder (`DEMO_NUMBER_PLACEHOLDER`) pending a decision on publishing a live demo line.

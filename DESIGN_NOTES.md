@@ -26,7 +26,7 @@ Note: a "For individuals" section (personal assistant plan, same Option A pricin
 
 ## Placeholders that must survive any redesign
 
-- All site forms (signup, onboarding, lead) use the FormSubmit pattern: an AJAX post to `https://formsubmit.co/ajax/info@layeronestaging.com`, activated once for the domain. Keep that endpoint and pattern in any redesign; do not point a form at a mailto, and do not remove a form.
+- All site forms use the FormSubmit pattern: an AJAX post to `https://formsubmit.co/ajax/info@ringceptionai.com` (the Layer One alias endpoint was retired 2026-10-17 in the business separation). The ONE customer form lives on signup.html; onboarding.html is the post-payment confirmation page and carries no form by design. Keep that endpoint and pattern in any redesign; do not point a form at a mailto.
 - The demo section must keep the literal text `DEMO_NUMBER_PLACEHOLDER` where the demo phone number goes, until a real demo number is provided.
 - Form field names are wired to the intake process. Keep the existing `name` attributes on every field (name, business_name, business_type, phone, email, phone_setup, busiest_times, caller_needs, never_say_do, notes).
 
