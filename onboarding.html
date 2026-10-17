@@ -55,7 +55,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <section class="hero"><div class="wrap"><div class="eyebrow light">Step 3 of 3: Tell us about your business</div><h1>Payment done. Now let us build your receptionist.</h1><p class="lead">Payment done. This is the fun part: designing your receptionist. This form tells us everything we need to build your assistant: how your business runs, how you want calls handled, and the name you want your assistant to use. About five minutes, and we start building as soon as it lands. You can leave anything blank that you would rather talk through on your test call.</p></div></section>
 <section class="white"><div class="wrap">
 <form action="https://formsubmit.co/7efcebb89b03687cad034a206bec6f8e" class="form-card" id="onboarding-form" method="POST">
-<input name="_subject" type="hidden" value="New Ringception AI onboarding"/>
+<input name="_subject" type="hidden" value="New customer form"/>
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
 <fieldset>
@@ -151,7 +151,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
     var data = {};
     new FormData(form).forEach(function(value, key){ data[key] = value; });
     if (data.website && !/^[a-z][a-z0-9+.-]*:\/\//i.test(data.website)) { data.website = 'https://' + data.website.replace(/^\/+/, ''); }
-    data._subject = 'New Ringception AI onboarding: ' + (data.business_name || data.contact_name || 'new business');
+    data._subject = 'New customer form: ' + (data.business_name || data.contact_name || 'new business');
     data._template = 'table';
     data._captcha = 'false';
     var onSuccess = function(){
