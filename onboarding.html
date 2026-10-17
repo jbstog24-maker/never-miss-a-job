@@ -38,6 +38,15 @@ form .btn{width:100%;margin-top:22px}
 footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}footer p{margin:8px 0 0;max-width:440px;font-size:.92rem;color:#bad0c3}footer a{color:#82e7ee}
 @media(min-width:760px){.grid.four{grid-template-columns:repeat(4,1fr)}.grid.two{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr 1fr}.form-card{padding:36px 42px}}
 @media(max-width:759px){.site-header .wrap{min-height:70px}section{padding:44px 0}.hero{padding:44px 0 52px}}
+.modal-overlay{position:fixed;inset:0;background:rgba(11,20,41,.88);display:none;align-items:center;justify-content:center;padding:20px;z-index:80}
+.modal-overlay.open{display:flex}
+.modal-card{background:var(--paper);border-radius:var(--radius);max-width:520px;width:100%;padding:36px 32px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.modal-card h2{margin:0 0 12px}
+.modal-card p{color:var(--muted);margin:0 0 10px}
+.modal-card .btn{width:100%;margin-top:14px}
+.modal-link{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);font:inherit;font-size:.92rem;text-decoration:underline;cursor:pointer}
+.form-error{display:none;background:#fdeeee;border:1px solid #e5b8b8;color:#7a1f1f;border-radius:14px;padding:14px 16px;margin-top:16px;font-size:.94rem}
+.form-error.show{display:block}
 </style>
 </head>
 <body>
@@ -45,7 +54,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <main>
 <section class="hero"><div class="wrap"><div class="eyebrow light">Step 3 of 3: Tell us about your business</div><h1>Payment done. Now let us build your receptionist.</h1><p class="lead">Payment done. This is the fun part: designing your receptionist. This form tells us everything we need to build your assistant: how your business runs, how you want calls handled, and the name you want your assistant to use. About five minutes, and we start building as soon as it lands. You can leave anything blank that you would rather talk through on your test call.</p></div></section>
 <section class="white"><div class="wrap">
-<form action="https://formsubmit.co/info@layeronestaging.com" class="form-card" id="onboarding-form" method="POST">
+<form action="https://formsubmit.co/7efcebb89b03687cad034a206bec6f8e" class="form-card" id="onboarding-form" method="POST">
 <input name="_subject" type="hidden" value="New Ringception AI onboarding"/>
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
@@ -57,8 +66,8 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <div><label for="o-email">Business email</label><input autocomplete="email" id="o-email" name="email" required="" type="email"/></div>
 <div><label for="o-phone">Best phone number to reach you</label><input autocomplete="tel" id="o-phone" name="phone" required="" type="tel"/></div>
 </div>
-<label for="o-website">Business website</label><input id="o-website" name="website" placeholder="https://yourbusiness.com" type="url"/>
-<p class="hint">We review your website to learn your services, hours, and how you operate, so your assistant starts out knowing your business.</p>
+<label for="o-website">Business website</label><input id="o-website" name="website" placeholder="https://www.yourbusiness.com" inputmode="url" type="text"/>
+<p class="hint">Enter your full website address, for example https://www.yourbusiness.com. We review it to learn your services, hours, and how you operate, so your assistant starts out knowing your business.</p>
 <label for="o-type">What kind of business is it?</label><input id="o-type" name="business_type" placeholder="Plumbing, HVAC, lawn care, cleaning, salon..." type="text"/>
 <label for="o-services">Services you offer</label><textarea id="o-services" name="services" placeholder="List your main services, in the order you want them talked about."></textarea>
 <div class="two">
@@ -100,6 +109,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <label for="o-current">Your current business number (if you are keeping it)</label><input autocomplete="tel" id="o-current" name="current_number" type="tel"/>
 </fieldset>
 <button class="btn dark" id="onboarding-submit" type="submit">Send my business details</button>
+<div class="form-error" id="onboarding-error" role="alert"><strong>Something went wrong sending your details.</strong> Nothing was lost: your answers are still in the form. Please try again, and if it keeps failing, call us at (214) 785-3805 and we will take it from there.</div>
 <p class="fineprint">We review every submission personally. Nothing goes live until you approve your assistant on a live test call.</p>
 <p class="fineprint" hidden="" id="onboarding-sent"><strong>Thank you, your details are in.</strong> We review every submission personally and will reach out with next steps and a time for your approval test call.</p>
 </form>
@@ -112,6 +122,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 </div></div></section>
 </main>
 <footer><div class="wrap"><div><span class="footer-brand"><img alt="" src="logo.png"/><strong>Ringception AI</strong></span><p>AI call answering, warm follow-ups, and customer communication for small businesses. Built and run in the Dallas Fort Worth area.</p></div><div><strong>Hear it first</strong><p>Call the live demo line at (214) 785-3805 and talk to an assistant like the one we will build for you.</p></div></div></footer>
+<div class="modal-overlay" id="onboarding-thanks" role="dialog" aria-modal="true" aria-labelledby="onboarding-thanks-title"><div class="modal-card"><h2 id="onboarding-thanks-title">Thank you, your agent is now being built.</h2><p>Your details are in, and your welcome email with your portal sign-in instructions is on its way to your inbox.</p><p class="hint">Taking you to your portal in a few seconds.</p><a class="btn dark" href="https://portal.ringceptionai.com">Go to my portal now</a></div></div>
 <script>
 (function(){
   try {
@@ -129,22 +140,37 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 (function(){
   var form = document.getElementById('onboarding-form');
   var button = document.getElementById('onboarding-submit');
-  var sent = document.getElementById('onboarding-sent');
-  var ENDPOINT = 'https://formsubmit.co/ajax/info@layeronestaging.com';
+  var errorBox = document.getElementById('onboarding-error');
+  var modal = document.getElementById('onboarding-thanks');
+  var ENDPOINT = 'https://formsubmit.co/ajax/7efcebb89b03687cad034a206bec6f8e';
   form.addEventListener('submit', function(event){
     event.preventDefault();
     button.disabled = true;
     button.textContent = 'Sending your details...';
+    if (errorBox) { errorBox.classList.remove('show'); }
     var data = {};
     new FormData(form).forEach(function(value, key){ data[key] = value; });
+    if (data.website && !/^[a-z][a-z0-9+.-]*:\/\//i.test(data.website)) { data.website = 'https://' + data.website.replace(/^\/+/, ''); }
     data._subject = 'New Ringception AI onboarding: ' + (data.business_name || data.contact_name || 'new business');
     data._template = 'table';
     data._captcha = 'false';
-    var done = function(){
+    var onSuccess = function(){
       button.textContent = 'Details sent';
-      if (sent) { sent.hidden = false; }
+      if (modal) { modal.classList.add('open'); }
+      setTimeout(function(){ window.location.href = 'https://portal.ringceptionai.com'; }, 4000);
     };
-    fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)}).then(done, done);
+    var onError = function(){
+      button.disabled = false;
+      button.textContent = 'Try sending again';
+      if (errorBox) { errorBox.classList.add('show'); errorBox.scrollIntoView({block:'center'}); }
+    };
+    fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)}).then(function(resp){
+      if (!resp.ok) { throw new Error('send failed'); }
+      return resp.json().catch(function(){ return null; });
+    }).then(function(result){
+      if (result && 'success' in result && String(result.success) !== 'true') { throw new Error('send failed'); }
+      onSuccess();
+    }).catch(onError);
   });
 })();
 </script>

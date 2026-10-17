@@ -58,6 +58,15 @@ form .btn{width:100%;margin-top:22px}
 footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}footer p{margin:8px 0 0;max-width:440px;font-size:.92rem;color:#bad0c3}footer a{color:#82e7ee}
 @media(min-width:760px){.grid.three{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr 1fr}.form-card{padding:36px 42px}.pack-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:759px){.site-header .wrap{min-height:70px}section{padding:44px 0}.hero{padding:44px 0 52px}.plan-price small{text-align:left}}
+.modal-overlay{position:fixed;inset:0;background:rgba(11,20,41,.88);display:none;align-items:center;justify-content:center;padding:20px;z-index:80}
+.modal-overlay.open{display:flex}
+.modal-card{background:var(--paper);border-radius:var(--radius);max-width:520px;width:100%;padding:36px 32px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.modal-card h2{margin:0 0 12px}
+.modal-card p{color:var(--muted);margin:0 0 10px}
+.modal-card .btn{width:100%;margin-top:14px}
+.modal-link{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);font:inherit;font-size:.92rem;text-decoration:underline;cursor:pointer}
+.form-error{display:none;background:#fdeeee;border:1px solid #e5b8b8;color:#7a1f1f;border-radius:14px;padding:14px 16px;margin-top:16px;font-size:.94rem}
+.form-error.show{display:block}
 </style>
 </head>
 <body>
@@ -108,7 +117,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <article class="card step"><span class="num">02</span><h3>Secure payment</h3><p>Your $29 setup plus your first month at $15 (new client promotion), paid securely through Stripe: $44 to get started. No long-term contract.</p></article>
 <article class="card step"><span class="num">03</span><h3>Build details</h3><p>The full form: greeting, voice, call rules, and your assistant's name. Then we build.</p></article>
 </div>
-<form action="https://formsubmit.co/info@layeronestaging.com" class="form-card" id="signup-form" method="POST">
+<form action="https://formsubmit.co/7efcebb89b03687cad034a206bec6f8e" class="form-card" id="signup-form" method="POST">
 <input name="_subject" type="hidden" value="New Ringception AI signup"/>
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
@@ -127,8 +136,8 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <div><label for="s-business">Business name</label><input id="s-business" name="business_name" required="" type="text"/></div>
 <div><label for="s-type">What kind of business is it? (optional)</label><input id="s-type" name="business_type" placeholder="Plumbing, HVAC, lawn care, cleaning, salon..." type="text"/></div>
 </div>
-<label for="s-website">Business website (optional)</label><input id="s-website" name="website" placeholder="https://yourbusiness.com" type="url"/>
-<p class="hint">We review your website to learn your services and hours, so your assistant starts out knowing your business.</p>
+<label for="s-website">Business website (optional)</label><input id="s-website" name="website" placeholder="https://www.yourbusiness.com" inputmode="url" type="text"/>
+<p class="hint">Enter your full website address, for example https://www.yourbusiness.com. We review it to learn your services and hours, so your assistant starts out knowing your business.</p>
 <label for="s-notes">Anything else you want us to know (optional)</label><textarea id="s-notes" name="additional_information" placeholder="Anything at all: how you work, what matters most, questions you have."></textarea>
 </fieldset>
 <fieldset>
@@ -141,6 +150,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <p class="hint">Tone words that help: friendly, upbeat, calm, professional, warm, energetic. Add anything else about the personality you want callers to hear. You will hear the voice on your test call before anything goes live.</p>
 </fieldset>
 <button class="btn dark" id="signup-submit" type="submit">Continue to secure payment</button>
+<div class="form-error" id="signup-error" role="alert"><strong>Something went wrong sending your request.</strong> Nothing was lost: your answers are still in the form. Please try again, and if it keeps failing, call us at (214) 785-3805 and we will take it from there.</div>
 <p class="fineprint">New client promotion: $29 setup plus $15 for your first month, due at signup, then $15/month. Your number is included.</p>
 <p class="fineprint">Secure payment by Stripe. No long-term contract. Cancel anytime.</p>
 </form>
@@ -219,18 +229,24 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
   refresh();
 })();
 </script>
+<div class="modal-overlay" id="signup-thanks" role="dialog" aria-modal="true" aria-labelledby="signup-thanks-title"><div class="modal-card"><h2 id="signup-thanks-title">Thank you, your request is in.</h2><p>We will be in touch shortly to talk through your setup, answer your questions, and get your receptionist started.</p><a class="btn dark" href="https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k">Continue to secure payment</a><button class="modal-link" id="signup-thanks-close" type="button">Not right now</button></div></div>
 <script>
 (function(){
   var form = document.getElementById('signup-form');
   var button = document.getElementById('signup-submit');
-  var CHECKOUT = 'https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k';
-  var ENDPOINT = 'https://formsubmit.co/ajax/info@layeronestaging.com';
+  var errorBox = document.getElementById('signup-error');
+  var modal = document.getElementById('signup-thanks');
+  var closeBtn = document.getElementById('signup-thanks-close');
+  if (closeBtn && modal) { closeBtn.addEventListener('click', function(){ modal.classList.remove('open'); }); }
+  var ENDPOINT = 'https://formsubmit.co/ajax/7efcebb89b03687cad034a206bec6f8e';
   form.addEventListener('submit', function(event){
     event.preventDefault();
     button.disabled = true;
     button.textContent = 'Sending your details...';
+    if (errorBox) { errorBox.classList.remove('show'); }
     var data = {};
     new FormData(form).forEach(function(value, key){ data[key] = value; });
+    if (data.website && !/^[a-z][a-z0-9+.-]*:\/\//i.test(data.website)) { data.website = 'https://' + data.website.replace(/^\/+/, ''); }
     try {
       var saved = {};
       ['contact_name','email','phone','business_name','website','business_type'].forEach(function(key){ saved[key] = data[key] || ''; });
@@ -240,8 +256,22 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
     data._template = 'table';
     data._captcha = 'false';
     delete data._next;
-    var go = function(){ window.location.href = CHECKOUT; };
-    fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)}).then(go, go);
+    var onSuccess = function(){
+      button.textContent = 'Request sent';
+      if (modal) { modal.classList.add('open'); }
+    };
+    var onError = function(){
+      button.disabled = false;
+      button.textContent = 'Try sending again';
+      if (errorBox) { errorBox.classList.add('show'); errorBox.scrollIntoView({block:'center'}); }
+    };
+    fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)}).then(function(resp){
+      if (!resp.ok) { throw new Error('send failed'); }
+      return resp.json().catch(function(){ return null; });
+    }).then(function(result){
+      if (result && 'success' in result && String(result.success) !== 'true') { throw new Error('send failed'); }
+      onSuccess();
+    }).catch(onError);
   });
 })();
 </script>
