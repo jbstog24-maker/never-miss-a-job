@@ -67,12 +67,18 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 .modal-link{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);font:inherit;font-size:.92rem;text-decoration:underline;cursor:pointer}
 .form-error{display:none;background:#fdeeee;border:1px solid #e5b8b8;color:#7a1f1f;border-radius:14px;padding:14px 16px;margin-top:16px;font-size:.94rem}
 .form-error.show{display:block}
+.choice{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:12px;background:#fbfcfe;cursor:pointer}
+.choice input{width:auto;min-height:0;margin-top:5px;flex:none}
+.choice strong{display:block;font-size:.98rem}
+.choice span{font-size:.9rem;color:var(--muted)}
+.note-box{background:#e6f7fa;border:1px solid #b5e3ed;border-radius:16px;padding:18px 20px;margin-top:18px;font-size:.94rem}
+.note-box strong{color:#123b58}
 </style>
 </head>
 <body>
 <header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a href="how-it-works.html">How it works</a></nav><span style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a></div></header>
 <main>
-<section class="hero"><div class="wrap"><div class="eyebrow light">Sign up now</div><h1>Pick your plan. We build your receptionist.</h1><p class="lead">Choose what you want below and check out securely through Stripe. Getting started is $44, due at checkout: the $29 setup plus your first month at $15. After payment, one more short form fine-tunes your assistant: its greeting, its call rules, and the name it uses.</p><p class="escape">Still deciding? Hear the live demo first: <a href="tel:+12147853805">(214) 785-3805</a></p></div></section>
+<section class="hero"><div class="wrap"><div class="eyebrow light">Sign up now</div><h1>Pick your plan. We build your receptionist.</h1><p class="lead">Choose what you want below, then fill in one form: it tells us everything we need to build your receptionist, from your services and hours to its greeting, its call rules, and the name it uses. You fill it in once, then check out securely through Stripe. Getting started is $44, due at checkout: the $29 setup plus your first month at $15. We never ask for the same thing twice.</p><p class="escape">Still deciding? Hear the live demo first: <a href="tel:+12147853805">(214) 785-3805</a></p></div></section>
 <section class="white"><div class="wrap">
 <div class="picker" id="plan-picker">
 <div class="section-head"><div class="eyebrow">Choose your plan</div><h2>Start with the base package, add only what you want</h2></div>
@@ -105,20 +111,21 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <div class="sum-row"><span>Due today (setup + first month, plus any add-on and starter credit)</span><span class="amt" id="sum-today">$44</span></div>
 <div class="sum-row"><span>Monthly, per number</span><span class="amt" id="sum-monthly">$15/month</span></div>
 <p class="sum-note">Your first month is included in today's charge. After that, your monthly charges bill on the same day each month. Talk time and texts draw from your prepaid credit as you use them.</p>
-<a class="btn" href="https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k" id="checkout-btn">Sign up now &#8599;</a>
+<a class="btn" href="#signup-form" id="checkout-btn">Sign up now &#8599;</a>
+<p class="sum-note">That button takes you to the one signup form (about five minutes). Send it and you land in this checkout with your plan already picked and your email already filled in.</p>
 <p class="fineprint" style="color:#c6ddcf">Secure checkout by Stripe. No long-term contract. Cancel anytime.</p>
 </div>
 </div>
 </div></section>
 <section><div class="wrap">
-<div class="section-head" style="max-width:710px;margin-bottom:26px"><div class="eyebrow">Rather talk it through first?</div><h2>Request setup help</h2><p class="sub">Tell us a little about your business and we will set it up with you, including which options fit. This form starts a conversation, not a charge. When you continue from here, payment is the same secure Stripe checkout.</p></div>
+<div class="section-head" style="max-width:710px;margin-bottom:26px"><div class="eyebrow">One form, then payment</div><h2>Tell us everything once</h2><p class="sub">This is the only form you will ever fill in with us. It covers your contact details, your business, and exactly how your receptionist should sound and handle calls, grouped in short sections. Send it and you go straight to secure checkout with your plan already picked and your email already filled in. After payment there is nothing else to fill out: we build from this form.</p></div>
 <div class="grid three steps">
-<article class="card step"><span class="num">01</span><h3>This form</h3><p>Your contact details and the basics of your business. About two minutes.</p></article>
-<article class="card step"><span class="num">02</span><h3>Secure payment</h3><p>Your $29 setup plus your first month at $15 (new client promotion), paid securely through Stripe: $44 to get started. No long-term contract.</p></article>
-<article class="card step"><span class="num">03</span><h3>Build details</h3><p>The full form: greeting, voice, call rules, and your assistant's name. Then we build.</p></article>
+<article class="card step"><span class="num">01</span><h3>Pick your plan</h3><p>The base package above, plus any add-on and starter credit you chose. Your total is already set.</p></article>
+<article class="card step"><span class="num">02</span><h3>This form</h3><p>Your contact details, your business, and your build details: services, hours, greeting, voice, call rules, and your assistant's name. About five minutes, asked once.</p></article>
+<article class="card step"><span class="num">03</span><h3>Secure payment</h3><p>Your $29 setup plus your first month at $15 (new client promotion), paid securely through Stripe: $44 to get started. No long-term contract. Then we build.</p></article>
 </div>
 <form action="https://formsubmit.co/info@ringceptionai.com" class="form-card" id="signup-form" method="POST">
-<input name="_subject" type="hidden" value="New Ringception AI signup"/>
+<input name="_subject" type="hidden" value="New customer form"/>
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
 <input name="_next" type="hidden" value="https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k"/>
@@ -141,6 +148,48 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <label for="s-notes">Anything else you want us to know (optional)</label><textarea id="s-notes" name="additional_information" placeholder="Anything at all: how you work, what matters most, questions you have."></textarea>
 </fieldset>
 <fieldset>
+<legend>Your services and hours</legend>
+<label for="s-services">Services you offer</label><textarea id="s-services" name="services" placeholder="List your main services, in the order you want them talked about."></textarea>
+<div class="two">
+<div><label for="s-hours">Business hours</label><input id="s-hours" name="hours" placeholder="Mon to Fri 8 to 5, Sat 9 to 1, closed Sun" type="text"/></div>
+<div><label for="s-area">Service area</label><input id="s-area" name="service_area" placeholder="Cities or neighborhoods you actually serve" type="text"/></div>
+</div>
+<p class="hint">You can leave anything in this section blank that you would rather talk through on your test call.</p>
+</fieldset>
+<fieldset>
+<legend>Meet your assistant</legend>
+<div class="two">
+<div><label for="s-assistant-name">Name your assistant</label><input id="s-assistant-name" name="assistant_name" placeholder="Any name you like" type="text"/>
+<p class="hint">Pick any name you like for your call assistant. It is the name callers will hear. We will confirm it is available and a good fit when we set you up.</p></div>
+<div><label for="s-greeting">Greeting style</label><select id="s-greeting" name="greeting_style"><option value="warm">Warm and neighborly</option><option value="professional">Short and professional</option><option value="upbeat">Upbeat and energetic</option></select></div>
+</div>
+<label for="s-voice-pref">Voice preference</label><select id="s-voice-pref" name="voice_preference"><option value="no-preference">No preference</option><option value="warm-female">Warm female voice</option><option value="friendly-male">Friendly male voice</option><option value="decide-on-test-call">Decide on the test call</option></select>
+<p class="hint">You will hear the voice on your test call before anything goes live. The next section lets you fine-tune the sound.</p>
+</fieldset>
+<fieldset>
+<legend>How your calls should be handled</legend>
+<label for="s-book">What should your assistant book or capture on a call?</label><textarea id="s-book" name="what_to_book" placeholder="For example: take name, number, what they need, job address, and best callback time. Or book straight into my calendar."></textarea>
+<label for="s-urgent">What counts as urgent at your business?</label><textarea id="s-urgent" name="urgent_calls" placeholder="For example: burst pipe, no heat with kids in the house, a job over $1,000."></textarea>
+<div class="two">
+<div><label for="s-transfer">Urgent transfer number (your cell)</label><input autocomplete="tel" id="s-transfer" name="transfer_number" type="tel"/></div>
+<div><label for="s-transfer-rules">Transfer rules</label><input id="s-transfer-rules" name="transfer_rules" placeholder="Transfer urgent calls 24/7, or business hours only?" type="text"/></div>
+</div>
+</fieldset>
+<fieldset>
+<legend>Questions, offers, and ground rules</legend>
+<label for="s-faqs">Questions customers ask all the time</label><textarea id="s-faqs" name="faqs" placeholder="List the questions, with your approved answers if you have them. Prices only if you want them quoted."></textarea>
+<label for="s-promos">Current promotions your assistant can mention</label><textarea id="s-promos" name="promotions" placeholder="For example: 10% off first service this month, free estimates on Fridays. Leave blank if none."></textarea>
+<label for="s-never">Anything your assistant must never say or do</label><textarea id="s-never" name="never_say_do" placeholder="Never quote a firm price, never promise same-day service, never give out my personal cell..."></textarea>
+<label for="s-docs">Documents you will share with us</label><textarea id="s-docs" name="documents" placeholder="Price lists, service menus, policy sheets, anything that helps your assistant answer well. List them here."></textarea>
+<div class="note-box"><strong>Sharing documents:</strong> after checkout, reply to your Ringception AI welcome email and attach any documents there (price lists, menus, service sheets). We will fold them into your assistant's answers before your test call.</div>
+</fieldset>
+<fieldset>
+<legend>Your phone number</legend>
+<label class="choice"><input name="phone_setup" type="radio" value="keep_number"/><span><strong>Keep my current business number</strong><span>After signup, we assign your Ringception number and send it to you with simple call forwarding steps. You set your current line to forward to your Ringception number, so your assistant answers first and your customers keep calling the number they already know.</span></span></label>
+<label class="choice"><input name="phone_setup" type="radio" value="new_number"/><span><strong>Use my new Ringception number as my business number</strong><span>We assign your Ringception number and you publish it directly on your website, cards, and listings. No forwarding needed.</span></span></label>
+<label for="s-current">Your current business number (if you are keeping it)</label><input autocomplete="tel" id="s-current" name="current_number" type="tel"/>
+</fieldset>
+<fieldset>
 <legend>What should your receptionist sound like?</legend>
 <div class="two">
 <div><label for="s-voice-gender">Voice</label><select id="s-voice-gender" name="voice_gender"><option value="No preference">No preference</option><option value="Female">Female</option><option value="Male">Male</option></select></div>
@@ -149,7 +198,7 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 <label for="s-voice-desc">Describe the sound you want (optional)</label><textarea id="s-voice-desc" name="voice_description" placeholder="How should your receptionist come across on the phone?"></textarea>
 <p class="hint">Tone words that help: friendly, upbeat, calm, professional, warm, energetic. Add anything else about the personality you want callers to hear. You will hear the voice on your test call before anything goes live.</p>
 </fieldset>
-<button class="btn dark" id="signup-submit" type="submit">Continue to secure payment</button>
+<button class="btn dark" id="signup-submit" type="submit">Send my details and continue to secure payment</button>
 <div class="form-error" id="signup-error" role="alert"><strong>Something went wrong sending your request.</strong> Nothing was lost: your answers are still in the form. Please try again, and if it keeps failing, call us at (214) 785-3805 and we will take it from there.</div>
 <p class="fineprint">New client promotion: $29 setup plus $15 for your first month, due at signup, then $15/month. Your number is included.</p>
 <p class="fineprint">Secure payment by Stripe. No long-term contract. Cancel anytime.</p>
@@ -215,7 +264,10 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
     else if (campaigns) { key = 'campaigns'; }
     else if (pack) { key = 'pack' + pack; }
     else { key = 'base'; }
-    checkoutBtn.href = PICKER_LINKS[key];
+    // The checkout button itself now anchors to the one signup form; the
+    // form's submit handler reads this stored selection and sends the
+    // customer to the matching Stripe link with their email prefilled.
+    window.__selectedCheckoutLink = PICKER_LINKS[key];
     campaignsCard.classList.toggle('selected', campaigns);
     Array.prototype.forEach.call(packInputs, function(input){
       var card = input.closest('.opt-card');
@@ -229,16 +281,19 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
   refresh();
 })();
 </script>
-<div class="modal-overlay" id="signup-thanks" role="dialog" aria-modal="true" aria-labelledby="signup-thanks-title"><div class="modal-card"><h2 id="signup-thanks-title">Thank you, your request is in.</h2><p>We will be in touch shortly to talk through your setup, answer your questions, and get your receptionist started.</p><a class="btn dark" href="https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k">Continue to secure payment</a><button class="modal-link" id="signup-thanks-close" type="button">Not right now</button></div></div>
 <script>
 (function(){
+  // The ONE customer form (merged 2026-10-17): contact details, business
+  // basics, and the full build details in a single submission, delivered
+  // as "New customer form: <business>". On success the customer goes
+  // straight to the Stripe checkout link for the plan picked above, with
+  // their form email passed as prefilled_email (a documented Payment
+  // Links URL parameter), so the checkout email matches the form email.
   var form = document.getElementById('signup-form');
   var button = document.getElementById('signup-submit');
   var errorBox = document.getElementById('signup-error');
-  var modal = document.getElementById('signup-thanks');
-  var closeBtn = document.getElementById('signup-thanks-close');
-  if (closeBtn && modal) { closeBtn.addEventListener('click', function(){ modal.classList.remove('open'); }); }
   var ENDPOINT = 'https://formsubmit.co/ajax/info@ringceptionai.com';
+  var BASE_LINK = 'https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k';
   form.addEventListener('submit', function(event){
     event.preventDefault();
     button.disabled = true;
@@ -247,18 +302,18 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
     var data = {};
     new FormData(form).forEach(function(value, key){ data[key] = value; });
     if (data.website && !/^[a-z][a-z0-9+.-]*:\/\//i.test(data.website)) { data.website = 'https://' + data.website.replace(/^\/+/, ''); }
-    try {
-      var saved = {};
-      ['contact_name','email','phone','business_name','website','business_type'].forEach(function(key){ saved[key] = data[key] || ''; });
-      localStorage.setItem('ringception_signup', JSON.stringify(saved));
-    } catch (err) {}
-    data._subject = 'New Ringception AI signup: ' + (data.business_name || data.contact_name || 'new business');
+    data._subject = 'New customer form: ' + (data.business_name || data.contact_name || 'new business');
     data._template = 'table';
     data._captcha = 'false';
     delete data._next;
     var onSuccess = function(){
-      button.textContent = 'Request sent';
-      if (modal) { modal.classList.add('open'); }
+      button.textContent = 'Details sent. Taking you to secure payment...';
+      var link = window.__selectedCheckoutLink || BASE_LINK;
+      var email = (data.email || '').trim();
+      if (email) {
+        link += (link.indexOf('?') === -1 ? '?' : '&') + 'prefilled_email=' + encodeURIComponent(email);
+      }
+      window.location.href = link;
     };
     var onError = function(){
       button.disabled = false;
