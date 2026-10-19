@@ -67,6 +67,9 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 .modal-link{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);font:inherit;font-size:.92rem;text-decoration:underline;cursor:pointer}
 .form-error{display:none;background:#fdeeee;border:1px solid #e5b8b8;color:#7a1f1f;border-radius:14px;padding:14px 16px;margin-top:16px;font-size:.94rem}
 .form-error.show{display:block}
+.form-duplicate{display:none;background:#fdf6ec;border:1px solid #ecd9ae;color:#6b5410;border-radius:14px;padding:14px 16px;margin-top:16px;font-size:.94rem}
+.form-duplicate.show{display:block}
+.form-duplicate a{color:#1b3a5c;font-weight:700}
 .choice{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:12px;background:#fbfcfe;cursor:pointer}
 .choice input{width:auto;min-height:0;margin-top:5px;flex:none}
 .choice strong{display:block;font-size:.98rem}
@@ -232,6 +235,7 @@ gtag('config', 'G-Y4YW8589B1');
 </fieldset>
 <button class="btn dark" id="signup-submit" type="submit">Send my details and continue to secure payment</button>
 <div class="form-error" id="signup-error" role="alert"><strong>Something went wrong sending your request.</strong> Nothing was lost: your answers are still in the form. Please try again, and if it keeps failing, call us at (214) 785-3805 and we will take it from there.</div>
+<div class="form-duplicate" id="signup-duplicate" role="alert"><strong>That email is already registered.</strong> You already have a Ringception account with us, so there is no need to sign up or pay again. <a href="https://portal.ringceptionai.com/account">Sign in to your account instead</a>: that page emails you a one-tap sign-in link. If you meant to use a different email, just change the email above and send the form again.</div>
 <p class="fineprint">New client promotion: $29 setup plus $15 for your first month, due at signup, then $15/month. Your number is included.</p>
 <p class="fineprint">Secure payment by Stripe. No long-term contract. Cancel anytime.</p>
 </form>
@@ -352,13 +356,51 @@ gtag('config', 'G-Y4YW8589B1');
       button.textContent = 'Try sending again';
       if (errorBox) { errorBox.classList.add('show'); errorBox.scrollIntoView({block:'center'}); }
     };
-    fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)}).then(function(resp){
-      if (!resp.ok) { throw new Error('send failed'); }
-      return resp.json().catch(function(){ return null; });
-    }).then(function(result){
-      if (result && 'success' in result && String(result.success) !== 'true') { throw new Error('send failed'); }
-      onSuccess();
-    }).catch(onError);
+    var proceed = function(){
+      fetch(ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)}).then(function(resp){
+        if (!resp.ok) { throw new Error('send failed'); }
+        return resp.json().catch(function(){ return null; });
+      }).then(function(result){
+        if (result && 'success' in result && String(result.success) !== 'true') { throw new Error('send failed'); }
+        onSuccess();
+      }).catch(onError);
+    };
+    // Duplicate signup protection (2026-10-19): if this email already
+    // has a Ringception account, stop here and point them at sign-in
+    // instead of sending them to a second checkout. FAIL OPEN on any
+    // error, timeout, or odd answer: a portal hiccup must never block
+    // a legitimate new signup (the pipeline backstop catches anyone
+    // who gets through, for example by a direct payment link).
+    var dupBox = document.getElementById('signup-duplicate');
+    if (dupBox) { dupBox.classList.remove('show'); }
+    var finished = false;
+    var finish = function(registered){
+      if (finished) { return; }
+      finished = true;
+      if (registered) {
+        button.disabled = false;
+        button.textContent = 'Send my details and continue to secure payment';
+        if (dupBox) { dupBox.classList.add('show'); dupBox.scrollIntoView({block:'center'}); }
+      } else {
+        proceed();
+      }
+    };
+    try {
+      var controller = ('AbortController' in window) ? new AbortController() : null;
+      var timer = controller ? setTimeout(function(){ controller.abort(); }, 4000) : null;
+      fetch('https://portal.ringceptionai.com/api/signup/email-status', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({email: (data.email || '').trim()}),
+        signal: controller ? controller.signal : undefined
+      }).then(function(resp){
+        if (timer) { clearTimeout(timer); }
+        if (!resp.ok) { finish(false); return null; }
+        return resp.json().catch(function(){ return null; });
+      }).then(function(result){
+        finish(!!(result && result.registered === true));
+      }).catch(function(){ finish(false); });
+    } catch (e) { finish(false); }
   });
 })();
 </script>
