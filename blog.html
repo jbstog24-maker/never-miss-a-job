@@ -14,7 +14,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{letter-spacing:-.04em;line-height:1.12}h1{font-
 .sub{font-size:1.05rem;color:var(--muted);max-width:710px}
 p{margin-bottom:16px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 24px;border-radius:12px;background:var(--gold);color:#101b31;text-decoration:none;font-weight:850;border:0;cursor:pointer;line-height:1.2;text-align:center}.btn:hover{background:#ffc49f}.btn.dark{background:#182d52;color:white}.btn.dark:hover{background:#284b7c}
-.site-header{background:var(--deep);color:white;border-bottom:1px solid #ffffff23}.nav-login{display:inline-flex;align-items:center;background:var(--gold);color:var(--deep);font-weight:850;font-size:.9rem;line-height:1;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap}.nav-login:hover{text-decoration:none;filter:brightness(1.07)}.site-header .wrap{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-header{background:var(--deep);color:white;border-bottom:1px solid #ffffff23}.nav-login{display:inline-flex;align-items:center;background:transparent;color:#fff;border:1px solid #9cb8ac;font-weight:850;font-size:.9rem;line-height:1;text-decoration:none;padding:9px 17px;border-radius:999px;white-space:nowrap}.nav-login:hover{text-decoration:none;background:#ffffff16}.nav-signup{display:inline-flex;align-items:center;background:var(--gold);color:var(--deep);font-weight:850;font-size:.9rem;line-height:1;text-decoration:none;padding:10px 18px;border-radius:999px;white-space:nowrap}.nav-signup:hover{text-decoration:none;filter:brightness(1.07)}.site-header .wrap{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-size:1.15rem;font-weight:900;letter-spacing:-.035em;line-height:1.05}.brand>span:last-child span{color:#67ddfa}
 nav{display:flex;align-items:center;gap:22px}nav a{font-size:.9rem;font-weight:650;text-decoration:none;color:#e5eee9;white-space:nowrap}nav a:hover{text-decoration:underline}
 @media(max-width:759px){.site-header nav{display:none}}
@@ -35,6 +35,10 @@ section{padding:56px 0}
 footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}footer p{margin:8px 0 0;max-width:440px;font-size:.92rem;color:#bad0c3}footer a{color:#82e7ee}
 @media(max-width:759px){.site-header .wrap{min-height:70px}section{padding:42px 0}.hero{padding:44px 0 52px}}
 
+@media(max-width:920px){
+.site-header nav a.nav-demo{display:none}
+.site-header .wrap>span{display:none}
+}
 .nav-toggle{display:none}
 @media(max-width:759px){
 .site-header nav a.nav-demo{display:none}
@@ -51,6 +55,8 @@ footer{background:#0b1429;color:#d7e7dc;padding:36px 0}footer .wrap{display:flex
 .site-header .mobile-menu nav a{display:flex;align-items:center;min-height:48px;padding:9px 2px;font-size:1rem;font-weight:650;color:#e5eee9;text-decoration:none;border-bottom:1px solid #ffffff14}
 .site-header .mobile-menu nav a:last-child{border-bottom:0}
 .site-header .mobile-menu nav a.mobile-menu-demo{color:var(--gold);font-weight:800}
+.site-header .mobile-menu nav a.mobile-menu-signup{color:var(--gold);font-weight:800}
+.site-header a.nav-signup{display:none}
 }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -63,7 +69,7 @@ gtag('config', 'G-Y4YW8589B1');
 </script>
 </head>
 <body>
-<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a aria-current="page" href="blog.html">Blog</a></nav><span style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a aria-current="page" href="blog.html">Blog</a><a href="signup.html">Get started</a><a class="mobile-menu-demo" href="index.html#demo">Hear the demo</a><a href="https://ringception-portal.onrender.com">Log in</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a aria-current="page" href="blog.html">Blog</a></nav><span style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a><a class="nav-signup" href="signup.html">Sign up</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a class="mobile-menu-signup" href="signup.html">Get started</a><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a aria-current="page" href="blog.html">Blog</a><a class="mobile-menu-demo" href="index.html#demo">Hear the demo</a><a href="https://ringception-portal.onrender.com">Log in</a></nav></div></header>
 <main>
 <section class="hero"><div class="wrap"><div class="eyebrow light">The Ringception Blog</div><h1>Notes on never missing a call.</h1><p class="lead">Plain talk for small business owners on answering every call, following up well, and keeping customers close. A new post every day, written the way we talk.</p></div></section>
 <section><div class="wrap"><div class="post-list">
