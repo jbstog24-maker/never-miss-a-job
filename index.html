@@ -62,6 +62,24 @@ footer{background:#0b1429}
 .audience-tab[aria-selected="true"]{background:var(--gold);color:#101b31;box-shadow:0 8px 22px #00000030}
 .personal-texting{border-top:4px solid var(--gold);margin-bottom:18px}
 @media(max-width:759px){.audience-tabs-wrap{margin-bottom:30px}.audience-tabs{max-width:none}.audience-tab{min-height:54px;padding:10px 8px;font-size:.96rem}}
+
+.nav-toggle{display:none}
+@media(max-width:759px){
+.site-header nav a.nav-demo{display:none}
+.site-header .wrap>span{display:none}
+.site-header{position:relative}
+.nav-toggle{display:inline-flex;flex-direction:column;align-items:stretch;justify-content:center;gap:5px;width:44px;height:44px;padding:11px 10px;background:transparent;border:1px solid #ffffff33;border-radius:10px;cursor:pointer;flex:none}
+.nav-toggle span{display:block;height:2px;background:#fff;border-radius:2px;transition:transform .18s ease,opacity .18s ease}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:absolute;top:100%;left:0;right:0;background:var(--deep);border-top:1px solid #ffffff23;box-shadow:0 22px 34px rgba(6,32,24,.35);z-index:80;padding:8px 20px 14px}
+.mobile-menu[hidden]{display:none}
+.site-header .mobile-menu nav{display:block}
+.site-header .mobile-menu nav a{display:flex;align-items:center;min-height:48px;padding:9px 2px;font-size:1rem;font-weight:650;color:#e5eee9;text-decoration:none;border-bottom:1px solid #ffffff14}
+.site-header .mobile-menu nav a:last-child{border-bottom:0}
+.site-header .mobile-menu nav a.mobile-menu-demo{color:var(--gold);font-weight:800}
+}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4YW8589B1"></script>
@@ -73,7 +91,7 @@ gtag('config', 'G-Y4YW8589B1');
 </script>
 </head>
 <body>
-<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="#top"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a class="nav-demo" href="#demo">Hear the demo ↗</a><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="#top"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a class="nav-demo" href="#demo">Hear the demo ↗</a><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a></nav><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a href="signup.html">Get started</a><a class="mobile-menu-demo" href="#demo">Hear the demo</a><a href="https://ringception-portal.onrender.com">Log in</a></nav></div></header>
 <main>
 <section class="hero" id="top"><div class="wrap audience-tabs-wrap"><div class="audience-tabs" role="tablist" aria-label="Choose business or personal use"><button class="audience-tab" type="button" role="tab" id="tab-business" aria-selected="true" aria-controls="features-business" data-audience-tab="business">For Business</button><button class="audience-tab" type="button" role="tab" id="tab-personal" aria-selected="false" aria-controls="features-personal" data-audience-tab="personal" tabindex="-1">For Personal</button></div></div><div class="wrap hero-grid"><div><div class="eyebrow light"><span class="live-dot"></span> Stay ahead, or get left behind</div><div class="callout-pill" id="hero-pill">AI that sounds natural, works for your business</div><h1 id="hero-heading">Natural conversations. More customers. Less work.</h1><p class="lead" id="hero-lead">Meet Ringception, your natural-sounding AI business assistant. Answer incoming calls, follow up with customers, help coordinate appointments, and share approved offers, all with a voice that feels easy to talk to.</p><div class="btn-row"><a class="btn" href="signup.html" id="hero-cta">Sign up now ↗</a><a class="btn outline" href="#demo">Hear it yourself</a></div><p class="who">Personally set up and tuned by a real owner in the Dallas Fort Worth area.</p></div><div aria-label="Illustration of a receptionist call and text summary" class="phone-art"><div class="phone-shell"><div class="phone-top"><span>EVERY CALL ANSWERED</span><span class="status">● Call answered</span></div><div class="caller"><div class="avatar"><svg aria-hidden="true" fill="none" height="30" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24" width="30"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7.2 10a16 16 0 0 0 6.8 6.8l1.6-1.8a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.7 2Z"></path></svg></div><div><strong>Incoming call</strong><small>Answered with your greeting</small></div></div><div aria-hidden="true" class="wave"><i style="--h:18px"></i><i style="--h:32px"></i><i style="--h:44px"></i><i style="--h:25px"></i><i style="--h:50px"></i><i style="--h:36px"></i><i style="--h:20px"></i><i style="--h:42px"></i><i style="--h:27px"></i><i style="--h:15px"></i></div><div class="message"><strong>✓ Call summary delivered</strong>Caller details, reason for calling, and next steps sent to your phone and email.</div></div><div class="art-caption">A simple example of how the service works</div></div></div></section>
 <section class="problem" id="problem"><div class="wrap problem-layout" data-audience-view="business"><div><div class="eyebrow">Sound familiar?</div><h2>The phone rings when you are busiest. That is the problem.</h2><p class="sub">When you are on a roof, under a sink, or elbow deep in a job, the phone goes to voicemail, and many callers will try the next business instead. You shouldn't have to choose between doing the job and answering the next call.</p></div></div><div class="wrap problem-layout" data-audience-view="personal" hidden><div><div class="eyebrow">Sound familiar?</div><h2>Your phone never stops. And half of it is noise.</h2><p class="sub">It rings while you are driving, in a meeting, or at the table with your family, and the calls that matter sit buried under robocalls, spam, and calls you'd rather not take. Your assistant answers and screens it all, and you only hear about what matters.</p></div></div></section>
@@ -160,6 +178,28 @@ gtag('config', 'G-Y4YW8589B1');
         target.focus();
       }
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn=document.querySelector('.nav-toggle');
+  var menu=document.getElementById('mobile-menu');
+  if(!btn||!menu){return;}
+  function closeMenu(){menu.hidden=true;btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(){
+    var willOpen=menu.hidden;
+    menu.hidden=!willOpen;
+    btn.setAttribute('aria-expanded',willOpen?'true':'false');
+  });
+  menu.addEventListener('click',function(event){
+    if(event.target.closest('a')){closeMenu();}
+  });
+  document.addEventListener('click',function(event){
+    if(!menu.hidden&&!menu.contains(event.target)&&!btn.contains(event.target)){closeMenu();}
+  });
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape'&&!menu.hidden){closeMenu();}
   });
 })();
 </script>

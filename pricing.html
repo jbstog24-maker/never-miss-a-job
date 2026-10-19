@@ -63,6 +63,24 @@ footer{background:#0b1429}
 .audience-pricing-note{margin:18px 0 0;padding:14px 16px;border:1px solid #b5e3ed;border-radius:12px;background:#e6f7fa;color:#24445e;font-size:.94rem}
 .personal-texting{border-top:4px solid var(--gold);margin-bottom:18px}
 @media(max-width:759px){.audience-tabs-wrap{margin-bottom:30px}.audience-tabs{max-width:none}.audience-tab{min-height:54px;padding:10px 8px;font-size:.96rem}}
+
+.nav-toggle{display:none}
+@media(max-width:759px){
+.site-header nav a.nav-demo{display:none}
+.site-header .wrap>span{display:none}
+.site-header{position:relative}
+.nav-toggle{display:inline-flex;flex-direction:column;align-items:stretch;justify-content:center;gap:5px;width:44px;height:44px;padding:11px 10px;background:transparent;border:1px solid #ffffff33;border-radius:10px;cursor:pointer;flex:none}
+.nav-toggle span{display:block;height:2px;background:#fff;border-radius:2px;transition:transform .18s ease,opacity .18s ease}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:absolute;top:100%;left:0;right:0;background:var(--deep);border-top:1px solid #ffffff23;box-shadow:0 22px 34px rgba(6,32,24,.35);z-index:80;padding:8px 20px 14px}
+.mobile-menu[hidden]{display:none}
+.site-header .mobile-menu nav{display:block}
+.site-header .mobile-menu nav a{display:flex;align-items:center;min-height:48px;padding:9px 2px;font-size:1rem;font-weight:650;color:#e5eee9;text-decoration:none;border-bottom:1px solid #ffffff14}
+.site-header .mobile-menu nav a:last-child{border-bottom:0}
+.site-header .mobile-menu nav a.mobile-menu-demo{color:var(--gold);font-weight:800}
+}
 </style>
 <style>
 .page-hero{padding:52px 0 58px}
@@ -79,7 +97,7 @@ gtag('config', 'G-Y4YW8589B1');
 </script>
 </head>
 <body>
-<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a aria-current="page" href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a></nav><span class="demo-line-note" style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a></div></header>
+<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a aria-current="page" href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a></nav><span class="demo-line-note" style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a aria-current="page" href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a href="signup.html">Get started</a><a class="mobile-menu-demo" href="index.html#demo">Hear the demo</a><a href="https://ringception-portal.onrender.com">Log in</a></nav></div></header>
 <main>
 <section class="hero page-hero"><div class="wrap audience-tabs-wrap"><div class="audience-tabs" role="tablist" aria-label="Choose business or personal use"><button class="audience-tab" type="button" role="tab" id="tab-business" aria-selected="true" aria-controls="pricing" data-audience-tab="business">For Business</button><button class="audience-tab" type="button" role="tab" id="tab-personal" aria-selected="false" aria-controls="pricing" data-audience-tab="personal" tabindex="-1">For Personal</button></div></div><div class="wrap"><div class="eyebrow light">No surprises</div><h1>Simple pricing for your AI receptionist</h1><p class="lead">No long-term contract. Cancel anytime.</p></div></section>
 <section class="white" id="pricing"><div class="wrap"><div class="price-card"><div class="price-row"><div class="lbl" data-audience-view="business"><strong>Setup: new client promotion</strong>We build, tune, and test your receptionist with you. Your setup and your first month ($44 total) are due at signup.</div><div class="lbl" data-audience-view="personal" hidden><strong>Setup: new client promotion</strong>We build, tune, and test your assistant with you. Your setup and your first month ($44 total) are due at signup.</div><div class="amt">$29 <small>one time</small></div></div><div class="price-row"><div class="lbl"><strong>Monthly</strong>Per phone number, billed monthly starting the day you sign up. Covers the platform, your number, summary delivery, and one script tune-up per month.</div><div class="amt">$15<small>/month</small></div></div><div class="price-row"><div class="lbl"><strong>Talk time</strong>Incoming and outgoing calls. Billed per second, never rounded up to the next minute.</div><div class="amt">$0.17<small>/minute</small></div></div><div class="price-row"><div class="lbl"><strong>Extra phone numbers</strong>Each additional number on your account, at the same monthly rate. Numbers are never drawn from your credit.</div><div class="amt">$15<small>/month</small></div></div><div class="price-row"><div class="lbl"><strong>Text packs</strong>Optional, for heavy texters. Texts are 5¢ each from your credit, or prepay a pack and pay less per text. Packs never expire.</div><div class="amt" style="font-size:1.05rem;line-height:1.5">1,000 for $40<br>3,000 for $105<br>5,000 for $175</div></div><div class="price-row" id="campaign-addon-row"><div class="lbl"><strong>Optional add-on: Follow-Up Campaigns</strong>Your receptionist follows up by email and text for you, in your business name: estimate nudges, review requests, appointment reminders, updates, and seasonal offers to your past customers and callers. Available on business lines only.<details class="addon-info"><summary>&#9432; What is included</summary><p>Email and text campaigns run for you on your business lines only, on one standard follow-up pipeline. You pick the goal (win back callers who never booked, chase an open estimate, ask for reviews after a finished job, remind customers about appointments, send an update, or run a seasonal offer) and approve the wording before anything sends. Reminders and check-ins go out automatically at the right times, and any reply stops the sequence and hands the conversation back to you. Texts send from your business number and draw from your credit at the usual 5 cents each. Lists come from your own callers and customers, and you confirm the people on your list agreed to hear from you, as federal law requires. Every email carries an unsubscribe link, texts stop with a STOP reply, and anyone who opts out is removed automatically. Turn it on anytime. After your first month, you can cancel it from your account page, and it keeps working to the end of the paid period. Campaigns are a business lines feature and are not offered on personal accounts.</p></details><p style="font-size:.93rem;color:var(--muted);margin:10px 0 2px">Texting switches on after a required carrier registration, which can take a few hours. Your calls are answered from day one.</p></div><div class="amt">$39<small>/month</small></div></div><p class="audience-pricing-note" data-audience-view="personal" hidden>Same pricing for individuals: new client promotion, $29 setup, then $15/month with your number included, and $0.17/minute talk time, billed per second. Texts are 5¢ per message, sent or received, drawn from your credit. Texting switches on after a required carrier registration, which can take a few hours. Your calls are answered from day one.</p><p class="price-note">New client promotion: $29 setup, then $15 a month. Your number is included. You fund your credit for talk time: talk time runs through your Ringception account wallet, so you always see exactly what you used. You add credit up front and your minutes and texts draw from it, so there is never a surprise talk-time bill from us.</p><a class="btn dark" data-audience-view="business" href="signup.html">Get my receptionist set up ↗</a><a class="btn dark" data-audience-view="personal" href="signup.html" hidden>Get my assistant set up ↗</a></div></div></section>
@@ -165,6 +183,28 @@ gtag('config', 'G-Y4YW8589B1');
         target.focus();
       }
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn=document.querySelector('.nav-toggle');
+  var menu=document.getElementById('mobile-menu');
+  if(!btn||!menu){return;}
+  function closeMenu(){menu.hidden=true;btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(){
+    var willOpen=menu.hidden;
+    menu.hidden=!willOpen;
+    btn.setAttribute('aria-expanded',willOpen?'true':'false');
+  });
+  menu.addEventListener('click',function(event){
+    if(event.target.closest('a')){closeMenu();}
+  });
+  document.addEventListener('click',function(event){
+    if(!menu.hidden&&!menu.contains(event.target)&&!btn.contains(event.target)){closeMenu();}
+  });
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape'&&!menu.hidden){closeMenu();}
   });
 })();
 </script>

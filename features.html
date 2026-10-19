@@ -63,6 +63,24 @@ footer{background:#0b1429}
 .audience-pricing-note{margin:18px 0 0;padding:14px 16px;border:1px solid #b5e3ed;border-radius:12px;background:#e6f7fa;color:#24445e;font-size:.94rem}
 .personal-texting{border-top:4px solid var(--gold);margin-bottom:18px}
 @media(max-width:759px){.audience-tabs-wrap{margin-bottom:30px}.audience-tabs{max-width:none}.audience-tab{min-height:54px;padding:10px 8px;font-size:.96rem}}
+
+.nav-toggle{display:none}
+@media(max-width:759px){
+.site-header nav a.nav-demo{display:none}
+.site-header .wrap>span{display:none}
+.site-header{position:relative}
+.nav-toggle{display:inline-flex;flex-direction:column;align-items:stretch;justify-content:center;gap:5px;width:44px;height:44px;padding:11px 10px;background:transparent;border:1px solid #ffffff33;border-radius:10px;cursor:pointer;flex:none}
+.nav-toggle span{display:block;height:2px;background:#fff;border-radius:2px;transition:transform .18s ease,opacity .18s ease}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:absolute;top:100%;left:0;right:0;background:var(--deep);border-top:1px solid #ffffff23;box-shadow:0 22px 34px rgba(6,32,24,.35);z-index:80;padding:8px 20px 14px}
+.mobile-menu[hidden]{display:none}
+.site-header .mobile-menu nav{display:block}
+.site-header .mobile-menu nav a{display:flex;align-items:center;min-height:48px;padding:9px 2px;font-size:1rem;font-weight:650;color:#e5eee9;text-decoration:none;border-bottom:1px solid #ffffff14}
+.site-header .mobile-menu nav a:last-child{border-bottom:0}
+.site-header .mobile-menu nav a.mobile-menu-demo{color:var(--gold);font-weight:800}
+}
 </style>
 <style>
 .page-hero{padding:52px 0 58px}
@@ -79,7 +97,7 @@ gtag('config', 'G-Y4YW8589B1');
 </script>
 </head>
 <body>
-<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a href="how-it-works.html">How it works</a><a aria-current="page" href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a></nav><span class="demo-line-note" style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a></div></header>
+<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a href="how-it-works.html">How it works</a><a aria-current="page" href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a></nav><span class="demo-line-note" style="font-size:.9rem;color:#c6ddcf">Questions? Call the demo line: (214) 785-3805</span><a class="nav-login" href="https://ringception-portal.onrender.com">Log in</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a href="how-it-works.html">How it works</a><a aria-current="page" href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a href="signup.html">Get started</a><a class="mobile-menu-demo" href="index.html#demo">Hear the demo</a><a href="https://ringception-portal.onrender.com">Log in</a></nav></div></header>
 <main>
 <section class="hero page-hero"><div class="wrap audience-tabs-wrap"><div class="audience-tabs" role="tablist" aria-label="Choose business or personal use"><button class="audience-tab" type="button" role="tab" id="tab-business" aria-selected="true" aria-controls="features-business" data-audience-tab="business">For Business</button><button class="audience-tab" type="button" role="tab" id="tab-personal" aria-selected="false" aria-controls="features-personal" data-audience-tab="personal" tabindex="-1">For Personal</button></div></div><div class="wrap"><div class="eyebrow light">Features</div><h1>What your AI receptionist can do</h1><p class="lead">The full list, for your business line or your personal line.</p></div></section>
 <section class="white" id="included"><div class="wrap"><div class="eyebrow" id="features-eyebrow">The essentials, handled</div><h2 id="features-heading">A lot more than answering the phone.</h2><p class="sub" id="features-sub">The things a small shop actually needs from a receptionist. Nothing bloated.</p><div data-audience-view="business" id="features-business" role="tabpanel" aria-labelledby="tab-business"><div class="grid two"><div class="card"><ul class="check"><li>A dedicated local phone number for your business</li><li>Custom greeting and script using your business name</li><li>Captures caller name, phone number, and what they need</li><li>Urgent calls transferred straight to your cell phone</li></ul></div><div class="card"><ul class="check"><li>Call summary by text and email after every call</li><li>After-hours, weekend, and holiday coverage, 24/7</li><li>Answers common questions using your approved information</li><li>Usage tracking in your Ringception account wallet, so you always know what you used</li></ul></div></div><div class="grid three"><article class="card"><h3>Answer inbound calls</h3><p>A friendly 24/7 front desk for questions, lead capture, call summaries, and urgent transfers.</p></article><article class="card"><h3>Warm customer outreach</h3><p>Follow up with customers and opted-in leads about quotes, service reminders, and next steps. No unsolicited cold calls.</p></article><article class="card"><h3>Text your receptionist who to call</h3><p>Need a customer called? Text your Ringception number from your own phone and say who to call and why. Your receptionist confirms by text, then makes the call as your business and sends you the summary.</p></article><article class="card"><h3>Upload a warm lead sheet</h3><p>Put your follow-up list in your account and your receptionist works the calls for you, with a status and a summary for every lead. Warm leads only: past customers, inquiries, and people who asked to hear from you. Federal and state law requires their consent to call.</p></article><article class="card"><h3>Calendar coordination</h3><p>Check availability, request bookings, confirm visits, and send reminders when your calendar is connected.</p></article><article class="card"><h3>Promotions and discounts</h3><p>Tell eligible customers about owner-approved specials and seasonal offers.</p></article><article class="card"><h3>Learn from your website</h3><p>It instantly learns your business and services from your website: your services, hours, FAQs, and service areas. You review and approve the details before it answers a single call.</p></article><article class="card"><h3>Keep track of conversations</h3><p>Capture follow-up needs and send summaries; additional integrations depend on your setup.</p></article></div></div><div data-audience-view="personal" id="features-personal" role="tabpanel" aria-labelledby="tab-personal" hidden><div class="personal-banner"><p>This is not a voicemail box and not a press-1 phone tree. Your assistant holds real, natural conversations, asks and answers questions, and gets call tasks done. You decide who it can contact, and it identifies itself honestly as AI when asked.</p></div><article class="card personal-texting"><h3>Text your assistant, it texts back</h3><p>Text your assistant's number from your own phone, the same way you would text a person. Tell it what you need, ask it a question, hand it a job, or give it an update to deliver, and it texts back with confirmations, answers, and a summary after every call it takes or makes. It is an ongoing two-way conversation, not a one-way command line, so you can reply, follow up, or add a detail whenever it comes to mind.</p></article><div class="grid three"><article class="card"><h3>A real conversation, not a bot</h3><p>Callers talk with your assistant in plain back-and-forth. It understands what they are asking, asks follow-up questions, and answers with the information you approved. No menus, no phone tree, no script read in a robot voice.</p></article><article class="card"><h3>Text it a job, it makes the call</h3><p>Text its number from your own phone and hand it a call task: call the pharmacy about a refill, book a table, move a dentist appointment, confirm a delivery window, or sit on hold with customer service so you do not have to. It makes the call, handles the conversation, and sends you a summary of how it went.</p></article><article class="card"><h3>It books and cancels by phone</h3><p>Need an appointment set, moved, or cancelled? A reservation changed, a service ended? Your assistant makes the call, handles the hold music and the front desk, and confirms the result back to you by text.</p></article><article class="card"><h3>It talks so you do not have to</h3><p>Some calls you would rather not take yourself: a difficult landlord, a contractor who will not finish the job, or an ex during or after a divorce. Your assistant is the buffer. Polite, factual, and calm, it handles the conversation, passes everything back to you, and only ever says what you approved it to say. It represents you openly as your assistant. It never pretends to be you.</p></article><article class="card"><h3>It sends the updates</h3><p>Text your assistant what needs saying and it delivers the update to the person you name, then handles the reply conversation for you. Confirm the plan, pass along the details, answer the follow-up questions, all in the words you approved, and all reported back to you.</p></article><article class="card"><h3>Reminders and check-ins, handled</h3><p>Appointment confirmations and reminders by call or text, plus optional wake-up or daily check-in calls you set. Ask it to remind, confirm, or follow up, and it reports back when the job is done.</p></article></div><div class="grid two"><div class="card"><ul class="check"><li>Answers your personal line with the assistant name you choose</li><li>Screens spam and unknown callers before they ever reach you</li><li>Talks with callers in real conversation, it does not just take a message</li><li>Takes messages properly: names, numbers, and the details that matter, with a summary to you after every call</li><li>You approve the name, the voice, and the greeting before it ever speaks for you</li></ul></div><div class="card"><ul class="check"><li>Places approved calls for you: bookings, cancellations, confirmations, reminders, and follow-ups</li><li>Sends the texts you dictate: updates, reminders, and confirmations, and handles the replies</li><li>After every call or message it handles, you get the summary. Nothing happens in your name without you seeing it</li><li>Only texts from your own registered phone can give it direction</li><li>Your personal never-call and never-say list</li></ul></div></div></div></div></section>
@@ -167,6 +185,28 @@ gtag('config', 'G-Y4YW8589B1');
         target.focus();
       }
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  var btn=document.querySelector('.nav-toggle');
+  var menu=document.getElementById('mobile-menu');
+  if(!btn||!menu){return;}
+  function closeMenu(){menu.hidden=true;btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(){
+    var willOpen=menu.hidden;
+    menu.hidden=!willOpen;
+    btn.setAttribute('aria-expanded',willOpen?'true':'false');
+  });
+  menu.addEventListener('click',function(event){
+    if(event.target.closest('a')){closeMenu();}
+  });
+  document.addEventListener('click',function(event){
+    if(!menu.hidden&&!menu.contains(event.target)&&!btn.contains(event.target)){closeMenu();}
+  });
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape'&&!menu.hidden){closeMenu();}
   });
 })();
 </script>
