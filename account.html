@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#111b32" name="theme-color"/>
+<meta content="Your Ringception AI account: calls, texts, campaigns, wallet, and settings." name="description"/>
+<title>Your Account | Ringception AI</title>
+<link href="favicon.png" rel="icon" type="image/png"/>
+<style>
+.brand-logo-img{height:56px;width:56px;border-radius:13px;display:block;flex:none}
+@media(max-width:759px){.brand-logo-img{height:46px;width:46px}}
+.footer-brand{display:inline-flex;align-items:center;gap:9px}
+.footer-brand img{height:30px;width:30px;border-radius:8px;display:block}
+:root{--pine:#142341;--deep:#0b1429;--mint:#e8f3fa;--cream:#f5f7fc;--paper:#ffffff;--gold:#ffad79;--ink:#182640;--muted:#586780;--line:#dce4ef;--radius:22px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid #23708e;outline-offset:3px}
+.wrap{width:min(1140px,calc(100% - 40px));margin:auto}
+.eyebrow{font-size:.78rem;font-weight:850;letter-spacing:.15em;text-transform:uppercase;color:#23708e}
+h1,h2,h3,p{margin-top:0}
+h1,h2,h3{letter-spacing:-.04em;line-height:1.12}
+h1{font-size:clamp(2rem,5vw,3.2rem);margin:10px 0 12px}
+h2{font-size:clamp(1.55rem,3.5vw,2.2rem);margin:10px 0 14px}
+h3{font-size:1.2rem;margin:10px 0}
+p{margin-bottom:14px}
+.sub{font-size:1.02rem;color:var(--muted);max-width:760px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border-radius:12px;background:var(--gold);color:#101b31;text-decoration:none;font-weight:850;border:0;cursor:pointer;transition:transform .2s,background .2s;line-height:1.2;text-align:center;font:inherit;font-size:.95rem}
+.btn:hover{background:#ffc49f;transform:translateY(-2px)}
+.btn.dark{background:#182d52;color:white}
+.btn.dark:hover{background:#284b7c}
+.btn.small{min-height:40px;padding:8px 16px;font-size:.88rem}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none}
+.btn[disabled]:hover{background:var(--gold);transform:none}
+.btn.dark[disabled]:hover{background:#182d52}
+.site-header{background:var(--deep);color:white;border-bottom:1px solid #ffffff23}
+.site-header .wrap{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-size:1.15rem;font-weight:900;letter-spacing:-.035em;line-height:1.05}
+.brand span span{color:#67ddfa}
+nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tab-btn{background:transparent;border:1px solid transparent;color:#e5eee9;font:inherit;font-size:.9rem;font-weight:650;cursor:pointer;padding:8px 13px;border-radius:10px}
+.tab-btn:hover{text-decoration:underline}
+.tab-btn.active{background:#ffffff16;border-color:#ffffff2e;color:white;text-decoration:none}
+.demo-banner{background:#fff3e4;border-bottom:1px solid #f0d3ab;color:#6b4512;padding:12px 0;font-size:.94rem;font-weight:650}
+.demo-banner .wrap{display:flex;gap:10px;align-items:flex-start}
+main{padding:34px 0 64px}
+.grid{display:grid;gap:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 10px 30px #152d4c08}
+.card p{color:var(--muted)}
+.card p.plain{color:var(--ink)}
+.section-head{margin-bottom:22px}
+.view[hidden]{display:none}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 11px;font-size:.78rem;font-weight:800;letter-spacing:.02em;background:#eef3fa;color:#284b7c;border:1px solid var(--line);white-space:nowrap}
+.pill.good{background:#e6f7fa;border-color:#b5e3ed;color:#117d85}
+.pill.warn{background:#fff3e4;border-color:#f0d3ab;color:#8a5a13}
+.pill.sample{background:#f3efff;border-color:#d9d0f5;color:#5a4a9e}
+.stat-card .stat-value{font-size:2rem;font-weight:900;letter-spacing:-.04em;line-height:1.1;color:var(--pine);margin:6px 0 4px;overflow-wrap:anywhere}
+.stat-card .stat-label{font-size:.82rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:#23708e}
+.stat-card p{margin:0;font-size:.9rem}
+.identity-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 4px}
+.phone-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.phone-chip{border:1px solid var(--line);background:#eef3fa;border-radius:999px;padding:4px 13px;font-weight:750;font-size:.92rem}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit;font-size:.88rem;font-weight:750;border-radius:999px;padding:7px 16px;cursor:pointer}
+.chip:hover{border-color:#9db6cc}
+.chip.active{background:#182d52;color:white;border-color:#182d52}
+.activity-list{display:grid;gap:12px}
+.activity-item{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:0 6px 18px #152d4c06}
+.activity-item.clickable{cursor:pointer}
+.activity-item.clickable:hover{border-color:#9db6cc}
+.activity-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+.activity-top .when{margin-left:auto;color:var(--muted);font-size:.86rem}
+.activity-title{font-weight:800;font-size:1.02rem;margin:0 0 2px;color:var(--ink)}
+.activity-sub{color:var(--muted);font-size:.93rem;margin:0}
+.activity-body{margin-top:12px;border-top:1px solid var(--line);padding-top:12px;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink);font-size:.95rem}
+.activity-body .body-subject{font-weight:800;display:block;margin-bottom:6px;white-space:normal}
+.kind-label{font-size:.78rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:#23708e}
+.direction-label{font-size:.82rem;color:var(--muted);font-weight:650}
+.empty-state{border:1px dashed #b9c9da;border-radius:18px;padding:26px;text-align:center;color:var(--muted);background:#fbfcfe}
+.empty-state strong{display:block;color:var(--ink);font-size:1.02rem;margin-bottom:4px}
+.empty-state p{margin:0}
+.error-card{border:1px solid #f0c4b5;background:#fff6f1;border-radius:var(--radius);padding:26px;margin-bottom:22px}
+.error-card h2{font-size:1.3rem;margin-top:0}
+.error-card p{color:#7a4a35;margin-bottom:0}
+.loading-note{color:var(--muted);font-size:.94rem}
+table.tx{width:100%;border-collapse:collapse;font-size:.94rem}
+table.tx th{text-align:left;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:#23708e;padding:10px 8px;border-bottom:2px solid var(--line)}
+table.tx td{padding:11px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+table.tx tr:last-child td{border-bottom:0}
+.tx-wrap{overflow-x:auto}
+.num-cell{white-space:nowrap;font-weight:700}
+.kv{display:grid;gap:0}
+.kv-row{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid var(--line)}
+.kv-row:last-child{border-bottom:0}
+.kv-row .k{font-weight:750;color:var(--muted);flex:none}
+.kv-row .v{text-align:right;overflow-wrap:anywhere}
+.gate-row{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line)}
+.gate-row:last-child{border-bottom:0}
+.gate-mark{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.9rem;background:#e6f7fa;color:#117d85;border:1px solid #b5e3ed}
+.gate-mark.pending{background:#fff3e4;color:#8a5a13;border-color:#f0d3ab}
+.gate-row p{margin:0;font-size:.93rem}
+.gate-row strong{display:block}
+.seq-steps{margin:10px 0 0;padding-left:22px;color:var(--muted);font-size:.93rem}
+.seq-steps li{margin-bottom:5px}
+.channel-list{display:grid;gap:6px;margin:12px 0}
+.channel-row{display:flex;justify-content:space-between;gap:14px;font-size:.92rem;border:1px solid var(--line);border-radius:10px;padding:7px 12px;background:#fbfcfe}
+.channel-row .ch-name{font-weight:800;text-transform:capitalize}
+.meta-line{font-size:.9rem;color:var(--muted);margin:8px 0 0}
+.transcript{display:grid;gap:12px;margin-top:6px}
+.turn{border:1px solid var(--line);border-radius:14px;padding:13px 16px;background:#fbfcfe}
+.turn .speaker{font-size:.78rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:#23708e;display:block;margin-bottom:4px}
+.turn p{margin:0;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere}
+.transcript-raw{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid var(--line);border-radius:14px;padding:16px;background:#fbfcfe;color:var(--ink)}
+.branding-preview{border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center;background:#fbfcfe}
+.branding-preview img{max-width:240px;max-height:110px;width:auto;height:auto;display:block;margin:0 auto}
+.branding-fallback{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;padding:16px 10px;border-radius:14px;color:white;background:#182d52}
+.swatch-row{display:flex;align-items:center;gap:12px;margin-top:14px;justify-content:center}
+.swatch{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);flex:none}
+.coming-soon{font-size:.85rem;color:var(--muted);margin:8px 0 0}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+footer{background:var(--deep);color:#d7e7dc;padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+footer p{margin:4px 0 0;max-width:520px;font-size:.9rem;color:#b7d5e6}
+footer a{color:#82e7ee}
+@media(min-width:760px){
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.grid.three{grid-template-columns:repeat(3,1fr)}
+.grid.four{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:759px){
+.site-header .wrap{min-height:70px}
+.kv-row{flex-direction:column;gap:2px}
+.kv-row .v{text-align:left}
+.activity-top .when{margin-left:0;width:100%}
+}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4YW8589B1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Y4YW8589B1');
+</script>
+</head>
+<body>
+
+<div class="demo-banner" id="demo-banner" hidden>
+  <div class="wrap"><span aria-hidden="true">✓</span><span>Demo preview: you are viewing the Ringception house demo account. Real client sign-in arrives before launch.</span></div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Ringception AI home"><img class="brand-logo-img" src="logo.png" alt="Ringception AI" width="56" height="56"/><span>Ringception <span>AI</span></span></a>
+    <nav aria-label="Account sections">
+      <button type="button" class="tab-btn active" data-view="overview">Overview</button>
+      <button type="button" class="tab-btn" data-view="activity">Activity</button>
+      <button type="button" class="tab-btn" data-view="campaigns">Campaigns</button>
+      <button type="button" class="tab-btn" data-view="wallet">Wallet</button>
+      <button type="button" class="tab-btn" data-view="settings">Settings</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="error-card" id="global-error" hidden>
+      <div class="eyebrow">Something went wrong</div>
+      <h2>Your account data could not be loaded.</h2>
+      <p>Your account data could not be loaded. If you are previewing locally, start the portal API first.</p>
+    </div>
+
+    <p class="loading-note" id="loading-note">Loading your account...</p>
+
+    <!-- Overview -->
+    <section class="view" id="view-overview" aria-label="Overview">
+      <div class="section-head">
+        <div class="eyebrow">Your Ringception account</div>
+        <h1 id="ov-business">Your business</h1>
+        <div class="identity-row">
+          <span class="sub" style="margin:0">Receptionist: <strong id="ov-agent">Your receptionist</strong></span>
+          <span class="pill" id="ov-status">Loading</span>
+        </div>
+        <div>
+          <span class="kind-label">Your Ringception number</span>
+          <div class="phone-list" id="ov-phones"></div>
+        </div>
+      </div>
+
+      <div class="grid four" style="margin-bottom:18px">
+        <article class="card stat-card">
+          <div class="stat-label">Calls, last 30 days</div>
+          <div class="stat-value" id="stat-calls">-</div>
+          <p id="stat-calls-detail">Inbound and outbound calls handled by your receptionist.</p>
+        </article>
+        <article class="card stat-card">
+          <div class="stat-label">Talk minutes</div>
+          <div class="stat-value" id="stat-minutes">-</div>
+          <p>Total talk time across your calls in the last 30 days.</p>
+        </article>
+        <article class="card stat-card">
+          <div class="stat-label">Wallet balance</div>
+          <div class="stat-value" id="stat-wallet">-</div>
+          <p id="stat-wallet-note">Your prepaid account balance.</p>
+        </article>
+        <article class="card stat-card">
+          <div class="stat-label">Text credits</div>
+          <div class="stat-value" id="stat-texts">-</div>
+          <p>Text messages available on your account.</p>
+        </article>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow">Recent activity</div>
+        <h2 style="font-size:1.45rem">The latest from your receptionist</h2>
+        <div class="activity-list" id="ov-recent"></div>
+        <div class="btn-row">
+          <button type="button" class="btn dark small" data-goto="activity">See all activity</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity -->
+    <section class="view" id="view-activity" aria-label="Activity" hidden>
+      <div class="section-head">
+        <div class="eyebrow">Calls, texts, and emails</div>
+        <h1 style="font-size:clamp(1.8rem,4vw,2.6rem)">Activity</h1>
+        <p class="sub">Everything your receptionist has handled, in one timeline. Select a call to read its summary and full transcript.</p>
+      </div>
+      <div class="chips" role="group" aria-label="Filter activity">
+        <button type="button" class="chip active" data-filter="all">All</button>
+        <button type="button" class="chip" data-filter="call">Calls</button>
+        <button type="button" class="chip" data-filter="text">Texts</button>
+        <button type="button" class="chip" data-filter="email">Emails</button>
+      </div>
+      <div class="activity-list" id="activity-list"></div>
+    </section>
+
+    <!-- Call detail -->
+    <section class="view" id="view-call-detail" aria-label="Call detail" hidden>
+      <div class="btn-row" style="margin:0 0 18px">
+        <button type="button" class="btn dark small" id="call-back">Back to activity</button>
+      </div>
+      <div class="section-head">
+        <div class="eyebrow">Call detail</div>
+        <h1 style="font-size:clamp(1.8rem,4vw,2.6rem)" id="call-title">Call</h1>
+        <p class="sub" id="call-meta"></p>
+      </div>
+      <div class="card" style="margin-bottom:18px">
+        <div class="eyebrow">Summary</div>
+        <h2 style="font-size:1.35rem">What happened on this call</h2>
+        <p class="plain" id="call-summary">No summary available yet.</p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Transcript</div>
+        <h2 style="font-size:1.35rem">Full transcript</h2>
+        <div id="call-transcript"></div>
+      </div>
+    </section>
+
+    <!-- Campaigns -->
+    <section class="view" id="view-campaigns" aria-label="Campaigns" hidden>
+      <div class="section-head">
+        <div class="eyebrow">Follow-Up Campaigns</div>
+        <h1 style="font-size:clamp(1.8rem,4vw,2.6rem)">Campaigns</h1>
+        <p class="sub">Your receptionist follows up with your own callers and customers by email and text, in your business name. Any reply stops a sequence and hands the conversation back to you.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:18px">
+        <div class="eyebrow">Add-on status</div>
+        <div class="identity-row">
+          <h2 style="font-size:1.45rem;margin:0" id="camp-addon-title">Follow-Up Campaigns</h2>
+          <span class="pill" id="camp-addon-pill">Loading</span>
+        </div>
+        <p id="camp-addon-note">Checking your add-on status.</p>
+        <div class="eyebrow" style="margin-top:18px">What has to be in place before sending</div>
+        <div id="camp-gates"></div>
+      </div>
+
+      <div class="eyebrow">Your five standard sequences</div>
+      <h2 style="font-size:1.45rem">Sequences</h2>
+      <div class="grid two" id="camp-sequences" style="margin-bottom:26px"></div>
+
+      <div class="eyebrow">Recent sends</div>
+      <h2 style="font-size:1.45rem">Latest campaign messages</h2>
+      <div class="activity-list" id="camp-sends"></div>
+    </section>
+
+    <!-- Wallet -->
+    <section class="view" id="view-wallet" aria-label="Wallet" hidden>
+      <div class="section-head">
+        <div class="eyebrow">Your account wallet</div>
+        <h1 style="font-size:clamp(1.8rem,4vw,2.6rem)">Wallet</h1>
+        <p class="sub">Your prepaid balance for talk time and texts. Add credit ahead of time so there is never a surprise bill.</p>
+      </div>
+
+      <div class="grid three" style="margin-bottom:18px">
+        <article class="card stat-card">
+          <div class="stat-label">Balance</div>
+          <div class="stat-value" id="wallet-balance">-</div>
+          <p id="wallet-note">Your prepaid account balance.</p>
+        </article>
+        <article class="card stat-card">
+          <div class="stat-label">Text messages</div>
+          <div class="stat-value" id="wallet-texts">-</div>
+          <p>Text messages available on your account.</p>
+        </article>
+        <article class="card stat-card">
+          <div class="stat-label">Auto top-up</div>
+          <div class="stat-value" id="wallet-auto" style="font-size:1.35rem;padding-top:10px">-</div>
+          <p>Whether your wallet refills itself automatically when it runs low.</p>
+        </article>
+      </div>
+
+      <div class="card" style="margin-bottom:18px">
+        <div class="eyebrow">Add credit</div>
+        <h2 style="font-size:1.35rem">Top up your wallet</h2>
+        <p>Choose a credit pack below. You will finish checkout securely with Stripe.</p>
+        <div class="btn-row" id="wallet-packs"></div>
+      </div>
+
+      <div class="card">
+        <div class="eyebrow">History</div>
+        <h2 style="font-size:1.35rem">Transactions</h2>
+        <div id="wallet-transactions"></div>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section class="view" id="view-settings" aria-label="Settings" hidden>
+      <div class="section-head">
+        <div class="eyebrow">Account settings</div>
+        <h1 style="font-size:clamp(1.8rem,4vw,2.6rem)">Settings</h1>
+        <p class="sub">Settings are read-only in this first version of the portal. To change anything below, just contact Ringception and we will update it for you.</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <div class="eyebrow">Business details</div>
+          <h2 style="font-size:1.35rem">Your business</h2>
+          <div class="kv" id="settings-kv"></div>
+          <div class="btn-row">
+            <button type="button" class="btn small" disabled>Upload logo</button>
+            <button type="button" class="btn dark small" disabled>Add lead sheet</button>
+          </div>
+          <p class="coming-soon">Coming soon: logo uploads and lead sheets will live right here in your account.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Branding</div>
+          <h2 style="font-size:1.35rem">How your follow-ups look</h2>
+          <div class="branding-preview" id="branding-preview"></div>
+          <div id="branding-meta"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <span class="footer-brand"><img src="logo.png" alt=""/><strong>Ringception AI</strong></span>
+      <p>The small business system for customer communication: calls answered, texts and emails handled, appointments kept current, follow-ups sent, and everything reported back to you. Built and run in the Dallas Fort Worth area.</p>
+    </div>
+    <div>
+      <strong>Need a hand?</strong>
+      <p>Contact Ringception and we will take care of it personally.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---------- API base resolution: ?api= > localStorage > localhost default ----------
+  function resolveApiBase() {
+    var fromQuery = null;
+    try { fromQuery = new URLSearchParams(window.location.search).get('api'); } catch (e) { fromQuery = null; }
+    if (fromQuery) return String(fromQuery).replace(/\/+$/, '');
+    var stored = null;
+    try { stored = window.localStorage.getItem('portalApiBase'); } catch (e) { stored = null; }
+    if (stored) return String(stored).replace(/\/+$/, '');
+    return 'http://localhost:4317';
+  }
+  var API = resolveApiBase();
+
+  function fetchJSON(path) {
+    return fetch(API + path, { headers: { 'Accept': 'application/json' } }).then(function (res) {
+      if (!res.ok) throw new Error('Request failed: ' + res.status);
+      return res.json();
+    });
+  }
+
+  // ---------- DOM helpers (all data goes through textContent) ----------
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined && text !== null) node.textContent = String(text);
+    return node;
+  }
+  function clear(node) { if (node) node.textContent = ''; }
+  function byId(id) { return document.getElementById(id); }
+
+  function parseMaybe(value) {
+    if (typeof value === 'string') {
+      var trimmed = value.trim();
+      if ((trimmed.charAt(0) === '{' && trimmed.charAt(trimmed.length - 1) === '}') ||
+          (trimmed.charAt(0) === '[' && trimmed.charAt(trimmed.length - 1) === ']')) {
+        try { return JSON.parse(trimmed); } catch (e) { return value; }
+      }
+    }
+    return value;
+  }
+  function asArray(value) {
+    var parsed = parseMaybe(value);
+    if (Array.isArray(parsed)) return parsed;
+    if (parsed === undefined || parsed === null || parsed === '') return [];
+    return [parsed];
+  }
+  function firstValue(obj, keys) {
+    if (!obj) return undefined;
+    for (var i = 0; i < keys.length; i++) {
+      if (obj[keys[i]] !== undefined && obj[keys[i]] !== null && obj[keys[i]] !== '') return obj[keys[i]];
+    }
+    return undefined;
+  }
+
+  var dtf = null, df = null;
+  try {
+    dtf = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+    df = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', month: 'short', day: 'numeric', year: 'numeric' });
+  } catch (e) { dtf = null; df = null; }
+  function fmtWhen(value) {
+    if (!value) return '';
+    var d = new Date(value);
+    if (isNaN(d.getTime())) return String(value);
+    return dtf ? dtf.format(d) : d.toLocaleString();
+  }
+  function fmtDate(value) {
+    if (!value) return '';
+    var d = new Date(value);
+    if (isNaN(d.getTime())) return String(value);
+    return df ? df.format(d) : d.toLocaleDateString();
+  }
+  function fmtMoney(value) {
+    var n = Number(value);
+    if (value === undefined || value === null || isNaN(n)) return '-';
+    var sign = n < 0 ? '-' : '';
+    return sign + '$' + Math.abs(n).toFixed(2);
+  }
+  function fmtCount(value) {
+    var n = Number(value);
+    if (value === undefined || value === null || isNaN(n)) return '-';
+    return n.toLocaleString('en-US');
+  }
+  function titleCase(value) {
+    var s = String(value || '').replace(/_/g, ' ');
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+  function pillFor(text) {
+    var raw = String(text || 'Unknown');
+    var low = raw.toLowerCase();
+    var cls = 'pill';
+    if (/(active|live|ready|complete|completed|sent|delivered|verified|answered|on file|enabled)/.test(low)) cls += ' good';
+    else if (/(pending|awaiting|waiting|scheduled|queued|not|paused|inactive)/.test(low)) cls += ' warn';
+    return el('span', cls, titleCase(raw));
+  }
+  function emptyState(title, body) {
+    var box = el('div', 'empty-state');
+    box.appendChild(el('strong', null, title));
+    box.appendChild(el('p', null, body));
+    return box;
+  }
+  function showError() { byId('global-error').hidden = false; }
+  function doneLoading() { var n = byId('loading-note'); if (n) n.hidden = true; }
+
+  // ---------- Tabs ----------
+  var VIEWS = ['overview', 'activity', 'campaigns', 'wallet', 'settings', 'call-detail'];
+  function switchView(name) {
+    VIEWS.forEach(function (v) {
+      var section = byId('view-' + v);
+      if (section) section.hidden = (v !== name);
+    });
+    var tabName = (name === 'call-detail') ? 'activity' : name;
+    var buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-view') === tabName); });
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('.tab-btn').forEach(function (b) {
+    b.addEventListener('click', function () { switchView(b.getAttribute('data-view')); });
+  });
+  document.querySelectorAll('[data-goto]').forEach(function (b) {
+    b.addEventListener('click', function () { switchView(b.getAttribute('data-goto')); });
+  });
+  byId('call-back').addEventListener('click', function () { switchView('activity'); });
+
+  // ---------- Activity rendering ----------
+  var messagesById = {};
+  function kindLabel(kind) {
+    if (kind === 'call') return 'Call';
+    if (kind === 'text') return 'Text';
+    if (kind === 'email') return 'Email';
+    return titleCase(kind || 'Activity');
+  }
+  function buildActivityItem(item, opts) {
+    opts = opts || {};
+    var kind = String(item.kind || item.type || '').toLowerCase();
+    var card = el('article', 'activity-item' + (kind === 'call' ? ' clickable' : ''));
+    var top = el('div', 'activity-top');
+    top.appendChild(el('span', 'kind-label', kindLabel(kind)));
+    var direction = firstValue(item, ['direction']);
+    if (direction) top.appendChild(el('span', 'direction-label', titleCase(direction)));
+    var status = firstValue(item, ['status', 'state']);
+    if (status) top.appendChild(pillFor(status));
+    if (item.sample) top.appendChild(el('span', 'pill sample', 'Sample'));
+    var when = firstValue(item, ['when', 'created_at', 'sent_at', 'started_at', 'timestamp']);
+    if (when) top.appendChild(el('span', 'when', fmtWhen(when)));
+    card.appendChild(top);
+
+    var title = firstValue(item, ['title', 'subject', 'name']) || (kindLabel(kind) + ' activity');
+    card.appendChild(el('p', 'activity-title', title));
+    var subtitle = firstValue(item, ['subtitle', 'preview', 'snippet']);
+    if (subtitle) card.appendChild(el('p', 'activity-sub', subtitle));
+
+    if (kind === 'call') {
+      var hint = el('p', 'meta-line', 'Select to see the summary and full transcript.');
+      card.appendChild(hint);
+      card.addEventListener('click', function () { openCall(item.id); });
+    } else {
+      // Texts and emails: expandable inline body.
+      var linked = item.id !== undefined ? messagesById[item.id] : null;
+      var body = firstValue(item, ['body', 'text', 'message', 'content']) ||
+                 (linked ? firstValue(linked, ['body', 'text', 'message', 'content']) : undefined);
+      var subject = firstValue(item, ['subject']) ||
+                    (linked ? firstValue(linked, ['subject']) : undefined);
+      if (body || subject) {
+        var toggle = el('button', 'btn dark small', 'Show message');
+        toggle.type = 'button';
+        toggle.style.marginTop = '10px';
+        var bodyBox = el('div', 'activity-body');
+        bodyBox.hidden = true;
+        if (subject && subject !== title) bodyBox.appendChild(el('span', 'body-subject', subject));
+        if (body) bodyBox.appendChild(document.createTextNode(String(body)));
+        toggle.addEventListener('click', function () {
+          bodyBox.hidden = !bodyBox.hidden;
+          toggle.textContent = bodyBox.hidden ? 'Show message' : 'Hide message';
+        });
+        card.appendChild(toggle);
+        card.appendChild(bodyBox);
+      } else if (opts.compact !== true) {
+        card.appendChild(el('p', 'meta-line', 'No message body available for this item.'));
+      }
+    }
+    return card;
+  }
+  function renderActivityList(container, items, compact) {
+    clear(container);
+    if (!items || !items.length) {
+      container.appendChild(emptyState('Nothing here yet', 'When your receptionist handles a call, text, or email, it will show up here.'));
+      return;
+    }
+    items.forEach(function (item) { container.appendChild(buildActivityItem(item, { compact: compact })); });
+  }
+
+  function loadActivity(type) {
+    var list = byId('activity-list');
+    clear(list);
+    list.appendChild(el('p', 'loading-note', 'Loading activity...'));
+    var query = '/api/activity?type=' + encodeURIComponent(type || 'all') + '&limit=50';
+    return fetchJSON(query).then(function (data) {
+      renderActivityList(list, asArray(data.items), false);
+    }).catch(function () {
+      clear(list);
+      list.appendChild(emptyState('Activity could not be loaded', 'Your account data could not be loaded. If you are previewing locally, start the portal API first.'));
+    });
+  }
+  document.querySelectorAll('.chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      document.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      loadActivity(chip.getAttribute('data-filter'));
+    });
+  });
+
+  // ---------- Call detail ----------
+  function openCall(id) {
+    if (id === undefined || id === null) return;
+    switchView('call-detail');
+    byId('call-title').textContent = 'Loading call...';
+    byId('call-meta').textContent = '';
+    byId('call-summary').textContent = 'Loading...';
+    clear(byId('call-transcript'));
+    fetchJSON('/api/calls/' + encodeURIComponent(id)).then(function (call) {
+      var title = firstValue(call, ['title', 'caller_name', 'caller', 'name']) || 'Call';
+      byId('call-title').textContent = String(title);
+      var metaBits = [];
+      var when = firstValue(call, ['when', 'created_at', 'started_at', 'timestamp']);
+      if (when) metaBits.push(fmtWhen(when));
+      var direction = firstValue(call, ['direction']);
+      if (direction) metaBits.push(titleCase(direction));
+      var status = firstValue(call, ['status', 'state']);
+      if (status) metaBits.push(titleCase(status));
+      var duration = firstValue(call, ['duration_minutes', 'talk_minutes']);
+      if (duration !== undefined) metaBits.push(String(duration) + ' minutes');
+      else if (call.duration_seconds !== undefined) metaBits.push(String(Math.round(Number(call.duration_seconds) / 60 * 10) / 10) + ' minutes');
+      byId('call-meta').textContent = metaBits.join('  ·  ');
+      var summary = firstValue(call, ['summary', 'summary_text']);
+      byId('call-summary').textContent = summary ? String(summary) : 'No summary available yet.';
+      renderTranscript(call.transcript);
+    }).catch(function () {
+      byId('call-title').textContent = 'Call';
+      byId('call-summary').textContent = 'This call could not be loaded. If you are previewing locally, start the portal API first.';
+      clear(byId('call-transcript'));
+      byId('call-transcript').appendChild(emptyState('Transcript unavailable', 'We could not load the transcript for this call.'));
+    });
+  }
+  function renderTranscript(transcript) {
+    var box = byId('call-transcript');
+    clear(box);
+    var parsed = parseMaybe(transcript);
+    if (Array.isArray(parsed)) {
+      if (!parsed.length) { box.appendChild(emptyState('No transcript yet', 'A transcript will appear here once this call is processed.')); return; }
+      var wrap = el('div', 'transcript');
+      parsed.forEach(function (turn) {
+        var t = el('div', 'turn');
+        if (typeof turn === 'string') {
+          t.appendChild(el('p', null, turn));
+        } else if (turn && typeof turn === 'object') {
+          var speaker = firstValue(turn, ['speaker', 'role', 'name', 'who']);
+          if (speaker) t.appendChild(el('span', 'speaker', speaker));
+          var text = firstValue(turn, ['text', 'message', 'content', 'utterance']);
+          t.appendChild(el('p', null, text !== undefined ? text : ''));
+        }
+        wrap.appendChild(t);
+      });
+      box.appendChild(wrap);
+    } else if (typeof parsed === 'string' && parsed.trim()) {
+      box.appendChild(el('div', 'transcript-raw', parsed));
+    } else {
+      box.appendChild(emptyState('No transcript yet', 'A transcript will appear here once this call is processed.'));
+    }
+  }
+
+  // ---------- Session + Overview ----------
+  function renderPhones(container, numbers) {
+    clear(container);
+    var list = asArray(numbers);
+    if (!list.length) { container.appendChild(el('span', 'sub', 'No number on file yet.')); return; }
+    list.forEach(function (n) {
+      var value = (n && typeof n === 'object') ? firstValue(n, ['number', 'phone', 'phone_number', 'label']) : n;
+      if (value !== undefined) container.appendChild(el('span', 'phone-chip', value));
+    });
+  }
+  function loadSession() {
+    return fetchJSON('/api/session').then(function (data) {
+      if (data && data.mode === 'demo') byId('demo-banner').hidden = false;
+      var client = (data && data.client) || {};
+      if (client.business_name) byId('ov-business').textContent = String(client.business_name);
+      if (client.agent_name) byId('ov-agent').textContent = String(client.agent_name);
+      if (client.status) { var p = byId('ov-status'); var freshPill = pillFor(client.status); freshPill.id = 'ov-status'; if (p) p.replaceWith(freshPill); }
+      return data;
+    });
+  }
+  function renderWalletSummary(targetBalance, targetNote, wallet) {
+    wallet = wallet || {};
+    if (wallet.managed) {
+      targetBalance.textContent = 'House account';
+      targetNote.textContent = wallet.note ? String(wallet.note) : 'This account is managed by Ringception.';
+    } else {
+      targetBalance.textContent = fmtMoney(wallet.balance_usd);
+      targetNote.textContent = wallet.note ? String(wallet.note) : 'Your prepaid account balance.';
+    }
+  }
+  function loadOverview() {
+    return fetchJSON('/api/overview').then(function (data) {
+      var client = data.client || {};
+      if (client.business_name) byId('ov-business').textContent = String(client.business_name);
+      if (client.agent_name) byId('ov-agent').textContent = String(client.agent_name);
+      if (client.status) {
+        var current = byId('ov-status');
+        var fresh = pillFor(client.status);
+        fresh.id = 'ov-status';
+        if (current) current.replaceWith(fresh);
+      }
+      renderPhones(byId('ov-phones'), client.phone_numbers);
+      var usage = data.usage || {};
+      byId('stat-calls').textContent = fmtCount(usage.total_calls);
+      var bits = [];
+      if (usage.inbound_calls !== undefined) bits.push(fmtCount(usage.inbound_calls) + ' inbound');
+      if (usage.outbound_calls !== undefined) bits.push(fmtCount(usage.outbound_calls) + ' outbound');
+      if (bits.length) byId('stat-calls-detail').textContent = bits.join('  ·  ');
+      byId('stat-minutes').textContent = fmtCount(usage.total_talk_minutes);
+      renderWalletSummary(byId('stat-wallet'), byId('stat-wallet-note'), data.wallet || {});
+      var texts = (data.wallet && data.wallet.text_balance !== undefined) ? data.wallet.text_balance
+        : (data.counts ? data.counts.texts : undefined);
+      byId('stat-texts').textContent = fmtCount(texts);
+    });
+  }
+  function loadRecent() {
+    return fetchJSON('/api/activity?type=all&limit=5').then(function (data) {
+      renderActivityList(byId('ov-recent'), asArray(data.items).slice(0, 5), true);
+    }).catch(function () {
+      var box = byId('ov-recent');
+      clear(box);
+      box.appendChild(emptyState('Recent activity unavailable', 'Your account data could not be loaded. If you are previewing locally, start the portal API first.'));
+    });
+  }
+  function loadMessages() {
+    return fetchJSON('/api/messages').then(function (data) {
+      asArray(data.messages || data.items).forEach(function (m) {
+        if (m && m.id !== undefined) messagesById[m.id] = m;
+      });
+    }).catch(function () { /* Messages only enrich activity items; absence is fine. */ });
+  }
+
+  // ---------- Campaigns ----------
+  function renderGate(container, label, ok, okText, pendingText, explanation) {
+    var row = el('div', 'gate-row');
+    row.appendChild(el('span', 'gate-mark' + (ok ? '' : ' pending'), ok ? '✓' : '!'));
+    var body = el('div');
+    body.appendChild(el('strong', null, label + ': ' + (ok ? okText : pendingText)));
+    body.appendChild(el('p', null, explanation));
+    row.appendChild(body);
+    container.appendChild(row);
+  }
+  function renderChannels(container, channelsRaw) {
+    var channels = parseMaybe(channelsRaw);
+    if (!channels || typeof channels !== 'object' || Array.isArray(channels)) {
+      if (typeof channels === 'string' && channels) container.appendChild(el('p', 'meta-line', channels));
+      return;
+    }
+    var list = el('div', 'channel-list');
+    Object.keys(channels).forEach(function (key) {
+      var value = channels[key];
+      var valueText;
+      if (value && typeof value === 'object') {
+        valueText = firstValue(value, ['state', 'status', 'label']) || Object.keys(value).map(function (k) { return k + ': ' + String(value[k]); }).join(', ');
+      } else {
+        valueText = String(value);
+      }
+      var row = el('div', 'channel-row');
+      row.appendChild(el('span', 'ch-name', titleCase(key)));
+      row.appendChild(el('span', null, titleCase(valueText)));
+      list.appendChild(row);
+    });
+    container.appendChild(list);
+  }
+  function stepText(step, index) {
+    if (typeof step === 'string') return step;
+    if (step && typeof step === 'object') {
+      var direct = firstValue(step, ['label', 'name', 'text', 'description', 'title']);
+      if (direct) return String(direct);
+      var parts = [];
+      var channel = firstValue(step, ['channel', 'type']);
+      if (channel) parts.push(titleCase(channel));
+      var delay = firstValue(step, ['delay_text', 'delay', 'when', 'timing']);
+      if (delay) parts.push(String(delay));
+      var subject = firstValue(step, ['subject']);
+      if (subject) parts.push(String(subject));
+      if (parts.length) return parts.join(' - ');
+    }
+    return 'Step ' + (index + 1);
+  }
+  function loadCampaigns() {
+    return fetchJSON('/api/campaigns').then(function (data) {
+      var addon = data.addon || {};
+      var active = !!addon.active;
+      byId('camp-addon-title').textContent = active ? 'Follow-Up Campaigns is on' : 'Follow-Up Campaigns is not on yet';
+      var pillHost = byId('camp-addon-pill');
+      var pill = pillFor(active ? 'active' : (data.status || 'not active'));
+      pill.id = 'camp-addon-pill';
+      if (pillHost) pillHost.replaceWith(pill);
+      byId('camp-addon-note').textContent = active
+        ? 'Your standard follow-up sequences are set up in your business name. Sending follows the checks below, and you approve the standard wording before anything goes out.'
+        : 'This optional add-on is not active on your account yet. Your sequences can be prepared ahead of time, and nothing sends until the add-on is active and the checks below are clear. Contact Ringception to turn it on.';
+
+      var gates = data.gates || {};
+      var gatesBox = byId('camp-gates');
+      clear(gatesBox);
+      renderGate(gatesBox, 'Mailing address on file', !!gates.can_spam_address_on_file, 'On file', 'Not on file yet',
+        'Email follow-ups need a mailing address on file for your business, because every campaign email has to carry one. Until it is on file, email sequences wait and do not send.');
+      renderGate(gatesBox, 'Texting verification', !!gates.a2p_verified, 'Verified', 'Still in progress',
+        'Text follow-ups need your number to finish its texting verification first. Until that clears, text sequences wait and do not send. Calls are not affected.');
+
+      var seqBox = byId('camp-sequences');
+      clear(seqBox);
+      var sequences = asArray(data.sequences);
+      if (!sequences.length) {
+        seqBox.appendChild(emptyState('No sequences yet', 'Your five standard follow-up sequences will appear here once they are set up.'));
+      } else {
+        sequences.forEach(function (seq) {
+          var card = el('article', 'card');
+          var head = el('div', 'identity-row');
+          if (seq.seq_key) head.appendChild(el('span', 'kind-label', 'Sequence ' + String(seq.seq_key).toUpperCase()));
+          var state = firstValue(seq, ['state', 'status']);
+          if (state) head.appendChild(pillFor(state));
+          card.appendChild(head);
+          card.appendChild(el('h3', null, firstValue(seq, ['name', 'title']) || 'Follow-up sequence'));
+          if (seq.enabled !== undefined) {
+            card.appendChild(el('p', 'meta-line', seq.enabled ? 'Sending is enabled for this sequence.' : 'Not sending right now. Sequences only send when the add-on is active and the checks above are clear.'));
+          }
+          renderChannels(card, seq.channels);
+          var trigger = firstValue(seq, ['trigger_text', 'trigger']);
+          if (trigger) {
+            var tp = el('p');
+            tp.appendChild(el('strong', null, 'Starts when: '));
+            tp.appendChild(document.createTextNode(String(trigger)));
+            card.appendChild(tp);
+          }
+          var steps = asArray(seq.steps);
+          if (steps.length) {
+            card.appendChild(el('div', 'eyebrow', 'Steps'));
+            var ol = el('ol', 'seq-steps');
+            steps.forEach(function (s, i) { ol.appendChild(el('li', null, stepText(s, i))); });
+            card.appendChild(ol);
+          }
+          var stops = parseMaybe(seq.stop_conditions);
+          if (stops) {
+            var stopText = Array.isArray(stops) ? stops.join('; ') : String(stops);
+            if (stopText) card.appendChild(el('p', 'meta-line', 'Stops when: ' + stopText));
+          }
+          seqBox.appendChild(card);
+        });
+      }
+
+      var sendsBox = byId('camp-sends');
+      clear(sendsBox);
+      var sends = asArray(data.sends);
+      if (!sends.length) {
+        sendsBox.appendChild(emptyState('No campaign sends yet', 'When a follow-up email or text goes out, it will be listed here with its delivery status.'));
+      } else {
+        sends.forEach(function (send) {
+          var item = {
+            kind: firstValue(send, ['kind', 'channel', 'type']) || 'email',
+            direction: 'outbound',
+            when: firstValue(send, ['when', 'created_at', 'sent_at']),
+            title: firstValue(send, ['title', 'subject', 'recipient_name', 'recipient', 'to', 'sequence_name']) || 'Campaign send',
+            subtitle: firstValue(send, ['subtitle', 'preview', 'step_label', 'sequence_name']),
+            status: firstValue(send, ['status', 'state']),
+            sample: send.sample,
+            body: firstValue(send, ['body', 'text', 'message', 'content'])
+          };
+          // Normalize channel names like "sms" into the timeline's "text" kind.
+          if (String(item.kind).toLowerCase() === 'sms') item.kind = 'text';
+          sendsBox.appendChild(buildActivityItem(item, {}));
+        });
+      }
+    }).catch(function () {
+      var seqBox = byId('camp-sequences');
+      clear(seqBox);
+      seqBox.appendChild(emptyState('Campaigns could not be loaded', 'Your account data could not be loaded. If you are previewing locally, start the portal API first.'));
+    });
+  }
+
+  // ---------- Wallet ----------
+  function loadWallet() {
+    return fetchJSON('/api/wallet').then(function (data) {
+      renderWalletSummary(byId('wallet-balance'), byId('wallet-note'), data);
+      // renderWalletSummary sets a dollar/stat value; the wallet card uses the same helper via a shim:
+      byId('wallet-texts').textContent = fmtCount(data.text_balance);
+      byId('wallet-auto').textContent = data.auto_topup_optin ? 'On' : 'Off';
+
+      var packs = byId('wallet-packs');
+      clear(packs);
+      var links = asArray(data.pack_links);
+      if (!links.length) {
+        packs.appendChild(el('p', 'meta-line', 'Top-up links are not available right now. Contact Ringception and we will add credit for you.'));
+      } else {
+        links.forEach(function (pack) {
+          var url = pack && pack.url ? String(pack.url) : '';
+          if (!/^https:\/\//i.test(url)) return;
+          var a = el('a', 'btn', 'Add ' + fmtMoney(pack.amount_usd) + ' credit');
+          a.href = url;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          packs.appendChild(a);
+        });
+        if (!packs.childNodes.length) packs.appendChild(el('p', 'meta-line', 'Top-up links are not available right now. Contact Ringception and we will add credit for you.'));
+      }
+
+      var txBox = byId('wallet-transactions');
+      clear(txBox);
+      var txs = asArray(data.transactions);
+      if (!txs.length) {
+        txBox.appendChild(emptyState('No transactions yet', 'Nothing has moved through your wallet yet. When you add credit or your receptionist uses it, each entry will show up here.'));
+        return;
+      }
+      var wrapTx = el('div', 'tx-wrap');
+      var table = el('table', 'tx');
+      var thead = document.createElement('thead');
+      var headRow = document.createElement('tr');
+      ['Date', 'Type', 'Amount', 'Balance after'].forEach(function (label) {
+        var th = document.createElement('th');
+        th.textContent = label;
+        headRow.appendChild(th);
+      });
+      thead.appendChild(headRow);
+      table.appendChild(thead);
+      var tbody = document.createElement('tbody');
+      txs.forEach(function (tx) {
+        var tr = document.createElement('tr');
+        var dateTd = document.createElement('td');
+        dateTd.textContent = fmtDate(firstValue(tx, ['created_at', 'date', 'when']));
+        var typeTd = document.createElement('td');
+        typeTd.textContent = titleCase(firstValue(tx, ['type', 'label', 'description']) || 'Transaction');
+        var amtTd = document.createElement('td');
+        amtTd.className = 'num-cell';
+        amtTd.textContent = fmtMoney(firstValue(tx, ['amount_usd', 'amount']));
+        var balTd = document.createElement('td');
+        balTd.className = 'num-cell';
+        balTd.textContent = fmtMoney(firstValue(tx, ['balance_after', 'balance_after_usd', 'balance']));
+        tr.appendChild(dateTd); tr.appendChild(typeTd); tr.appendChild(amtTd); tr.appendChild(balTd);
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      wrapTx.appendChild(table);
+      txBox.appendChild(wrapTx);
+    }).catch(function () {
+      var txBox = byId('wallet-transactions');
+      clear(txBox);
+      txBox.appendChild(emptyState('Wallet could not be loaded', 'Your account data could not be loaded. If you are previewing locally, start the portal API first.'));
+    });
+  }
+
+  // ---------- Settings ----------
+  function kvRow(container, label, value) {
+    var row = el('div', 'kv-row');
+    row.appendChild(el('span', 'k', label));
+    row.appendChild(el('span', 'v', (value === undefined || value === null || value === '') ? 'Not on file' : String(value)));
+    container.appendChild(row);
+  }
+  function loadSettings() {
+    return fetchJSON('/api/settings').then(function (data) {
+      var kv = byId('settings-kv');
+      clear(kv);
+      kvRow(kv, 'Business name', data.business_name);
+      kvRow(kv, 'Contact name', data.contact_name);
+      kvRow(kv, 'Email', data.email);
+      kvRow(kv, 'Website', data.website);
+      kvRow(kv, 'Registered mobile', data.registered_mobile);
+      kvRow(kv, 'Texting', data.texting_enabled === undefined ? undefined : (data.texting_enabled ? 'Enabled' : 'Not enabled'));
+      var numbers = asArray(data.phone_numbers).map(function (n) {
+        return (n && typeof n === 'object') ? firstValue(n, ['number', 'phone', 'phone_number', 'label']) : n;
+      }).filter(function (v) { return v !== undefined && v !== null && v !== ''; });
+      kvRow(kv, 'Ringception number', numbers.join(', ') || undefined);
+      var signoff = data.branding ? data.branding.signoff_name : undefined;
+      if (signoff) kvRow(kv, 'Email sign-off name', signoff);
+
+      var branding = data.branding || {};
+      var preview = byId('branding-preview');
+      clear(preview);
+      if (branding.logo_url) {
+        var img = document.createElement('img');
+        img.src = String(branding.logo_url);
+        img.alt = (data.business_name ? String(data.business_name) : 'Business') + ' logo';
+        preview.appendChild(img);
+      } else {
+        var fallback = el('div', 'branding-fallback', branding.logo_fallback || data.business_name || 'Your business');
+        if (typeof branding.brand_color === 'string' && /^#[0-9a-fA-F]{3,8}$/.test(branding.brand_color.trim())) {
+          fallback.style.background = branding.brand_color.trim();
+        }
+        preview.appendChild(fallback);
+      }
+      var meta = byId('branding-meta');
+      clear(meta);
+      var swatchRow = el('div', 'swatch-row');
+      if (branding.brand_color) {
+        var sw = el('span', 'swatch');
+        if (/^#[0-9a-fA-F]{3,8}$/.test(String(branding.brand_color).trim())) sw.style.background = String(branding.brand_color).trim();
+        swatchRow.appendChild(sw);
+        swatchRow.appendChild(el('span', null, 'Brand color: ' + String(branding.brand_color)));
+        meta.appendChild(swatchRow);
+      }
+      var sourceNote = branding.logo_source
+        ? 'Logo source: ' + String(branding.logo_source)
+        : (branding.logo_url ? '' : 'No logo on file yet, so your business name is used as the header on follow-up emails.');
+      if (sourceNote) {
+        var note = el('p', 'meta-line', sourceNote);
+        note.style.textAlign = 'center';
+        meta.appendChild(note);
+      }
+    }).catch(function () {
+      var kv = byId('settings-kv');
+      clear(kv);
+      kv.appendChild(emptyState('Settings could not be loaded', 'Your account data could not be loaded. If you are previewing locally, start the portal API first.'));
+    });
+  }
+
+  // ---------- Init ----------
+  var sessionPromise = loadSession();
+  var overviewPromise = loadOverview();
+  Promise.allSettled([sessionPromise, overviewPromise]).then(function (results) {
+    var anyOk = results.some(function (r) { return r.status === 'fulfilled'; });
+    if (!anyOk) showError();
+    doneLoading();
+  });
+  loadMessages().then(function () { loadRecent(); loadActivity('all'); });
+  loadCampaigns();
+  loadWallet();
+  loadSettings();
+})();
+</script>
+</body>
+</html>
