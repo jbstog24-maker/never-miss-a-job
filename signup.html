@@ -163,11 +163,8 @@ gtag('config', 'G-Y4YW8589B1');
 <article class="card step"><span class="num">02</span><h3>This form</h3><p>Your contact details, your business, and your build details: services, hours, greeting, voice, call rules, and your assistant's name. About five minutes, asked once.</p></article>
 <article class="card step"><span class="num">03</span><h3>Secure payment</h3><p>Your $29 setup plus your first month at $15 (new client promotion), paid securely through Stripe: $44 to get started. No long-term contract. Then we build.</p></article>
 </div>
-<form action="https://formsubmit.co/info@ringceptionai.com" class="form-card" id="signup-form" method="POST">
-<input name="_subject" type="hidden" value="New customer form"/>
-<input name="_template" type="hidden" value="table"/>
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k"/>
+<form action="https://portal.ringceptionai.com/api/signup/submit" class="form-card" id="signup-form" method="POST">
+<input name="_honey" type="text" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
 <fieldset>
 <legend>Your contact details</legend>
 <div class="two">
@@ -325,7 +322,7 @@ gtag('config', 'G-Y4YW8589B1');
   var form = document.getElementById('signup-form');
   var button = document.getElementById('signup-submit');
   var errorBox = document.getElementById('signup-error');
-  var ENDPOINT = 'https://formsubmit.co/ajax/info@ringceptionai.com';
+  var ENDPOINT = 'https://portal.ringceptionai.com/api/signup/submit';
   var BASE_LINK = 'https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k';
   form.addEventListener('submit', function(event){
     event.preventDefault();
@@ -335,10 +332,6 @@ gtag('config', 'G-Y4YW8589B1');
     var data = {};
     new FormData(form).forEach(function(value, key){ data[key] = value; });
     if (data.website && !/^[a-z][a-z0-9+.-]*:\/\//i.test(data.website)) { data.website = 'https://' + data.website.replace(/^\/+/, ''); }
-    data._subject = 'New customer form: ' + (data.business_name || data.contact_name || 'new business');
-    data._template = 'table';
-    data._captcha = 'false';
-    delete data._next;
     var onSuccess = function(){
       button.textContent = 'Details sent. Taking you to secure payment...';
       var link = window.__selectedCheckoutLink || BASE_LINK;

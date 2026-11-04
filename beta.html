@@ -124,11 +124,8 @@ gtag('config', 'G-Y4YW8589B1');
 <p style="color:var(--muted)">Thank you for applying to the Ringception beta program. Spots are limited to 10, 5 small businesses and 5 personal users, and we pick the testers from the applications. We will email you at the address you gave us once the spots are set.</p>
 <p style="color:var(--muted)">Want to hear it in action while you wait? Call the live demo line at <a href="tel:+12147853805" style="font-weight:800">(214) 785-3805</a>.</p>
 </div>
-<form action="https://formsubmit.co/info@ringceptionai.com" class="form-card" id="beta-form" method="POST">
-<input name="_subject" type="hidden" value="New Ringception beta application"/>
-<input name="_template" type="hidden" value="table"/>
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_next" type="hidden" value="https://www.ringceptionai.com/beta.html?applied=1"/>
+<form action="https://portal.ringceptionai.com/api/signup/submit" class="form-card" id="beta-form" method="POST">
+<input name="_honey" type="text" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
 <input name="source" type="hidden" value="beta"/>
 <fieldset>
 <legend>Apply for a beta spot</legend>
@@ -195,6 +192,7 @@ gtag('config', 'G-Y4YW8589B1');
     var name = (document.getElementById('b-name').value || '').trim();
     var picked = form.querySelector('input[name="account_type"]:checked');
     var data = {
+      kind: 'beta',
       contact_name: name,
       email: (document.getElementById('b-email').value || '').trim(),
       phone: (document.getElementById('b-phone').value || '').trim(),
@@ -206,14 +204,11 @@ gtag('config', 'G-Y4YW8589B1');
       help_most: (document.getElementById('b-help').value || '').trim(),
       agreement: document.getElementById('b-agree').checked ? 'yes' : '',
       source: 'beta',
-      _subject: 'New Ringception beta application: ' + name,
-      _template: 'table',
-      _captcha: 'false',
-      _next: 'https://www.ringceptionai.com/beta.html?applied=1'
+      _honey: ''
     };
     button.disabled = true;
     button.textContent = 'Sending your application...';
-    fetch('https://formsubmit.co/ajax/info@ringceptionai.com', {
+    fetch('https://portal.ringceptionai.com/api/signup/submit', {
       method: 'POST',
       headers: {'Content-Type':'application/json','Accept':'application/json'},
       body: JSON.stringify(data)
