@@ -130,11 +130,11 @@ gtag('config', 'G-Y4YW8589B1');
 <li>Talk time is $0.17 per minute, billed per second, and texts with your customers are 5&cent; each, sent or received, both drawn from prepaid credit you control. Messages between you and your receptionist are included: the first 150 a month are on us, then 5&cent; each. You add credit up front, so there is never a surprise talk-time bill.</li>
 </ul>
 </article>
-<article class="card" id="campaigns-card">
-<div class="opt-row"><input disabled="" id="opt-campaigns" type="checkbox"/>
-<div class="opt-text"><span class="badge">Coming soon</span><div class="plan-head"><h3>Follow-Up Campaigns add-on</h3><div class="plan-price">$39<small>/month per business line</small></div></div>
-<p>Your receptionist follows up by email and text for you, in your business name: estimate nudges, review requests, appointment reminders, updates, and seasonal offers to your past customers and callers. Business lines only. Coming soon: it cannot be added yet, and nothing is charged for it today. Once it opens, you can turn it on anytime from your account.</p><p class="hint">Texting switches on after a required carrier registration, which can take a few hours. Your calls are answered from day one.</p></div></div>
-</article>
+<label class="card opt-card" id="campaigns-card">
+<div class="opt-row"><input id="opt-campaigns" type="checkbox"/>
+<div class="opt-text"><div class="plan-head"><h3>Follow-Up Campaigns add-on</h3><div class="plan-price">+$39<small>/month per business line</small></div></div>
+<p>Your receptionist follows up by email and text for you, in your business name: estimate nudges, review requests, appointment reminders, updates, and seasonal offers to your past customers and callers. Business lines only. Billed monthly starting at signup, with the first $39 due at checkout.</p><p class="hint">Texting switches on after a required carrier registration, which can take a few hours. Your calls are answered from day one.</p></div></div>
+</label>
 <fieldset>
 <legend>Starter call credit (optional, one time)</legend>
 <p class="hint" style="margin:0 0 12px">Credit pays for talk time and texts. Most businesses start with the $50 pack. You can add more credit anytime from your account.</p>
@@ -147,7 +147,7 @@ gtag('config', 'G-Y4YW8589B1');
 </fieldset>
 <div class="summary" id="picker-summary">
 <h3>Your summary</h3>
-<div class="sum-row"><span>Due today (setup + first month, plus any starter credit)</span><span class="amt" id="sum-today">$44</span></div>
+<div class="sum-row"><span>Due today (setup + first month, plus any add-on and starter credit)</span><span class="amt" id="sum-today">$44</span></div>
 <div class="sum-row"><span>Monthly, per number</span><span class="amt" id="sum-monthly">$15/month</span></div>
 <p class="sum-note">Your first month is included in today's charge. After that, your monthly charges bill on the same day each month. Talk time and texts draw from your prepaid credit as you use them.</p>
 <a class="btn" href="#signup-form" id="checkout-btn">Sign up now &#8599;</a>
@@ -159,7 +159,7 @@ gtag('config', 'G-Y4YW8589B1');
 <section><div class="wrap">
 <div class="section-head" style="max-width:710px;margin-bottom:26px"><div class="eyebrow">One form, then payment</div><h2>Tell us everything once</h2><p class="sub">This is the only form you will ever fill in with us. It covers your contact details, your business, and exactly how your receptionist should sound and handle calls, grouped in short sections. Send it and you go straight to secure checkout with your plan already picked and your email already filled in. After payment there is nothing else to fill out: we build from this form.</p></div>
 <div class="grid three steps">
-<article class="card step"><span class="num">01</span><h3>Pick your plan</h3><p>The base package above, plus any starter credit you chose. Your total is already set.</p></article>
+<article class="card step"><span class="num">01</span><h3>Pick your plan</h3><p>The base package above, plus any add-on and starter credit you chose. Your total is already set.</p></article>
 <article class="card step"><span class="num">02</span><h3>This form</h3><p>Your contact details, your business, and your build details: services, hours, greeting, voice, call rules, and your assistant's name. About five minutes, asked once.</p></article>
 <article class="card step"><span class="num">03</span><h3>Secure payment</h3><p>Your $29 setup plus your first month at $15 (new client promotion), paid securely through Stripe: $44 to get started. No long-term contract. Then we build.</p></article>
 </div>
@@ -247,20 +247,26 @@ gtag('config', 'G-Y4YW8589B1');
 <script>
 (function(){
   // Plan picker: routes each selection to the Stripe payment link whose
-  // line items match it exactly. No deferred billing on any link: the setup
-  // and the first month are due at checkout (owner correction 2026-10-17).
-  // Mapping verified against Stripe read-backs 2026-10-17
+  // line items match it exactly. No deferred billing on any link: the setup,
+  // the first month, and any add-on are all due at checkout (owner correction
+  // 2026-10-17). Mapping verified against Stripe read-backs 2026-10-17
   // (see STRIPE.md, "Plan picker links").
-  // Follow-Up Campaigns is coming soon (owner decision 2026-10-25, applied
-  // 2026-11-03): it is not charged until the sending runner works, so the
-  // picker offers no Campaigns selection and holds no Campaigns link.
+  // Follow-Up Campaigns selection restored 2026-11-09 (owner direction):
+  // the campaigns runner is built and configured, so the add-on is
+  // selectable and charged again. It was parked 2026-11-03 (owner decision
+  // 2026-10-25) while the sending runner was unfinished. Campaigns link
+  // line items and active status re-verified by Stripe read-back 2026-11-09.
   var PICKER_LINKS = {
     'base':              'https://buy.stripe.com/14AcN5c1EaVm9kI9VC6c00k',
+    'campaigns':         'https://buy.stripe.com/dRm7sL3v88Ne2Wk9VC6c00l',
     'pack20':            'https://buy.stripe.com/cNi3cv8Pse7yfJ6d7O6c00m',
     'pack50':            'https://buy.stripe.com/9B6dR90iWgfG9kI4Bi6c00n',
-    'pack100':           'https://buy.stripe.com/cNi00j6Hk6F6bsQ5Fm6c00o'
+    'pack100':           'https://buy.stripe.com/cNi00j6Hk6F6bsQ5Fm6c00o',
+    'campaigns_pack20':  'https://buy.stripe.com/28EeVd9TwgfG9kI5Fm6c00p',
+    'campaigns_pack50':  'https://buy.stripe.com/cNi6oHghU9Ri40o8Ry6c00q',
+    'campaigns_pack100': 'https://buy.stripe.com/9B600j1n05B254s4Bi6c00r'
   };
-  var SETUP = 29, MONTHLY = 15;
+  var SETUP = 29, MONTHLY = 15, CAMPAIGNS = 39;
   function arrivalAudience(){
     var fromUrl = null;
     try { fromUrl = new URLSearchParams(window.location.search).get('for'); } catch (e) {}
@@ -291,21 +297,27 @@ gtag('config', 'G-Y4YW8589B1');
     return 0;
   }
   function refresh(){
+    var campaigns = audience !== 'personal' && campaignsBox.checked;
     var pack = selectedPack();
-    // No deferred billing: setup and first month are due at checkout.
-    // Campaigns is coming soon and never enters the totals or the link.
-    sumToday.textContent = '$' + (SETUP + MONTHLY + pack);
-    sumMonthly.textContent = '$' + MONTHLY + '/month';
-    var key = pack ? 'pack' + pack : 'base';
+    // No deferred billing: setup, first month, and any add-on are all due at checkout.
+    sumToday.textContent = '$' + (SETUP + MONTHLY + (campaigns ? CAMPAIGNS : 0) + pack);
+    sumMonthly.textContent = '$' + (MONTHLY + (campaigns ? CAMPAIGNS : 0)) + '/month';
+    var key;
+    if (campaigns && pack) { key = 'campaigns_pack' + pack; }
+    else if (campaigns) { key = 'campaigns'; }
+    else if (pack) { key = 'pack' + pack; }
+    else { key = 'base'; }
     // The checkout button itself now anchors to the one signup form; the
     // form's submit handler reads this stored selection and sends the
     // customer to the matching Stripe link with their email prefilled.
     window.__selectedCheckoutLink = PICKER_LINKS[key];
+    campaignsCard.classList.toggle('selected', campaigns);
     Array.prototype.forEach.call(packInputs, function(input){
       var card = input.closest('.opt-card');
       if (card) { card.classList.toggle('selected', input.checked); }
     });
   }
+  campaignsBox.addEventListener('change', refresh);
   Array.prototype.forEach.call(packInputs, function(input){
     input.addEventListener('change', refresh);
   });
