@@ -145,6 +145,7 @@ gtag('config', 'G-Y4YW8589B1');
 <label class="card opt-card pack-card"><div class="opt-row"><input name="pack" type="radio" value="100"/><div class="opt-text"><h3 style="margin:0">$100 pack</h3><p>About 585 minutes of talk.</p></div></div></label>
 </div>
 </fieldset>
+<article class="card opt-card"><div class="opt-text"><div class="plan-head"><h3>Have a Groupon voucher?</h3><div class="plan-price">Prepaid<small>service months</small></div></div><p>Your monthly service is already paid by your voucher. Fill in the one form below and enter your voucher code in the Groupon section. You will not be sent to the regular checkout, and you will not be charged for monthly service again. We verify every code, then set you up. The one-time activation fee and any talk credit are handled with you at setup.</p></div></article>
 <div class="summary" id="picker-summary">
 <h3>Your summary</h3>
 <div class="sum-row"><span>Due today (setup + first month, plus any add-on and starter credit)</span><span class="amt" id="sum-today">$44</span></div>
@@ -235,9 +236,18 @@ gtag('config', 'G-Y4YW8589B1');
 <label for="s-voice-desc">Describe the sound you want (optional)</label><textarea id="s-voice-desc" name="voice_description" placeholder="How should your receptionist come across on the phone?"></textarea>
 <p class="hint">Tone words that help: friendly, upbeat, calm, professional, warm, energetic. Add anything else about the personality you want callers to hear. You will hear the voice on your test call before anything goes live.</p>
 </fieldset>
+<fieldset>
+<legend>Groupon voucher (optional)</legend>
+<p class="hint">Bought Ringception on Groupon? Enter your voucher code here and pick the option you bought. Your prepaid months of service come from the voucher, so you skip the regular checkout today.</p>
+<div class="two">
+<div><label for="s-voucher">Groupon voucher code</label><input id="s-voucher" name="groupon_voucher_code" placeholder="The code on your Groupon voucher" type="text"/></div>
+<div><label for="s-voucher-plan">Voucher option bought</label><select id="s-voucher-plan" name="groupon_voucher_plan"><option value="">Choose one</option><option value="3 months">3 months</option><option value="6 months">6 months</option><option value="12 months">12 months</option></select></div>
+</div>
+</fieldset>
 <button class="btn dark" id="signup-submit" type="submit">Send my details and continue to secure payment</button>
 <div class="form-error" id="signup-error" role="alert"><strong>Something went wrong sending your request.</strong> Nothing was lost: your answers are still in the form. Please try again, and if it keeps failing, call us at (214) 785-3805 and we will take it from there.</div>
 <div class="form-duplicate" id="signup-duplicate" role="alert"><strong>That email is already registered.</strong> You already have a Ringception account with us, so there is no need to sign up or pay again. <a href="https://portal.ringceptionai.com/account">Sign in to your account instead</a>: that page emails you a one-tap sign-in link. If you meant to use a different email, just change the email above and send the form again.</div>
+<div class="form-duplicate" id="signup-voucher" role="alert"><strong>Voucher received.</strong> We have your details and your Groupon voucher code. We verify every code before activation, then we email you to finish setup: your prepaid months come from the voucher, and the one-time activation fee and any talk credit are handled with you at setup. There is nothing more to pay today.</div>
 <p class="fineprint">New client promotion: $29 setup plus $15 for your first month, due at signup, then $15/month (regular price $39/month, promotion price). Your number is included.</p>
 <p class="fineprint">Secure payment by Stripe. No long-term contract. Cancel anytime.</p>
 </form>
@@ -346,6 +356,16 @@ gtag('config', 'G-Y4YW8589B1');
     new FormData(form).forEach(function(value, key){ data[key] = value; });
     if (data.website && !/^[a-z][a-z0-9+.-]*:\/\//i.test(data.website)) { data.website = 'https://' + data.website.replace(/^\/+/, ''); }
     var onSuccess = function(){
+      var voucher = (data.groupon_voucher_code || '').trim();
+      if (voucher) {
+        // Groupon buyers prepaid their service months with the voucher:
+        // never send them to the regular Stripe checkout. Their intake
+        // record carries the code for verification before activation.
+        button.textContent = 'Voucher received';
+        var vBox = document.getElementById('signup-voucher');
+        if (vBox) { vBox.classList.add('show'); vBox.scrollIntoView({block:'center'}); }
+        return;
+      }
       button.textContent = 'Details sent. Taking you to secure payment...';
       var link = window.__selectedCheckoutLink || BASE_LINK;
       var email = (data.email || '').trim();
