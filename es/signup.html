@@ -106,6 +106,16 @@ footer{background:#0b1429;color:#f5f7fc;padding:36px 0}footer .wrap{display:flex
 }
 .site-header{position:sticky;top:0;z-index:1000}
 .nav-lang{border:1px solid #82e7ee;border-radius:999px;padding:6px 13px;font-weight:800;color:#f5f7fc;text-decoration:none}
+
+/* Nav declutter: More dropdown (added 2026-11-17) */
+.nav-more{position:relative;display:inline-flex}
+.nav-more-btn{background:none;border:0;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:600;color:#f5f7fc;padding:0;white-space:nowrap}
+.nav-more-btn:hover{text-decoration:underline}
+.nav-drop{display:none;position:absolute;top:calc(100% + 12px);right:0;min-width:190px;background:#142341;border:1px solid rgba(103,221,250,.35);border-radius:16px;box-shadow:0 18px 40px rgba(2,6,17,.45);padding:8px;z-index:1100}
+.nav-more:hover .nav-drop,.nav-more:focus-within .nav-drop{display:block}
+.nav-drop a{display:block;padding:9px 12px;border-radius:10px;white-space:nowrap}
+.nav-drop a:hover{background:rgba(255,255,255,.08);text-decoration:none}
+@media(max-width:759px){.nav-more{display:none}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4YW8589B1"></script>
@@ -117,7 +127,7 @@ gtag('config', 'G-Y4YW8589B1');
 </script>
 </head>
 <body>
-<header class="site-header"><div class="wrap"><a aria-label="Página principal de Ringception AI" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="../logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Navegación principal"><a class="nav-lang" href="../signup.html">English</a><a href="how-it-works.html">Cómo funciona</a><a href="features.html">Funciones</a><a href="pricing.html">Precios</a><a href="faq.html">Preguntas frecuentes</a><a href="../blog.html">Blog</a></nav><span style="font-size:.9rem;color:#f5f7fc">¿Preguntas? Llama a la línea de demostración: <a href="tel:+12147853805" style="color:#82e7ee;font-weight:600">(214) 785-3805</a></span><a class="nav-portal" href="https://portal.ringceptionai.com">Portal</a><a class="nav-login" href="https://portal.ringceptionai.com">Iniciar sesión</a><a class="nav-signup" href="signup.html">Registrarse</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menú"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Navegación móvil"><a class="mobile-menu-signup" aria-current="page" href="signup.html">Empezar</a><a class="mobile-menu-portal" href="https://portal.ringceptionai.com">Portal</a><a href="how-it-works.html">Cómo funciona</a><a href="features.html">Funciones</a><a href="pricing.html">Precios</a><a href="faq.html">Preguntas frecuentes</a><a href="../blog.html">Blog</a><a class="mobile-menu-demo" href="index.html#demo">Escucha la demostración</a><a href="https://portal.ringceptionai.com">Iniciar sesión</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a aria-label="Página principal de Ringception AI" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="../logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Navegación principal"><a class="nav-lang" href="../signup.html">English</a><a href="how-it-works.html">Cómo funciona</a><a href="features.html">Funciones</a><a href="pricing.html">Precios</a><a href="faq.html">Preguntas frecuentes</a><span class="nav-more"><button class="nav-more-btn" type="button" aria-haspopup="true">Más <span aria-hidden="true">▾</span></button><span class="nav-drop"><a href="../blog.html">Blog</a><a class="nav-portal" href="https://portal.ringceptionai.com">Portal</a><a class="nav-login" href="https://portal.ringceptionai.com">Iniciar sesión</a></span></span></nav><span style="font-size:.9rem;color:#f5f7fc">¿Preguntas? Llama a la línea de demostración: <a href="tel:+12147853805" style="color:#82e7ee;font-weight:600">(214) 785-3805</a></span><a class="nav-signup" href="signup.html">Registrarse</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menú"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Navegación móvil"><a class="mobile-menu-signup" aria-current="page" href="signup.html">Empezar</a><a class="mobile-menu-portal" href="https://portal.ringceptionai.com">Portal</a><a href="how-it-works.html">Cómo funciona</a><a href="features.html">Funciones</a><a href="pricing.html">Precios</a><a href="faq.html">Preguntas frecuentes</a><a href="../blog.html">Blog</a><a class="mobile-menu-demo" href="index.html#demo">Escucha la demostración</a><a href="https://portal.ringceptionai.com">Iniciar sesión</a></nav></div></header>
 <main>
 <section class="hero"><div class="wrap"><div class="eyebrow light">Regístrate ahora</div><h1>Elige tu plan. Nosotros creamos tu recepcionista.</h1><p class="lead">Elige lo que quieres abajo y después completa un solo formulario: nos dice todo lo que necesitamos para crear tu recepcionista, desde tus servicios y horarios hasta su saludo, sus reglas de llamada y el nombre que usa. Lo completas una vez y después pagas de forma segura a través de Stripe. Empezar cuesta $49, a pagar al momento del pago: la tarifa de configuración, y tu primer mes está incluido. Nunca pedimos lo mismo dos veces.</p><p class="escape">¿Aún lo estás pensando? Escucha primero la demostración en vivo: <a href="tel:+12147853805">(214) 785-3805</a></p></div></section>
 <section class="white"><div class="wrap">
@@ -142,7 +152,7 @@ gtag('config', 'G-Y4YW8589B1');
 <label class="card opt-card" id="campaigns-card">
 <div class="opt-row"><input id="opt-campaigns" type="checkbox"/>
 <div class="opt-text"><div class="plan-head"><h3>Complemento de Campañas de seguimiento</h3><div class="plan-price">+$39<small>/mes por línea empresarial</small></div></div>
-<p>Tu recepcionista da seguimiento por correo y mensaje de texto por ti, con el nombre de tu empresa: recordatorios de presupuestos, solicitudes de reseñas, recordatorios de citas, novedades y ofertas de temporada para tus clientes y llamantes anteriores. Solo líneas empresariales. Se factura mensualmente desde el registro, con los primeros $39 a pagar al momento del pago.</p><p class="hint">Los mensajes de texto se activan después de un registro obligatorio con el operador, que puede tardar unas horas. Tus llamadas se responden desde el primer día.</p></div></div>
+<p>Tu recepcionista da seguimiento por correo y mensaje de texto por ti, con el nombre de tu empresa: recordatorios de presupuestos, solicitudes de reseñas, recordatorios de citas, novedades y ofertas de temporada para tus clientes y llamantes anteriores. Solo líneas empresariales. Campañas cuesta $39 al mes, y el primer cargo llega después de tu primer mes, así que no suma nada a lo que pagas hoy.</p><p class="hint">Los mensajes de texto se activan después de un registro obligatorio con el operador, que puede tardar unas horas. Tus llamadas se responden desde el primer día.</p></div></div>
 </label>
 <fieldset>
 <legend>Crédito inicial de llamadas (opcional, pago único)</legend>
@@ -157,7 +167,7 @@ gtag('config', 'G-Y4YW8589B1');
 <article class="card opt-card"><div class="opt-text"><div class="plan-head"><h3>¿Tienes un vale de Groupon?</h3><div class="plan-price">Prepagados<small>meses de servicio</small></div></div><p>Tu servicio mensual ya está pagado por tu vale. Completa el único formulario de abajo e ingresa tu código de vale en la sección de Groupon. No se te enviará al pago regular y no se te cobrará de nuevo el servicio mensual. Verificamos cada código y después te configuramos. La tarifa única de activación y cualquier crédito de llamada se manejan contigo en la configuración.</p></div></article>
 <div class="summary" id="picker-summary">
 <h3>Tu resumen</h3>
-<div class="sum-row"><span>A pagar hoy (configuración, con tu primer mes incluido, más cualquier complemento y crédito inicial)</span><span class="amt" id="sum-today">$49</span></div>
+<div class="sum-row"><span>A pagar hoy (configuración, con tu primer mes incluido, más cualquier paquete de crédito inicial)</span><span class="amt" id="sum-today">$49</span></div>
 <div class="sum-row"><span id="sum-monthly-label">Mensual, por número</span><span class="amt" id="sum-monthly">$39/mes</span></div>
 <p class="sum-note" id="sum-note">Tu primer mes está incluido en el cargo de hoy. Después, tus cargos mensuales se facturan el mismo día cada mes. El tiempo de llamada y los mensajes se descuentan de tu crédito prepagado a medida que los usas.</p>
 <a class="btn" href="#signup-form" id="checkout-btn">Regístrate ahora &#8599;</a>
@@ -353,8 +363,8 @@ gtag('config', 'G-Y4YW8589B1');
         ? 'Tu pago anual cubre 12 meses de servicio a partir de hoy. Campañas de seguimiento sigue siendo un complemento mensual de $39/mes y se activa después del registro, así que no se cobra hoy. El tiempo de llamada y los mensajes se descuentan de tu crédito prepagado a medida que los usas.'
         : 'Tu pago anual cubre 12 meses de servicio a partir de hoy. El tiempo de llamada y los mensajes se descuentan de tu crédito prepagado a medida que los usas.';
     } else {
-      // No deferred billing: setup, first month, and any add-on are all due at checkout.
-      sumToday.textContent = '$' + (SETUP + (campaigns ? CAMPAIGNS : 0) + pack);
+      // Due today is the setup (first month included) plus any starter credit. Campaigns bills monthly after the first month, matching the checkout link trial.
+      sumToday.textContent = '$' + (SETUP + pack);
       sumMonthlyLabel.textContent = 'Mensual, por número';
       sumMonthly.textContent = '$' + (MONTHLY + (campaigns ? CAMPAIGNS : 0)) + '/mes';
       var mkey;
