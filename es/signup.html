@@ -116,6 +116,10 @@ footer{background:#0b1429;color:#f5f7fc;padding:36px 0}footer .wrap{display:flex
 .nav-drop a{display:block;padding:9px 12px;border-radius:10px;white-space:nowrap}
 .nav-drop a:hover{background:rgba(255,255,255,.08);text-decoration:none}
 @media(max-width:759px){.nav-more{display:none}}
+
+/* Phone numbers selector in the plan picker (added 2026-11-17) */
+.numbers-label{display:block;font-weight:600;font-size:.91rem;margin:14px 0 0}
+.numbers-select{display:block;width:100%;max-width:360px;min-height:48px;padding:12px;border:1px solid #ffc49f;background:white;border-radius:10px;color:var(--ink);font:inherit;margin-top:6px}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4YW8589B1"></script>
@@ -149,6 +153,23 @@ gtag('config', 'G-Y4YW8589B1');
 <label class="card opt-card pack-card"><div class="opt-row"><input name="period" type="radio" value="annual"/><div class="opt-text"><h3 style="margin:0">Paquete anual</h3><p>$429 por 12 meses, pagado hoy. Un mes gratis en comparación con pagar mes a mes a la tarifa promocional.</p></div></div></label>
 </div>
 </fieldset>
+<fieldset>
+<legend>Números de teléfono</legend>
+<div class="card opt-card numbers-card">
+<div class="opt-row"><div class="opt-text"><div class="plan-head"><h3>¿Cuántos números de teléfono?</h3><div class="plan-price">$10<small>/mes por número adicional</small></div></div>
+<p>Tu primer número está incluido en la tarifa de tu plan. Cada número adicional cuesta $10/mes, y la misma recepcionista contesta todos los números. La mayoría de los negocios empieza con uno.</p>
+<label class="numbers-label" for="opt-numbers">Números en tu cuenta</label>
+<select class="numbers-select" id="opt-numbers">
+<option selected="" value="1">1 número (incluido)</option>
+<option value="2">2 números (+$10/mes)</option>
+<option value="3">3 números (+$20/mes)</option>
+<option value="4">4 números (+$30/mes)</option>
+<option value="5">5 números (+$40/mes)</option>
+</select>
+<p class="hint">En el pago seguro, ajusta la cantidad en la línea Additional phone number para que coincida con los números extra que elegiste aquí. Esa cantidad es lo que factura Stripe.</p>
+</div></div>
+</div>
+</fieldset>
 <label class="card opt-card" id="campaigns-card">
 <div class="opt-row"><input id="opt-campaigns" type="checkbox"/>
 <div class="opt-text"><div class="plan-head"><h3>Complemento de Campañas de seguimiento</h3><div class="plan-price">+$39<small>/mes por línea empresarial</small></div></div>
@@ -169,6 +190,7 @@ gtag('config', 'G-Y4YW8589B1');
 <h3>Tu resumen</h3>
 <div class="sum-row"><span>A pagar hoy (configuración, con tu primer mes incluido, más cualquier paquete de crédito inicial)</span><span class="amt" id="sum-today">$49</span></div>
 <div class="sum-row"><span id="sum-monthly-label">Mensual, por número</span><span class="amt" id="sum-monthly">$39/mes</span></div>
+<div class="sum-row" hidden="" id="sum-numbers-row"><span id="sum-numbers-label">Números adicionales</span><span class="amt" id="sum-numbers">$0/mes</span></div>
 <p class="sum-note" id="sum-note">Tu primer mes está incluido en el cargo de hoy. Después, tus cargos mensuales se facturan el mismo día cada mes. El tiempo de llamada y los mensajes se descuentan de tu crédito prepagado a medida que los usas.</p>
 <a class="btn" href="#signup-form" id="checkout-btn">Regístrate ahora &#8599;</a>
 <p class="sum-note">Ese botón te lleva al único formulario de registro (unos cinco minutos). Envíalo y llegas a este pago con tu plan ya elegido y tu correo ya completado.</p>
@@ -286,14 +308,14 @@ gtag('config', 'G-Y4YW8589B1');
   // 2026-10-25) while the sending runner was unfinished. Campaigns link
   // line items and active status re-verified by Stripe read-back 2026-11-09.
   var PICKER_LINKS = {
-    'base':              'https://buy.stripe.com/4gM00i57u3yWfdre6IaMU0j',
-    'campaigns':         'https://buy.stripe.com/bJeaEW57u4D07KZ3s4aMU0k',
-    'pack20':            'https://buy.stripe.com/aFa14m7fC9XkaXbbYAaMU0l',
-    'pack50':            'https://buy.stripe.com/bJe8wO2Zmc5s1mBgeQaMU0m',
-    'pack100':           'https://buy.stripe.com/bJe8wOfM8c5s9T7aUwaMU0n',
-    'campaigns_pack20':  'https://buy.stripe.com/dRm4gy2Zm5H41mB5AcaMU0o',
-    'campaigns_pack50':  'https://buy.stripe.com/28E14mfM8c5s6GV0fSaMU0p',
-    'campaigns_pack100': 'https://buy.stripe.com/28E4gybvSedA8P31jWaMU0q'
+    'base':              'https://buy.stripe.com/aFa9ASbvSb1o5CR3s4aMU0v',
+    'campaigns':         'https://buy.stripe.com/4gMdR82ZmglI0ix7IkaMU0A',
+    'pack20':            'https://buy.stripe.com/8x214meI44D04yN3s4aMU0G',
+    'pack50':            'https://buy.stripe.com/4gMdR8arOb1oghv5AcaMU0F',
+    'pack100':           'https://buy.stripe.com/6oU28qarOc5sfdr5AcaMU0E',
+    'campaigns_pack20':  'https://buy.stripe.com/7sYeVc1Vi3yW6GVbYAaMU0D',
+    'campaigns_pack50':  'https://buy.stripe.com/9B6dR81ViedA6GV7IkaMU0C',
+    'campaigns_pack100': 'https://buy.stripe.com/eVq14meI4c5s5CR5AcaMU0B'
   };
   // Annual package links (created 2026-11-17): platform $429/year paid
   // today, no trial. Stripe payment links cannot mix a yearly platform
@@ -301,12 +323,12 @@ gtag('config', 'G-Y4YW8589B1');
   // campaigns item; campaigns stays a monthly add-on added after signup
   // (owner decision 2026-11-17).
   var ANNUAL_LINKS = {
-    'base':    'https://buy.stripe.com/4gMeVcarOedAghvbYAaMU0r',
-    'pack20':  'https://buy.stripe.com/aFaaEWarO7Pc6GV4w8aMU0s',
-    'pack50':  'https://buy.stripe.com/4gM28q57u3yW7KZgeQaMU0t',
-    'pack100': 'https://buy.stripe.com/9B6aEWarO6L83uJ3s4aMU0u'
+    'base':    'https://buy.stripe.com/28E8wOfM83yWaXbgeQaMU0z',
+    'pack20':  'https://buy.stripe.com/aFafZggQc0mK3uJ1jWaMU0y',
+    'pack50':  'https://buy.stripe.com/bJeeVceI41qOaXb1jWaMU0x',
+    'pack100': 'https://buy.stripe.com/14A3cu1ViedA9T72o0aMU0w'
   };
-  var SETUP = 49, MONTHLY = 39, CAMPAIGNS = 39, ANNUAL = 429;
+  var SETUP = 49, MONTHLY = 39, CAMPAIGNS = 39, ANNUAL = 429, ADDNUM = 10;
   function arrivalAudience(){
     var fromUrl = null;
     try { fromUrl = new URLSearchParams(window.location.search).get('for'); } catch (e) {}
@@ -334,6 +356,18 @@ gtag('config', 'G-Y4YW8589B1');
   var sumNote = document.getElementById('sum-note');
   var DEFAULT_NOTE = sumNote.textContent;
   var checkoutBtn = document.getElementById('checkout-btn');
+  // Phone numbers selector (added 2026-11-17, owner direction): the first
+  // number is included in the plan rate; each additional number is
+  // $10/month. The fixed Stripe links cannot vary by quantity, so the
+  // buyer sets the matching quantity on the Additional phone number line
+  // at checkout (an adjustable-quantity item added to each link in the
+  // Stripe dashboard); the checkout quantity is what Stripe bills. This
+  // selector drives the summary math here and is also sent with the form
+  // as numbers_requested.
+  var numbersSelect = document.getElementById('opt-numbers');
+  var sumNumbersRow = document.getElementById('sum-numbers-row');
+  var sumNumbersLabel = document.getElementById('sum-numbers-label');
+  var sumNumbers = document.getElementById('sum-numbers');
   function selectedPack(){
     for (var i = 0; i < packInputs.length; i++) {
       if (packInputs[i].checked) { return parseInt(packInputs[i].value, 10) || 0; }
@@ -346,27 +380,58 @@ gtag('config', 'G-Y4YW8589B1');
     }
     return 'monthly';
   }
+  function selectedNumbers(){
+    var qty = numbersSelect ? parseInt(numbersSelect.value, 10) : 1;
+    if (!qty || qty < 1) { qty = 1; }
+    if (qty > 5) { qty = 5; }
+    return qty;
+  }
   function refresh(){
     var campaigns = audience !== 'personal' && campaignsBox.checked;
     var pack = selectedPack();
     var annual = selectedPeriod() === 'annual';
+    var numQty = selectedNumbers();
+    var extraNums = numQty - 1;
+    window.__selectedNumbers = numQty;
     var key;
     if (pack) { key = 'pack' + pack; } else { key = 'base'; }
     if (annual) {
       // Annual: setup + the year + any starter credit are due today.
       // Campaigns is not charged today; it stays a monthly add-on.
-      sumToday.textContent = '$' + (SETUP + ANNUAL + pack);
+      // Additional numbers bill yearly at $10/month per number
+      // ($120/year each) and are due today with the annual payment,
+      // matching the annual additional-number item at checkout.
+      sumToday.textContent = '$' + (SETUP + ANNUAL + pack + (ADDNUM * 12 * extraNums));
       sumMonthlyLabel.textContent = 'Paquete anual, por número';
       sumMonthly.textContent = '$429/año';
       window.__selectedCheckoutLink = ANNUAL_LINKS[key];
       sumNote.textContent = campaigns
         ? 'Tu pago anual cubre 12 meses de servicio a partir de hoy. Campañas de seguimiento sigue siendo un complemento mensual de $39/mes y se activa después del registro, así que no se cobra hoy. El tiempo de llamada y los mensajes se descuentan de tu crédito prepagado a medida que los usas.'
         : 'Tu pago anual cubre 12 meses de servicio a partir de hoy. El tiempo de llamada y los mensajes se descuentan de tu crédito prepagado a medida que los usas.';
+      if (extraNums > 0) {
+        sumNote.textContent += ' Tus ' + extraNums + ' números adicionales se facturan por año a $10/mes por número ($120/año cada uno) y están incluidos en el cargo de hoy.';
+      }
+      if (sumNumbersRow) {
+        sumNumbersRow.hidden = extraNums === 0;
+        if (extraNums > 0) {
+          sumNumbersLabel.textContent = 'Números adicionales (' + extraNums + ' extra, facturados por año)';
+          sumNumbers.textContent = '$' + (ADDNUM * 12 * extraNums) + '/año';
+        }
+      }
     } else {
       // Due today is the setup (first month included) plus any starter credit. Campaigns bills monthly after the first month, matching the checkout link trial.
+      // Additional numbers bill monthly with the plan, so they raise the
+      // monthly total only, never the amount due today.
       sumToday.textContent = '$' + (SETUP + pack);
       sumMonthlyLabel.textContent = 'Mensual, por número';
-      sumMonthly.textContent = '$' + (MONTHLY + (campaigns ? CAMPAIGNS : 0)) + '/mes';
+      sumMonthly.textContent = '$' + (MONTHLY + (campaigns ? CAMPAIGNS : 0) + (ADDNUM * extraNums)) + '/mes';
+      if (sumNumbersRow) {
+        sumNumbersRow.hidden = extraNums === 0;
+        if (extraNums > 0) {
+          sumNumbersLabel.textContent = 'Números adicionales (' + extraNums + ' extra a $10/mes cada uno)';
+          sumNumbers.textContent = '$' + (ADDNUM * extraNums) + '/mes';
+        }
+      }
       var mkey;
       if (campaigns && pack) { mkey = 'campaigns_pack' + pack; }
       else if (campaigns) { mkey = 'campaigns'; }
@@ -389,6 +454,7 @@ gtag('config', 'G-Y4YW8589B1');
     });
   }
   campaignsBox.addEventListener('change', refresh);
+  if (numbersSelect) { numbersSelect.addEventListener('change', refresh); }
   Array.prototype.forEach.call(packInputs, function(input){
     input.addEventListener('change', refresh);
   });
@@ -410,7 +476,7 @@ gtag('config', 'G-Y4YW8589B1');
   var button = document.getElementById('signup-submit');
   var errorBox = document.getElementById('signup-error');
   var ENDPOINT = 'https://portal.ringceptionai.com/api/signup/submit';
-  var BASE_LINK = 'https://buy.stripe.com/4gM00i57u3yWfdre6IaMU0j';
+  var BASE_LINK = 'https://buy.stripe.com/aFa9ASbvSb1o5CR3s4aMU0v';
   form.addEventListener('submit', function(event){
     event.preventDefault();
     button.disabled = true;
@@ -418,6 +484,9 @@ gtag('config', 'G-Y4YW8589B1');
     if (errorBox) { errorBox.classList.remove('show'); }
     var data = {};
     new FormData(form).forEach(function(value, key){ data[key] = value; });
+    // Total phone numbers picked in the plan picker (added 2026-11-17):
+    // intake records it as a second signal next to the checkout quantity.
+    data.numbers_requested = String(window.__selectedNumbers || 1);
     if (data.website && !/^[a-z][a-z0-9+.-]*:\/\//i.test(data.website)) { data.website = 'https://' + data.website.replace(/^\/+/, ''); }
     var onSuccess = function(){
       var voucher = (data.groupon_voucher_code || '').trim();
