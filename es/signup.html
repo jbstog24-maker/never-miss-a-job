@@ -120,6 +120,17 @@ footer{background:#0b1429;color:#f5f7fc;padding:36px 0}footer .wrap{display:flex
 /* Phone numbers selector in the plan picker (added 2026-11-17) */
 .numbers-label{display:block;font-weight:600;font-size:.91rem;margin:14px 0 0}
 .numbers-select{display:block;width:100%;max-width:360px;min-height:48px;padding:12px;border:1px solid #ffc49f;background:white;border-radius:10px;color:var(--ink);font:inherit;margin-top:6px}
+
+.voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+@media(max-width:640px){.voice-grid{grid-template-columns:1fr}}
+.voice-group-label{grid-column:1/-1;margin:10px 0 0;font-weight:800;font-size:.92rem}
+.voice-choice{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff}
+.voice-choice input{width:20px;height:20px;flex:none;accent-color:#182640;cursor:pointer}
+.voice-choice label{flex:1;cursor:pointer;margin:0}
+.voice-choice label strong{display:block;font-size:.98rem}
+.voice-choice label span{font-size:.86rem;color:var(--muted)}
+.voice-play{flex:none;border:1.5px solid #182640;background:#182640;color:#fff;border-radius:999px;padding:7px 13px;font:inherit;font-size:.84rem;font-weight:700;cursor:pointer}
+.voice-play.playing{background:#fff;color:#182640}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4YW8589B1"></script>
@@ -242,8 +253,7 @@ gtag('config', 'G-Y4YW8589B1');
 <p class="hint">Elige el nombre que quieras para tu asistente de llamadas. Es el nombre que escucharán quienes llamen. Confirmaremos que esté disponible y sea adecuado cuando te configuremos.</p></div>
 <div><label for="s-greeting">Estilo de saludo</label><select id="s-greeting" name="greeting_style"><option value="warm">Cálido y amable</option><option value="professional">Breve y profesional</option><option value="upbeat">Animado y con energía</option></select></div>
 </div>
-<label for="s-voice-pref">Preferencia de voz</label><select id="s-voice-pref" name="voice_preference"><option value="no-preference">Sin preferencia</option><option value="warm-female">Voz femenina cálida</option><option value="friendly-male">Voz masculina amable</option><option value="decide-on-test-call">Decidir en la llamada de prueba</option></select>
-<p class="hint">Escucharás la voz en tu llamada de prueba antes de que algo entre en funcionamiento. La siguiente sección te permite afinar el sonido.</p>
+<p class="hint">Eliges la voz exacta en la sección Elige tu voz más abajo, y la escucharás en tu llamada de prueba antes de que algo entre en funcionamiento.</p>
 </fieldset>
 <fieldset>
 <legend>Cómo deben manejarse tus llamadas</legend>
@@ -269,13 +279,33 @@ gtag('config', 'G-Y4YW8589B1');
 <label for="s-current">Tu número de empresa actual (si lo conservas)</label><input autocomplete="tel" id="s-current" name="current_number" type="tel"/>
 </fieldset>
 <fieldset>
-<legend>¿Cómo debe sonar tu recepcionista?</legend>
-<div class="two">
-<div><label for="s-voice-gender">Voz</label><select id="s-voice-gender" name="voice_gender"><option value="No preference">Sin preferencia</option><option value="Female">Femenina</option><option value="Male">Masculina</option></select></div>
-<div><label for="s-voice-age">Rango de edad</label><select id="s-voice-age" name="voice_age_range"><option value="No preference">Sin preferencia</option><option value="20s to 30s">De 20 a 30 años</option><option value="30s to 50s">De 30 a 50 años</option><option value="50s plus">Más de 50 años</option></select></div>
+<legend>Elige tu voz</legend>
+<p class="hint">Escucha cada voz y elige la que escucharán tus clientes. Cada voz suena exactamente como su muestra: no hay nada que ajustar ni personalizar. La voz que elijas se asigna a tu asistente automáticamente cuando se crea tu cuenta, y puedes cambiarla cuando quieras desde tu cuenta. Tu asistente aprende tu negocio de la misma manera con cualquier voz.</p>
+<div class="voice-grid">
+<p class="voice-group-label">Las más elegidas</p>
+<div class="voice-choice"><input id="voice-riley" name="voice_choice" type="radio" value="riley" checked=""/><label for="voice-riley"><strong>Riley</strong><span>Masculina · Alegre, simpática y rápida. La voz de la línea de demostración.</span></label><button aria-label="Escuchar una muestra de Riley" class="voice-play" data-preview="riley-intro.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-alley" name="voice_choice" type="radio" value="alley"/><label for="voice-alley"><strong>Alley</strong><span>Femenina · Suave y amable.</span></label><button aria-label="Escuchar una muestra de Alley" class="voice-play" data-preview="voice-alley.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-avery" name="voice_choice" type="radio" value="avery"/><label for="voice-avery"><strong>Avery</strong><span>Masculina · Alegre y amable.</span></label><button aria-label="Escuchar una muestra de Avery" class="voice-play" data-preview="voice-avery.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-bob" name="voice_choice" type="radio" value="bob"/><label for="voice-bob"><strong>Bob</strong><span>Masculina · Voz de estudio, cálida y estable.</span></label><button aria-label="Escuchar una muestra de Bob" class="voice-play" data-preview="voice-bob.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-bryan" name="voice_choice" type="radio" value="bryan"/><label for="voice-bryan"><strong>Bryan</strong><span>Masculina · De mediana edad, natural y relajado.</span></label><button aria-label="Escuchar una muestra de Bryan" class="voice-play" data-preview="voice-bryan.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-caylee" name="voice_choice" type="radio" value="caylee"/><label for="voice-caylee"><strong>Caylee</strong><span>Femenina · Madura, de voz suave y tranquila.</span></label><button aria-label="Escuchar una muestra de Caylee" class="voice-play" data-preview="voice-caylee.mp3" type="button">▶ Escuchar</button></div>
+<p class="voice-group-label">Más voces</p>
+<div class="voice-choice"><input id="voice-sumi" name="voice_choice" type="radio" value="sumi"/><label for="voice-sumi"><strong>Sumi</strong><span>Femenina · Madura, ligera y amable.</span></label><button aria-label="Escuchar una muestra de Sumi" class="voice-play" data-preview="voice-sumi.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-ashley" name="voice_choice" type="radio" value="ashley"/><label for="voice-ashley"><strong>Ashley</strong><span>Femenina · Joven y alegre.</span></label><button aria-label="Escuchar una muestra de Ashley" class="voice-play" data-preview="voice-ashley.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-mackayla" name="voice_choice" type="radio" value="mackayla"/><label for="voice-mackayla"><strong>Mackayla</strong><span>Femenina · Tranquila y profesional.</span></label><button aria-label="Escuchar una muestra de Mackayla" class="voice-play" data-preview="voice-mackayla.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-carlo" name="voice_choice" type="radio" value="carlo"/><label for="voice-carlo"><strong>Carlo</strong><span>Masculina · Grave y segura.</span></label><button aria-label="Escuchar una muestra de Carlo" class="voice-play" data-preview="voice-carlo.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-chris" name="voice_choice" type="radio" value="chris"/><label for="voice-chris"><strong>Chris</strong><span>Masculina · Clara y tranquila.</span></label><button aria-label="Escuchar una muestra de Chris" class="voice-play" data-preview="voice-chris.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-sandra" name="voice_choice" type="radio" value="sandra"/><label for="voice-sandra"><strong>Sandra</strong><span>Femenina · Clara, tranquila y pausada.</span></label><button aria-label="Escuchar una muestra de Sandra" class="voice-play" data-preview="voice-sandra.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-maeve" name="voice_choice" type="radio" value="maeve"/><label for="voice-maeve"><strong>Maeve</strong><span>Femenina · Clara, amable y neutral.</span></label><button aria-label="Escuchar una muestra de Maeve" class="voice-play" data-preview="voice-maeve.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-lucas" name="voice_choice" type="radio" value="lucas"/><label for="voice-lucas"><strong>Lucas</strong><span>Masculina · Joven, clara y tranquila.</span></label><button aria-label="Escuchar una muestra de Lucas" class="voice-play" data-preview="voice-lucas.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-turner" name="voice_choice" type="radio" value="turner"/><label for="voice-turner"><strong>Turner</strong><span>Masculina · Madura y grave.</span></label><button aria-label="Escuchar una muestra de Turner" class="voice-play" data-preview="voice-turner.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-aaron" name="voice_choice" type="radio" value="aaron"/><label for="voice-aaron"><strong>Aaron</strong><span>Masculina · De mediana edad y estable.</span></label><button aria-label="Escuchar una muestra de Aaron" class="voice-play" data-preview="voice-aaron.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-heather" name="voice_choice" type="radio" value="heather"/><label for="voice-heather"><strong>Heather</strong><span>Femenina · Joven, amable y rápida.</span></label><button aria-label="Escuchar una muestra de Heather" class="voice-play" data-preview="voice-heather.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-karen" name="voice_choice" type="radio" value="karen"/><label for="voice-karen"><strong>Karen</strong><span>Femenina · Madura y directa.</span></label><button aria-label="Escuchar una muestra de Karen" class="voice-play" data-preview="voice-karen.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-kirsten" name="voice_choice" type="radio" value="kirsten"/><label for="voice-kirsten"><strong>Kirsten</strong><span>Femenina · De voz suave y ritmo pausado.</span></label><button aria-label="Escuchar una muestra de Kirsten" class="voice-play" data-preview="voice-kirsten.mp3" type="button">▶ Escuchar</button></div>
+<div class="voice-choice"><input id="voice-allie" name="voice_choice" type="radio" value="allie"/><label for="voice-allie"><strong>Allie</strong><span>Femenina · Voz femenina estadounidense amable.</span></label><button aria-label="Escuchar una muestra de Allie" class="voice-play" data-preview="voice-allie.mp3" type="button">▶ Escuchar</button></div>
 </div>
-<label for="s-voice-desc">Describe el sonido que quieres (opcional)</label><textarea id="s-voice-desc" name="voice_description" placeholder="¿Cómo debe percibirse tu recepcionista por teléfono?"></textarea>
-<p class="hint">Palabras de tono que ayudan: amable, animado, tranquilo, profesional, cálido, con energía. Agrega cualquier otra cosa sobre la personalidad que quieres que escuchen quienes llamen. Escucharás la voz en tu llamada de prueba antes de que algo entre en funcionamiento.</p>
+<p class="hint">¿No estás seguro? Riley es la voz de nuestra línea de demostración en vivo. Llama al (214) 785-3805 y escucha una conversación completa antes de decidir.</p>
 </fieldset>
 <fieldset>
 <legend>Vale de Groupon (opcional)</legend>
@@ -579,6 +609,36 @@ gtag('config', 'G-Y4YW8589B1');
   });
   document.addEventListener('keydown',function(event){
     if(event.key==='Escape'&&!menu.hidden){closeMenu();}
+  });
+})();
+</script>
+<script>
+(function(){
+  // Voice picker samples (2026-11-18): one shared player for every
+  // preview button in the Choose your voice section. Pressing play
+  // on another voice stops the current sample; pressing the playing
+  // voice's button again stops it.
+  var buttons = document.querySelectorAll('.voice-play');
+  if (!buttons.length) { return; }
+  var audio = new Audio();
+  var current = null;
+  function stop(){
+    audio.pause();
+    if (current) { current.classList.remove('playing'); current.textContent = current.getAttribute('data-play-label'); }
+    current = null;
+  }
+  audio.addEventListener('ended', stop);
+  Array.prototype.forEach.call(buttons, function(btn){
+    btn.setAttribute('data-play-label', btn.textContent);
+    btn.addEventListener('click', function(){
+      if (current === btn) { stop(); return; }
+      stop();
+      audio.src = btn.getAttribute('data-preview');
+      audio.play();
+      current = btn;
+      btn.classList.add('playing');
+      btn.textContent = '■ Detener';
+    });
   });
 })();
 </script>
