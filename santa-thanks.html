@@ -20,14 +20,29 @@ footer{background:#07271a;color:#fdf8ec;padding:30px 0;text-align:center}footer 
 </style>
 </head>
 <body>
-<section class="hero"><div class="wrap"><div class="eyebrow">Santa Hotline</div><h1>You're booked. The North Pole has it from here. 🎅</h1><p>Your payment went through and your call is on the sleigh schedule.</p></div></section>
+<section class="hero"><div class="wrap"><div class="eyebrow">Santa Hotline</div><h1>You're booked. The North Pole has it from here. 🎅</h1><p id="thanks-sub">Your payment went through and your call is on the sleigh schedule.</p><p id="thanks-voucher" style="display:none">Voucher received. We verify every Groupon voucher code before the call goes on the sleigh schedule, then we email you once it is confirmed. Nothing more to pay today.</p></div></section>
 <div class="wrap"><div class="card">
 <h2 style="margin-top:0">What happens next</h2>
 <p><strong>At your chosen time, your phone will ring.</strong> Answer it, say hello, and hand the phone to your child. Santa, Jingle, Rudolph, or Frosty will take it from there, for up to 3 wonderful minutes.</p>
 <p><strong>After the call,</strong> the recording is emailed to you automatically. Save it, share it with the grandparents, and enjoy it every Christmas from now on.</p>
+<p id="thanks-voucher-card" style="display:none"><strong>About your Groupon voucher:</strong> it covers one live call. We check the code against Groupon's redemption list first, so watch your email for a confirmation once that is done. If the code does not check out, we will email you the regular booking link so your child does not miss out.</p>
 <p>Need to change your time? Email <a href="mailto:info@ringceptionai.com">info@ringceptionai.com</a> and we will move it.</p>
 <a class="btn" href="santa.html">Book another call</a>
 </div></div>
 <footer><div class="wrap"><p>The Santa Hotline is powered by <a href="index.html">Ringception AI</a>.</p></div></footer>
+<script>
+(function(){
+  // Groupon bookings land here with ?voucher=1 (set in santa.html when a
+  // voucher code is entered) instead of going through Stripe.
+  if(/[?&]voucher=1(&|$)/.test(location.search)){
+    var sub=document.getElementById('thanks-sub');
+    var note=document.getElementById('thanks-voucher');
+    var card=document.getElementById('thanks-voucher-card');
+    if(sub){sub.style.display='none';}
+    if(note){note.style.display='block';}
+    if(card){card.style.display='block';}
+  }
+})();
+</script>
 </body>
 </html>

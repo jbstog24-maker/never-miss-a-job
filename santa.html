@@ -82,6 +82,16 @@ footer{background:var(--deep);color:#fdf8ec;padding:36px 0}footer .wrap{display:
 @media(prefers-reduced-motion:reduce){.flake,.bulb{animation:none}}
 .site-header{position:sticky;top:0;z-index:1000}
 .nav-lang{border:1px solid #82e7ee;border-radius:999px;padding:6px 13px;font-weight:800;color:#f5f7fc;text-decoration:none}
+
+/* Nav declutter: More dropdown (added 2026-11-17) */
+.nav-more{position:relative;display:inline-flex}
+.nav-more-btn{background:none;border:0;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:600;color:#f5f7fc;padding:0;white-space:nowrap}
+.nav-more-btn:hover{text-decoration:underline}
+.nav-drop{display:none;position:absolute;top:calc(100% + 12px);right:0;min-width:190px;background:#142341;border:1px solid rgba(103,221,250,.35);border-radius:16px;box-shadow:0 18px 40px rgba(2,6,17,.45);padding:8px;z-index:1100}
+.nav-more:hover .nav-drop,.nav-more:focus-within .nav-drop{display:block}
+.nav-drop a{display:block;padding:9px 12px;border-radius:10px;white-space:nowrap}
+.nav-drop a:hover{background:rgba(255,255,255,.08);text-decoration:none}
+@media(max-width:759px){.nav-more{display:none}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4YW8589B1"></script>
@@ -93,7 +103,7 @@ gtag('config', 'G-Y4YW8589B1');
 </script>
 </head>
 <body>
-<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a class="nav-lang" href="es/index.html">Español</a><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a></nav><span style="font-size:.9rem;color:#fdf8ec">Questions? Call the demo line: <a href="tel:+12147853805" style="color:#ffd166;font-weight:600">(214) 785-3805</a></span><a class="nav-portal" href="https://portal.ringceptionai.com">Portal</a><a class="nav-login" href="https://portal.ringceptionai.com">Log in</a><a class="nav-signup" href="signup.html">Sign up</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a class="mobile-menu-signup" href="signup.html">Get started</a><a class="mobile-menu-portal" href="https://portal.ringceptionai.com">Portal</a><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a href="https://portal.ringceptionai.com">Log in</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a class="nav-lang" href="es/index.html">Español</a><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><span class="nav-more"><button class="nav-more-btn" type="button" aria-haspopup="true">More <span aria-hidden="true">▾</span></button><span class="nav-drop"><a href="blog.html">Blog</a><a class="nav-portal" href="https://portal.ringceptionai.com">Portal</a><a class="nav-login" href="https://portal.ringceptionai.com">Log in</a></span></span></nav><span style="font-size:.9rem;color:#fdf8ec">Questions? Call the demo line: <a href="tel:+12147853805" style="color:#ffd166;font-weight:600">(214) 785-3805</a></span><a class="nav-signup" href="signup.html">Sign up</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a class="mobile-menu-signup" href="signup.html">Get started</a><a class="mobile-menu-portal" href="https://portal.ringceptionai.com">Portal</a><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a href="https://portal.ringceptionai.com">Log in</a></nav></div></header>
 <main>
 <section class="hero"><div class="snow" id="snow" aria-hidden="true"></div><div class="wrap"><div class="lights" id="lights" aria-hidden="true"></div><div class="eyebrow light">🎄 The Santa Hotline 🎄</div><h1>A live call from the North Pole, just for your child.</h1><p class="lead">Pick Santa Claus, Jingle the Elf, Pip the Elf, Rudolph, or Frosty the Snowman. Tell us your child's name and what they are wishing for. At the time you choose, the phone rings, and they have a real, live conversation. After the call, we email you the recording to keep forever.</p><div class="char-strip"><span class="char-chip"><span class="char-emoji" aria-hidden="true">🎅</span>Santa Claus</span><span class="char-chip"><span class="char-emoji" aria-hidden="true">🧝</span>Jingle the Elf</span><span class="char-chip"><span class="char-emoji" aria-hidden="true">🍬</span>Pip the Elf</span><span class="char-chip"><span class="char-emoji" aria-hidden="true">🦌</span>Rudolph</span><span class="char-chip"><span class="char-emoji" aria-hidden="true">⛄</span>Frosty the Snowman</span></div><p class="escape">One call is $5. Or get the Christmas Eve package: a surprise character calls once a week until Christmas Eve for $12, one payment, no subscription. Every call is up to 3 minutes of pure Christmas magic. <a href="#book">Book a call ↓</a></p><img class="hero-art" src="santa-hero.jpg" alt="Merry Christmas from Ringception AI: Santa Claus, Rudolph, Frosty the Snowman, and the elves outside the North Pole workshop" width="2112" height="1168"/></div></section>
 
@@ -138,6 +148,13 @@ gtag('config', 'G-Y4YW8589B1');
 <legend>2. Pick your package</legend>
 <label class="choice selected"><input type="radio" name="package" value="One live call - $5" checked/><span><strong>One live call: $5</strong><span>One scheduled call, up to 3 minutes, recording emailed after.</span></span></label>
 <label class="choice"><input type="radio" name="package" value="Weekly surprise calls until Christmas Eve - $12"/><span><strong>Weekly surprise calls until Christmas Eve: $12</strong><span>One call a week, every week until Christmas Eve, and the North Pole surprises you: Santa, Jingle, Pip, Rudolph, and Frosty take turns, a different character calling each week. Your child never knows who is on the phone until it rings. A recording of every call is emailed to you. One payment of $12, no subscription.</span></span></label>
+</fieldset>
+
+<fieldset>
+<legend>Have a Groupon voucher?</legend>
+<p class="hint">Bought a Santa call on Groupon? Enter your voucher code here. Your voucher covers one live call with the character you picked, so you skip the payment page today. We verify every code before the call is scheduled, then email you once it is confirmed.</p>
+<div><label for="g-voucher">Groupon voucher code</label><input id="g-voucher" name="groupon_voucher_code" type="text" placeholder="The code on your Groupon voucher"/></div>
+<div class="note-box" id="santa-voucher-note" style="display:none;margin-top:14px"><strong>Voucher received.</strong> Your call is covered by your Groupon voucher: one live call, no payment today. We verify every code before the call is scheduled, then email you once it is confirmed.</div>
 </fieldset>
 
 <fieldset>
@@ -219,8 +236,8 @@ gtag('config', 'G-Y4YW8589B1');
 
 <label class="choice"><input type="checkbox" id="consent" required/><span><strong>I am this child's parent or guardian</strong><span>I will be with my child for the call. I understand the call is recorded and the recording will be emailed to me.</span></span></label>
 
-<button class="btn" type="submit">Book it and go to payment 🎁</button>
-<p class="fineprint">After this form you will land on our secure Stripe payment page to finish. Your booking is confirmed once payment is complete. If we cannot reach you at call time, we will try once more, then email you to reschedule. Calls are answered by a friendly AI character voice from the North Pole hotline, powered by Ringception AI.</p>
+<button class="btn" id="santa-submit" type="submit">Book it and go to payment 🎁</button>
+<p class="fineprint" id="santa-fineprint">After this form you will land on our secure Stripe payment page to finish. Your booking is confirmed once payment is complete. If we cannot reach you at call time, we will try once more, then email you to reschedule. Calls are answered by a friendly AI character voice from the North Pole hotline, powered by Ringception AI.</p>
 </form>
 </div>
 
@@ -259,7 +276,43 @@ gtag('config', 'G-Y4YW8589B1');
     single:'https://buy.stripe.com/28EbJ13v86F60Oc7Nu6c00u',
     surprise:'https://buy.stripe.com/8x2eVd0iW1kM54sgk06c00y'
   };
+  // Groupon voucher path (2026-11-17): a Groupon campaign sells one live
+  // Santa call (list $25, $10 on Groupon). A buyer who enters a voucher
+  // code is never sent to a Stripe link; the form goes to the thanks page
+  // with ?voucher=1 and the code rides along in the FormSubmit email for
+  // the worker to verify. The voucher covers one live call only, so the
+  // weekly package is locked out while a code is present.
+  var VOUCHER_THANKS='https://www.ringceptionai.com/santa-thanks.html?voucher=1';
+  function voucherCode(){
+    var el=document.getElementById('g-voucher');
+    return el?(el.value||'').trim():'';
+  }
+  function syncVoucher(){
+    var code=voucherCode();
+    var note=document.getElementById('santa-voucher-note');
+    var btn=document.getElementById('santa-submit');
+    var fp=document.getElementById('santa-fineprint');
+    var weekly=document.querySelector('input[name="package"][value^="Weekly"]');
+    var single=document.querySelector('input[name="package"][value^="One live"]');
+    if(code){
+      if(single&&!single.checked){single.checked=true;markSelected(single);}
+      if(weekly){weekly.disabled=true;if(weekly.closest('.choice')){weekly.closest('.choice').classList.remove('selected');}}
+      if(note){note.style.display='block';}
+      if(btn){btn.textContent='Book it with my voucher 🎁';}
+      if(fp){fp.textContent='No payment today: your Groupon voucher covers this one live call. We verify every code before the call is scheduled, then email you once it is confirmed. If we cannot reach you at call time, we will try once more, then email you to reschedule. Calls are answered by a friendly AI character voice from the North Pole hotline, powered by Ringception AI.';}
+    }else{
+      if(weekly){weekly.disabled=false;}
+      if(note){note.style.display='none';}
+      if(btn){btn.textContent='Book it and go to payment 🎁';}
+      if(fp){fp.textContent='After this form you will land on our secure Stripe payment page to finish. Your booking is confirmed once payment is complete. If we cannot reach you at call time, we will try once more, then email you to reschedule. Calls are answered by a friendly AI character voice from the North Pole hotline, powered by Ringception AI.';}
+    }
+    syncNext();
+  }
   function syncNext(){
+    if(voucherCode()){
+      document.getElementById('fs-next').value=VOUCHER_THANKS;
+      return;
+    }
     var pkg=document.querySelector('input[name="package"]:checked').value;
     var email=document.getElementById('p-email').value.trim();
     var url=pkg.indexOf('surprise')!==-1?LINKS.surprise:LINKS.single;
@@ -271,7 +324,9 @@ gtag('config', 'G-Y4YW8589B1');
   var today=new Date();var max=new Date('2026-12-24T12:00:00');
   function iso(d){return d.toISOString().slice(0,10);}
   dateInput.min=iso(today);dateInput.max=iso(max);dateInput.value=iso(today);
-  document.getElementById('santa-form').addEventListener('submit',function(){syncNext();});
+  var voucherInput=document.getElementById('g-voucher');
+  if(voucherInput){voucherInput.addEventListener('input',syncVoucher);}
+  document.getElementById('santa-form').addEventListener('submit',function(){syncVoucher();});
 })();
 </script>
 </body>
