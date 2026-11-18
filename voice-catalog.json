@@ -1,0 +1,188 @@
+{
+ "version": "2026-11-18",
+ "default_slug": "riley",
+ "fallback_voice_id": "4154fad2-8aa2-4127-b31b-9cdec04e6696",
+ "fallback_note": "Josh stays the internal auto-build fallback when no voice_choice is submitted; he is not a picker option because Bland Speech cannot render previews for legacy voices.",
+ "voices": [
+  {
+   "slug": "riley",
+   "display_name": "Riley",
+   "voice_id": "38b6a930-55e4-4361-b635-512b55758dee",
+   "gender": "male",
+   "blurb": "Bright, cheerful, and fast. The voice of the demo line.",
+   "featured": true,
+   "preview": "riley-intro.mp3"
+  },
+  {
+   "slug": "alley",
+   "display_name": "Alley",
+   "voice_id": "9cec31d5-72bd-4f24-af1d-00a958a6db1c",
+   "gender": "female",
+   "blurb": "Smooth and friendly.",
+   "featured": true,
+   "preview": "voice-alley.mp3"
+  },
+  {
+   "slug": "avery",
+   "display_name": "Avery",
+   "voice_id": "9424e8b1-5ce0-43d9-8bec-1b05fe589399",
+   "gender": "male",
+   "blurb": "Bright and friendly.",
+   "featured": true,
+   "preview": "voice-avery.mp3"
+  },
+  {
+   "slug": "bob",
+   "display_name": "Bob",
+   "voice_id": "4b1a5efb-b285-4c1f-a23c-1f8382950c0a",
+   "gender": "male",
+   "blurb": "Studio voice, warm and steady.",
+   "featured": true,
+   "preview": "voice-bob.mp3"
+  },
+  {
+   "slug": "bryan",
+   "display_name": "Bryan",
+   "voice_id": "918db134-a1e9-4287-acc1-0062e4ec919e",
+   "gender": "male",
+   "blurb": "Middle-aged, natural and easygoing.",
+   "featured": true,
+   "preview": "voice-bryan.mp3"
+  },
+  {
+   "slug": "caylee",
+   "display_name": "Caylee",
+   "voice_id": "ffe9ba88-4d68-4b37-9172-e94e2caa32fa",
+   "gender": "female",
+   "blurb": "Mature, soft-spoken, and calm.",
+   "featured": true,
+   "preview": "voice-caylee.mp3"
+  },
+  {
+   "slug": "sumi",
+   "display_name": "Sumi",
+   "voice_id": "b0537c9e-8cd5-44c8-abe2-f51fbe3b177d",
+   "gender": "female",
+   "blurb": "Mature, light, and friendly.",
+   "featured": false,
+   "preview": "voice-sumi.mp3"
+  },
+  {
+   "slug": "ashley",
+   "display_name": "Ashley",
+   "voice_id": "b90310fb-3f1f-4c0b-a6ff-1a1a457d2da3",
+   "gender": "female",
+   "blurb": "Young and cheery.",
+   "featured": false,
+   "preview": "voice-ashley.mp3"
+  },
+  {
+   "slug": "mackayla",
+   "display_name": "Mackayla",
+   "voice_id": "55b51d7e-dbd9-408c-9383-84a3721b42ca",
+   "gender": "female",
+   "blurb": "Calm and professional.",
+   "featured": false,
+   "preview": "voice-mackayla.mp3"
+  },
+  {
+   "slug": "carlo",
+   "display_name": "Carlo",
+   "voice_id": "a943a2fc-65eb-4d7b-9acb-06c51baf8e5a",
+   "gender": "male",
+   "blurb": "Deep and confident.",
+   "featured": false,
+   "preview": "voice-carlo.mp3"
+  },
+  {
+   "slug": "chris",
+   "display_name": "Chris",
+   "voice_id": "cc4597c7-0041-4e19-a2a1-6242c5d900e2",
+   "gender": "male",
+   "blurb": "Crisp and calm.",
+   "featured": false,
+   "preview": "voice-chris.mp3"
+  },
+  {
+   "slug": "sandra",
+   "display_name": "Sandra",
+   "voice_id": "7558e302-7aa3-4712-b10b-e485a20a785a",
+   "gender": "female",
+   "blurb": "Crisp, calm, and measured.",
+   "featured": false,
+   "preview": "voice-sandra.mp3"
+  },
+  {
+   "slug": "maeve",
+   "display_name": "Maeve",
+   "voice_id": "745fbef5-f445-44fa-91ba-93f89803e1ce",
+   "gender": "female",
+   "blurb": "Clear, friendly, and neutral.",
+   "featured": false,
+   "preview": "voice-maeve.mp3"
+  },
+  {
+   "slug": "lucas",
+   "display_name": "Lucas",
+   "voice_id": "59f79f3b-abd4-4534-8fba-c20683df9d3b",
+   "gender": "male",
+   "blurb": "Young, crisp, and calm.",
+   "featured": false,
+   "preview": "voice-lucas.mp3"
+  },
+  {
+   "slug": "turner",
+   "display_name": "Turner",
+   "voice_id": "8e7df474-1714-4407-85c5-443c0a999868",
+   "gender": "male",
+   "blurb": "Mature and deep.",
+   "featured": false,
+   "preview": "voice-turner.mp3"
+  },
+  {
+   "slug": "aaron",
+   "display_name": "Aaron",
+   "voice_id": "06c5789f-ffeb-4d5d-9f7a-37dc1ff2328e",
+   "gender": "male",
+   "blurb": "Middle-aged and steady.",
+   "featured": false,
+   "preview": "voice-aaron.mp3"
+  },
+  {
+   "slug": "heather",
+   "display_name": "Heather",
+   "voice_id": "c3bf0b68-3577-40e0-9874-68ebcae3d531",
+   "gender": "female",
+   "blurb": "Young, friendly, and fast.",
+   "featured": false,
+   "preview": "voice-heather.mp3"
+  },
+  {
+   "slug": "karen",
+   "display_name": "Karen",
+   "voice_id": "29158307-9893-4149-8a75-bc9ce313d64e",
+   "gender": "female",
+   "blurb": "Mature and direct.",
+   "featured": false,
+   "preview": "voice-karen.mp3"
+  },
+  {
+   "slug": "kirsten",
+   "display_name": "Kirsten",
+   "voice_id": "c90fbac7-48f2-410f-82d2-6786ec4c7ad5",
+   "gender": "female",
+   "blurb": "Soft-spoken and slow-paced.",
+   "featured": false,
+   "preview": "voice-kirsten.mp3"
+  },
+  {
+   "slug": "allie",
+   "display_name": "Allie",
+   "voice_id": "45bfac80-786f-409e-acd0-6c424603a12e",
+   "gender": "female",
+   "blurb": "Friendly American female voice.",
+   "featured": false,
+   "preview": "voice-allie.mp3"
+  }
+ ]
+}
