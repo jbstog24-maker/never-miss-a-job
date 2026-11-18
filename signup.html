@@ -186,6 +186,11 @@ gtag('config', 'G-Y4YW8589B1');
 <div class="opt-text"><div class="plan-head"><h3>Follow-Up Campaigns add-on</h3><div class="plan-price">+$39<small>/month per business line</small></div></div>
 <p>Your receptionist follows up by email and text for you, in your business name: estimate nudges, review requests, appointment reminders, updates, and seasonal offers to your past customers and callers. Business lines only. Campaigns is $39 a month, and the first campaigns charge lands after your first month, so it adds nothing to what you pay today.</p><p class="hint">Texting switches on after a required carrier registration, which can take a few hours. Your calls are answered from day one.</p></div></div>
 </label>
+<label class="card opt-card" id="social-card">
+<div class="opt-row"><input id="opt-social" type="checkbox"/>
+<div class="opt-text"><div class="plan-head"><h3>Social Media Posting add-on</h3><div class="plan-price">+$49<small>/month</small></div></div>
+<p>We write and post for your business every day, in your voice: one post a day on one platform, your pick of Facebook, LinkedIn, or Instagram, with an image on every post, posted automatically on schedule. Add another platform for $10 a month each, or another post per day for $10 a month each. You approve the topic direction and the first batch of posts before anything goes live, and you can pause, change direction, or cancel anytime. Business lines only. Social Media Posting is $49 a month: it is activated after signup and billed monthly, so it is not charged today.</p></div></div>
+</label>
 <fieldset>
 <legend>Starter call credit (optional, one time)</legend>
 <p class="hint" style="margin:0 0 12px">Credit pays for talk time and texts. Most businesses start with the $50 pack. You can add more credit anytime from your account.</p>
@@ -218,6 +223,7 @@ gtag('config', 'G-Y4YW8589B1');
 </div>
 <form action="https://portal.ringceptionai.com/api/signup/submit" class="form-card" id="signup-form" method="POST">
 <input name="_honey" type="text" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+<input id="social-posting-field" name="social_posting" type="hidden" value="no"/>
 <fieldset>
 <legend>Your contact details</legend>
 <div class="two">
@@ -378,6 +384,15 @@ gtag('config', 'G-Y4YW8589B1');
     campaignsBox.checked = false;
     campaignsCard.style.display = 'none';
   }
+  var socialCard = document.getElementById('social-card');
+  var socialBox = document.getElementById('opt-social');
+  var socialField = document.getElementById('social-posting-field');
+  if (audience === 'personal') {
+    // Social Media Posting is business lines only, same as campaigns:
+    // hide the toggle entirely for personal accounts.
+    socialBox.checked = false;
+    socialCard.style.display = 'none';
+  }
   var packInputs = document.querySelectorAll('input[name="pack"]');
   var periodInputs = document.querySelectorAll('input[name="period"]');
   var sumToday = document.getElementById('sum-today');
@@ -418,6 +433,11 @@ gtag('config', 'G-Y4YW8589B1');
   }
   function refresh(){
     var campaigns = audience !== 'personal' && campaignsBox.checked;
+    var social = audience !== 'personal' && socialBox.checked;
+    // Social Media Posting is activated after signup and billed monthly:
+    // it never changes the checkout link or what is due today. The pick
+    // travels with the form as the social_posting field (yes when chosen).
+    if (socialField) { socialField.value = social ? 'yes' : 'no'; }
     var pack = selectedPack();
     var annual = selectedPeriod() === 'annual';
     var numQty = selectedNumbers();
@@ -474,6 +494,7 @@ gtag('config', 'G-Y4YW8589B1');
       sumNote.textContent = DEFAULT_NOTE;
     }
     campaignsCard.classList.toggle('selected', campaigns);
+    socialCard.classList.toggle('selected', social);
     Array.prototype.forEach.call(packInputs, function(input){
       var card = input.closest('.opt-card');
       if (card) { card.classList.toggle('selected', input.checked); }
@@ -484,6 +505,7 @@ gtag('config', 'G-Y4YW8589B1');
     });
   }
   campaignsBox.addEventListener('change', refresh);
+  socialBox.addEventListener('change', refresh);
   if (numbersSelect) { numbersSelect.addEventListener('change', refresh); }
   Array.prototype.forEach.call(packInputs, function(input){
     input.addEventListener('change', refresh);
