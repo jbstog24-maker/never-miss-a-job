@@ -186,6 +186,11 @@ gtag('config', 'G-Y4YW8589B1');
 <div class="opt-text"><div class="plan-head"><h3>Complemento de Campañas de seguimiento</h3><div class="plan-price">+$39<small>/mes por línea empresarial</small></div></div>
 <p>Tu recepcionista da seguimiento por correo y mensaje de texto por ti, con el nombre de tu empresa: recordatorios de presupuestos, solicitudes de reseñas, recordatorios de citas, novedades y ofertas de temporada para tus clientes y llamantes anteriores. Solo líneas empresariales. Campañas cuesta $39 al mes, y el primer cargo llega después de tu primer mes, así que no suma nada a lo que pagas hoy.</p><p class="hint">Los mensajes de texto se activan después de un registro obligatorio con el operador, que puede tardar unas horas. Tus llamadas se responden desde el primer día.</p></div></div>
 </label>
+<label class="card opt-card" id="social-card">
+<div class="opt-row"><input id="opt-social" type="checkbox"/>
+<div class="opt-text"><div class="plan-head"><h3>Complemento de Publicaciones en redes sociales</h3><div class="plan-price">+$49<small>/mes</small></div></div>
+<p>Escribimos y publicamos por tu empresa todos los días, con tu voz: una publicación al día en una plataforma, la que elijas entre Facebook, LinkedIn o Instagram, con una imagen en cada publicación, publicadas automáticamente según lo programado. Agrega otra plataforma por $10 al mes cada una, u otra publicación al día por $10 al mes cada una. Tú apruebas la dirección de los temas y el primer lote de publicaciones antes de que se publique nada, y puedes pausar, cambiar la dirección o cancelar cuando quieras. Solo líneas empresariales. Publicaciones en redes sociales cuesta $49 al mes: se activa después del registro y se factura mensualmente, así que no se cobra hoy.</p></div></div>
+</label>
 <fieldset>
 <legend>Crédito inicial de llamadas (opcional, pago único)</legend>
 <p class="hint" style="margin:0 0 12px">El crédito paga el tiempo de llamada y los mensajes. La mayoría de las empresas empieza con el paquete de $50. Puedes agregar más crédito cuando quieras desde tu cuenta.</p>
@@ -218,6 +223,7 @@ gtag('config', 'G-Y4YW8589B1');
 </div>
 <form action="https://portal.ringceptionai.com/api/signup/submit" class="form-card" id="signup-form" method="POST">
 <input name="_honey" type="text" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+<input id="social-posting-field" name="social_posting" type="hidden" value="no"/>
 <fieldset>
 <legend>Tus datos de contacto</legend>
 <div class="two">
@@ -378,6 +384,15 @@ gtag('config', 'G-Y4YW8589B1');
     campaignsBox.checked = false;
     campaignsCard.style.display = 'none';
   }
+  var socialCard = document.getElementById('social-card');
+  var socialBox = document.getElementById('opt-social');
+  var socialField = document.getElementById('social-posting-field');
+  if (audience === 'personal') {
+    // Social Media Posting is business lines only, same as campaigns:
+    // hide the toggle entirely for personal accounts.
+    socialBox.checked = false;
+    socialCard.style.display = 'none';
+  }
   var packInputs = document.querySelectorAll('input[name="pack"]');
   var periodInputs = document.querySelectorAll('input[name="period"]');
   var sumToday = document.getElementById('sum-today');
@@ -418,6 +433,11 @@ gtag('config', 'G-Y4YW8589B1');
   }
   function refresh(){
     var campaigns = audience !== 'personal' && campaignsBox.checked;
+    var social = audience !== 'personal' && socialBox.checked;
+    // Social Media Posting is activated after signup and billed monthly:
+    // it never changes the checkout link or what is due today. The pick
+    // travels with the form as the social_posting field (yes when chosen).
+    if (socialField) { socialField.value = social ? 'yes' : 'no'; }
     var pack = selectedPack();
     var annual = selectedPeriod() === 'annual';
     var numQty = selectedNumbers();
@@ -474,6 +494,7 @@ gtag('config', 'G-Y4YW8589B1');
       sumNote.textContent = DEFAULT_NOTE;
     }
     campaignsCard.classList.toggle('selected', campaigns);
+    socialCard.classList.toggle('selected', social);
     Array.prototype.forEach.call(packInputs, function(input){
       var card = input.closest('.opt-card');
       if (card) { card.classList.toggle('selected', input.checked); }
@@ -484,6 +505,7 @@ gtag('config', 'G-Y4YW8589B1');
     });
   }
   campaignsBox.addEventListener('change', refresh);
+  socialBox.addEventListener('change', refresh);
   if (numbersSelect) { numbersSelect.addEventListener('change', refresh); }
   Array.prototype.forEach.call(packInputs, function(input){
     input.addEventListener('change', refresh);
