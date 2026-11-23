@@ -137,6 +137,13 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-Y4YW8589B1');
 </script>
+<style>
+html.lenis{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.js-anim .anim-init{opacity:0}
+@media (prefers-reduced-motion: reduce){.js-anim .anim-init{opacity:1}}
+</style>
+<script>document.documentElement.classList.add('js-anim');</script>
 </head>
 <body>
 <header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="#top"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a class="nav-lang" href="es/index.html">Español</a><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><span class="nav-more"><button class="nav-more-btn" type="button" aria-haspopup="true">More <span aria-hidden="true">▾</span></button><span class="nav-drop"><a href="blog.html">Blog</a><a class="nav-demo" href="#demo">Hear the demo ↗</a><a class="nav-portal" href="https://portal.ringceptionai.com">Portal</a><a class="nav-login" href="https://portal.ringceptionai.com">Log in</a></span></span><a class="nav-signup" href="signup.html">Sign up</a></nav><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a class="mobile-menu-signup" href="signup.html">Get started</a><a class="mobile-menu-portal" href="https://portal.ringceptionai.com">Portal</a><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a class="mobile-menu-demo" href="#demo">Hear the demo</a><a href="https://portal.ringceptionai.com">Log in</a></nav></div></header>
@@ -282,6 +289,74 @@ gtag('config', 'G-Y4YW8589B1');
   document.addEventListener('keydown',function(event){
     if(event.key==='Escape'&&!menu.hidden){closeMenu();}
   });
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !window.gsap || !window.Lenis) { return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  var lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if (id && id.length > 1) {
+        var target = document.querySelector(id);
+        if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -70 }); }
+      }
+    });
+  });
+
+  function prep(els){ els.forEach(function(el){ el.classList.add('anim-init'); }); }
+  function show(el){ el.classList.remove('anim-init'); }
+
+  var heroEls = gsap.utils.toArray('.hero .audience-tabs, .hero .eyebrow, .hero .welcome-line, .hero .callout-pill, #hero-heading, #hero-lead, .hero .btn-row, .hero .who, .hero .phone-art');
+  prep(heroEls);
+  gsap.fromTo(heroEls, { opacity: 0, y: 26 }, {
+    opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.09, delay: 0.1,
+    onStart: function(){ heroEls.forEach(show); },
+    clearProps: 'transform'
+  });
+
+  var wraps = gsap.utils.toArray('main section:not(.hero) .wrap');
+  prep(wraps);
+  wraps.forEach(function(w){
+    gsap.fromTo(w, { opacity: 0, y: 30 }, {
+      opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
+      scrollTrigger: { trigger: w, start: 'top 88%', once: true },
+      onStart: function(){ show(w); },
+      clearProps: 'transform'
+    });
+  });
+
+  var cards = gsap.utils.toArray('.card');
+  prep(cards);
+  ScrollTrigger.batch(cards, {
+    start: 'top 92%', once: true,
+    onEnter: function(batch){
+      gsap.fromTo(batch, { opacity: 0, y: 22 }, {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08,
+        onStart: function(){ batch.forEach(show); },
+        clearProps: 'transform'
+      });
+    }
+  });
+
+  setTimeout(function(){
+    document.querySelectorAll('.anim-init').forEach(function(el){
+      el.classList.remove('anim-init');
+      el.style.opacity = '';
+      el.style.transform = '';
+    });
+  }, 3000);
 })();
 </script>
 </body></html>
