@@ -143,7 +143,7 @@ html.lenis{height:auto}
 .js-anim .anim-init{opacity:0}
 @media (prefers-reduced-motion: reduce){.js-anim .anim-init{opacity:1}}
 .hero .wrap{position:relative;z-index:1}
-.orb{position:absolute;border-radius:50%;filter:blur(55px);pointer-events:none;z-index:0}
+.orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
 .orb-a{width:420px;height:420px;left:-120px;top:-100px;background:radial-gradient(circle,rgba(103,221,250,.35),transparent 65%)}
 .orb-b{width:380px;height:380px;right:-100px;bottom:-140px;background:radial-gradient(circle,rgba(255,173,121,.32),transparent 65%)}
 .card{transition:transform .35s ease,box-shadow .35s ease}
@@ -306,17 +306,21 @@ html.lenis{height:auto}
   if (reduce || !window.gsap || !window.Lenis) { return; }
   gsap.registerPlugin(ScrollTrigger);
 
-  var lenis = new Lenis({ duration: 1.15, smoothWheel: true });
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
-  gsap.ticker.lagSmoothing(0);
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+  var lenis = null;
+  if (finePointer) {
+    lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
 
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     a.addEventListener('click', function(e){
       var id = a.getAttribute('href');
       if (id && id.length > 1) {
         var target = document.querySelector(id);
-        if (target) { e.preventDefault(); lenis.scrollTo(target, { offset: -70 }); }
+        if (target) { e.preventDefault(); if (lenis) { lenis.scrollTo(target, { offset: -70 }); } else { target.scrollIntoView({ behavior: 'smooth' }); } }
       }
     });
   });
@@ -333,8 +337,10 @@ html.lenis{height:auto}
     var orbB = document.createElement('div'); orbB.className = 'orb orb-b';
     hero.insertBefore(orbA, hero.firstChild);
     hero.insertBefore(orbB, hero.firstChild);
-    gsap.to(orbA, { x: 70, y: 40, duration: 9, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-    gsap.to(orbB, { x: -60, y: -45, duration: 11, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+    if (finePointer) {
+      gsap.to(orbA, { x: 70, y: 40, duration: 9, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+      gsap.to(orbB, { x: -60, y: -45, duration: 11, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+    }
   }
 
   // Hero entrance: pieces in sequence, headline one sentence at a time
@@ -344,15 +350,15 @@ html.lenis{height:auto}
   var phoneArt = document.querySelector('.hero .phone-art');
   prep(heroFirst); prep(segs); prep(heroRest); if (phoneArt) { prep([phoneArt]); }
 
-  var tl = gsap.timeline({ delay: 0.1, defaults: { ease: 'power3.out' } });
-  tl.fromTo(heroFirst, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.09, onStart: function(){ showAll(heroFirst); }, clearProps: 'transform' })
-    .fromTo(segs, { opacity: 0, y: 38 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.16, onStart: function(){ showAll(segs); }, clearProps: 'transform' }, '-=0.25')
-    .fromTo(heroRest, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.09, onStart: function(){ showAll(heroRest); }, clearProps: 'transform' }, '-=0.3')
-    .fromTo(phoneArt, { opacity: 0, y: 34, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.0, onStart: function(){ if (phoneArt) { show(phoneArt); } }, clearProps: 'scale' }, '-=0.55');
+  var tl = gsap.timeline({ delay: 0.05, defaults: { ease: 'power3.out' } });
+  tl.fromTo(heroFirst, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, onStart: function(){ showAll(heroFirst); }, clearProps: 'transform' })
+    .fromTo(segs, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, stagger: 0.1, onStart: function(){ showAll(segs); }, clearProps: 'transform' }, '-=0.2')
+    .fromTo(heroRest, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, onStart: function(){ showAll(heroRest); }, clearProps: 'transform' }, '-=0.25')
+    .fromTo(phoneArt, { opacity: 0, y: 22, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, onStart: function(){ if (phoneArt) { show(phoneArt); } }, clearProps: 'scale' }, '-=0.4');
 
   // The framed picture gently floats, and tilts toward the mouse on desktop
-  if (phoneArt) {
-    gsap.to(phoneArt, { y: -10, duration: 3.2, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 2.4 });
+  if (phoneArt && finePointer) {
+    gsap.to(phoneArt, { y: -10, duration: 3.2, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 1.6 });
     if (window.matchMedia('(pointer: fine)').matches && hero) {
       hero.addEventListener('mousemove', function(e){
         var r = hero.getBoundingClientRect();
@@ -373,17 +379,17 @@ html.lenis{height:auto}
   }
 
   // Pictures drift gently against the scroll
-  gsap.utils.toArray('main section:not(.hero) figure img').forEach(function(img){
+  if (finePointer) { gsap.utils.toArray('main section:not(.hero) figure img').forEach(function(img){
     gsap.fromTo(img, { yPercent: -4 }, { yPercent: 4, ease: 'none',
       scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: true } });
-  });
+  }); }
 
   // Sections rise into view
   var wraps = gsap.utils.toArray('main section:not(.hero) .wrap');
   prep(wraps);
   wraps.forEach(function(w){
-    gsap.fromTo(w, { opacity: 0, y: 44 }, {
-      opacity: 1, y: 0, duration: 1.0, ease: 'power3.out',
+    gsap.fromTo(w, { opacity: 0, y: 28 }, {
+      opacity: 1, y: 0, duration: 0.75, ease: 'power3.out',
       scrollTrigger: { trigger: w, start: 'top 88%', once: true },
       onStart: function(){ show(w); },
       clearProps: 'transform'
@@ -396,8 +402,8 @@ html.lenis{height:auto}
   ScrollTrigger.batch(cards, {
     start: 'top 92%', once: true,
     onEnter: function(batch){
-      gsap.fromTo(batch, { opacity: 0, y: 30 }, {
-        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1,
+      gsap.fromTo(batch, { opacity: 0, y: 20 }, {
+        opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06,
         onStart: function(){ batch.forEach(show); },
         clearProps: 'transform'
       });
