@@ -142,6 +142,12 @@ html.lenis{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 .js-anim .anim-init{opacity:0}
 @media (prefers-reduced-motion: reduce){.js-anim .anim-init{opacity:1}}
+.hero .wrap{position:relative;z-index:1}
+.orb{position:absolute;border-radius:50%;filter:blur(55px);pointer-events:none;z-index:0}
+.orb-a{width:420px;height:420px;left:-120px;top:-100px;background:radial-gradient(circle,rgba(103,221,250,.35),transparent 65%)}
+.orb-b{width:380px;height:380px;right:-100px;bottom:-140px;background:radial-gradient(circle,rgba(255,173,121,.32),transparent 65%)}
+.card{transition:transform .35s ease,box-shadow .35s ease}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 42px rgba(11,20,41,.14)}
 </style>
 <script>document.documentElement.classList.add('js-anim');</script>
 </head>
@@ -317,39 +323,88 @@ html.lenis{height:auto}
 
   function prep(els){ els.forEach(function(el){ el.classList.add('anim-init'); }); }
   function show(el){ el.classList.remove('anim-init'); }
+  function showAll(els){ els.forEach(show); }
 
-  var heroEls = gsap.utils.toArray('.hero .audience-tabs, .hero .eyebrow, .hero .welcome-line, .hero .callout-pill, #hero-heading, #hero-lead, .hero .btn-row, .hero .who, .hero .phone-art');
-  prep(heroEls);
-  gsap.fromTo(heroEls, { opacity: 0, y: 26 }, {
-    opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.09, delay: 0.1,
-    onStart: function(){ heroEls.forEach(show); },
-    clearProps: 'transform'
+  var hero = document.querySelector('.hero');
+
+  // Soft glowing orbs drifting behind the hero content
+  if (hero) {
+    var orbA = document.createElement('div'); orbA.className = 'orb orb-a';
+    var orbB = document.createElement('div'); orbB.className = 'orb orb-b';
+    hero.insertBefore(orbA, hero.firstChild);
+    hero.insertBefore(orbB, hero.firstChild);
+    gsap.to(orbA, { x: 70, y: 40, duration: 9, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+    gsap.to(orbB, { x: -60, y: -45, duration: 11, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+  }
+
+  // Hero entrance: pieces in sequence, headline one sentence at a time
+  var heroFirst = gsap.utils.toArray('.hero .audience-tabs, .hero .eyebrow, .hero .welcome-line, .hero .callout-pill');
+  var segs = gsap.utils.toArray('#hero-heading .h1-seg');
+  var heroRest = gsap.utils.toArray('#hero-lead, .hero .btn-row, .hero .who');
+  var phoneArt = document.querySelector('.hero .phone-art');
+  prep(heroFirst); prep(segs); prep(heroRest); if (phoneArt) { prep([phoneArt]); }
+
+  var tl = gsap.timeline({ delay: 0.1, defaults: { ease: 'power3.out' } });
+  tl.fromTo(heroFirst, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.09, onStart: function(){ showAll(heroFirst); }, clearProps: 'transform' })
+    .fromTo(segs, { opacity: 0, y: 38 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.16, onStart: function(){ showAll(segs); }, clearProps: 'transform' }, '-=0.25')
+    .fromTo(heroRest, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.09, onStart: function(){ showAll(heroRest); }, clearProps: 'transform' }, '-=0.3')
+    .fromTo(phoneArt, { opacity: 0, y: 34, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.0, onStart: function(){ if (phoneArt) { show(phoneArt); } }, clearProps: 'scale' }, '-=0.55');
+
+  // The framed picture gently floats, and tilts toward the mouse on desktop
+  if (phoneArt) {
+    gsap.to(phoneArt, { y: -10, duration: 3.2, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 2.4 });
+    if (window.matchMedia('(pointer: fine)').matches && hero) {
+      hero.addEventListener('mousemove', function(e){
+        var r = hero.getBoundingClientRect();
+        var dx = (e.clientX - r.left) / r.width - 0.5;
+        var dy = (e.clientY - r.top) / r.height - 0.5;
+        gsap.to(phoneArt, { rotationY: dx * 7, rotationX: -dy * 7, transformPerspective: 900, duration: 0.6, ease: 'power2.out' });
+      });
+      hero.addEventListener('mouseleave', function(){
+        gsap.to(phoneArt, { rotationY: 0, rotationX: 0, duration: 0.7, ease: 'power2.out' });
+      });
+    }
+  }
+
+  // The demo phone rings: soft pulsing rings
+  var rings = gsap.utils.toArray('.demo-art svg circle');
+  if (rings.length) {
+    gsap.to(rings, { scale: 1.05, opacity: 0.6, transformOrigin: '50% 50%', duration: 2.1, yoyo: true, repeat: -1, ease: 'sine.inOut', stagger: 0.3 });
+  }
+
+  // Pictures drift gently against the scroll
+  gsap.utils.toArray('main section:not(.hero) figure img').forEach(function(img){
+    gsap.fromTo(img, { yPercent: -4 }, { yPercent: 4, ease: 'none',
+      scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
+  // Sections rise into view
   var wraps = gsap.utils.toArray('main section:not(.hero) .wrap');
   prep(wraps);
   wraps.forEach(function(w){
-    gsap.fromTo(w, { opacity: 0, y: 30 }, {
-      opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
+    gsap.fromTo(w, { opacity: 0, y: 44 }, {
+      opacity: 1, y: 0, duration: 1.0, ease: 'power3.out',
       scrollTrigger: { trigger: w, start: 'top 88%', once: true },
       onStart: function(){ show(w); },
       clearProps: 'transform'
     });
   });
 
+  // Cards rise in a stagger
   var cards = gsap.utils.toArray('.card');
   prep(cards);
   ScrollTrigger.batch(cards, {
     start: 'top 92%', once: true,
     onEnter: function(batch){
-      gsap.fromTo(batch, { opacity: 0, y: 22 }, {
-        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08,
+      gsap.fromTo(batch, { opacity: 0, y: 30 }, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.1,
         onStart: function(){ batch.forEach(show); },
         clearProps: 'transform'
       });
     }
   });
 
+  // Safety: nothing stays hidden if anything above stalls
   setTimeout(function(){
     document.querySelectorAll('.anim-init').forEach(function(el){
       el.classList.remove('anim-init');
