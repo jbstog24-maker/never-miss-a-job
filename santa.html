@@ -56,6 +56,7 @@ form .btn{width:100%;margin-top:22px}
 .choice span{font-size:.9rem;color:var(--muted)}
 .choice.selected{border-color:var(--pine);box-shadow:0 0 0 2px var(--pine)}
 .char-emoji{font-size:2rem;line-height:1.1;flex:none}
+.char-thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:none;box-shadow:0 2px 8px rgba(90,40,20,.15)}
 .note-box{background:#eef7ee;border:1px solid #7fb069;border-radius:16px;padding:18px 20px;margin-top:18px;font-size:.94rem}
 .note-box strong{color:#14532d}
 footer{background:var(--deep);color:#fdf8ec;padding:36px 0}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}footer p{margin:8px 0 0;max-width:440px;font-size:.92rem;color:#cfe3c8}footer a{color:var(--gold-soft)}
@@ -110,13 +111,14 @@ gtag('config', 'G-Y4YW8589B1');
 
 <section><div class="wrap">
 <div class="eyebrow">Meet your callers</div>
-<h2>Five friends are waiting by the phone</h2>
+<h2>Six friends are waiting by the phone</h2>
 <div class="grid four">
 <article class="card char-card"><img class="char-img" src="santa-scene.jpg" alt="Santa Claus on the phone at the North Pole" loading="lazy"/><h3>Santa Claus</h3><p>The big man himself. Warm, jolly, and he knows who has been good this year.</p><button class="btn pick-char" type="button" data-character="Santa Claus">Pick Santa</button></article>
 <article class="card char-card"><img class="char-img" src="jingle-scene.jpg" alt="Jingle the Elf on the phone in the toy workshop" loading="lazy"/><h3>Jingle the Elf</h3><p>Santa's cheeriest helper, reporting live from the toy workshop with all the North Pole news.</p><button class="btn pick-char" type="button" data-character="Jingle the Elf">Pick Jingle</button></article>
 <article class="card char-card"><img class="char-img" src="pip-scene.jpg" alt="Pip the Elf on the phone at the candy cane machine" loading="lazy"/><h3>Pip the Elf</h3><p>Santa's littlest helper, sweet and giggly, calling from behind the giant candy cane machine.</p><button class="btn pick-char" type="button" data-character="Pip the Junior Helper Elf">Pick Pip</button></article>
 <article class="card char-card"><img class="char-img" src="rudolph-scene.jpg" alt="Rudolph at the North Pole phone under the northern lights" loading="lazy"/><h3>Rudolph</h3><p>The red-nosed reindeer, with stories from the sleigh team and a nose that lights the way.</p><button class="btn pick-char" type="button" data-character="Rudolph">Pick Rudolph</button></article>
 <article class="card char-card"><img class="char-img" src="frosty-scene.jpg" alt="Frosty the Snowman on the phone in the snow" loading="lazy"/><h3>Frosty the Snowman</h3><p>The happiest snowman ever to come to life in a magic hat. Jolly, playful, and always ready for a snow day.</p><button class="btn pick-char" type="button" data-character="Frosty the Snowman">Pick Frosty</button></article>
+<article class="card char-card"><img class="char-img" src="reindeer-gang.jpg" alt="The Reindeer Gang laughing around the stable phone" loading="lazy"/><h3>The Reindeer Gang</h3><p>Dasher, Blitzen, Comet, Cupid, and the whole stable crew on one call, talking over each other, goofy and excited, and just a little salty that Rudolph gets all the attention. Expect beautiful chaos.</p><button class="btn pick-char" type="button" data-character="The Reindeer Gang">Pick the Gang</button></article>
 </div>
 </div></section>
 
@@ -138,11 +140,12 @@ gtag('config', 'G-Y4YW8589B1');
 
 <fieldset>
 <legend>1. Who should call?</legend>
-<label class="choice selected"><input type="radio" name="character" value="Santa Claus" checked/><span class="char-emoji" aria-hidden="true">🎅</span><span><strong>Santa Claus</strong><span>The big man himself. Warm, jolly, and he knows who has been good this year.</span></span></label>
-<label class="choice"><input type="radio" name="character" value="Jingle the Elf"/><span class="char-emoji" aria-hidden="true">🧝</span><span><strong>Jingle the Elf</strong><span>Santa's cheeriest helper, reporting live from the toy workshop.</span></span></label>
-<label class="choice"><input type="radio" name="character" value="Pip the Junior Helper Elf"/><span class="char-emoji" aria-hidden="true">🍬</span><span><strong>Pip the Elf</strong><span>Santa's littlest helper, sweet and giggly, on a secret call from the candy cane machine.</span></span></label>
-<label class="choice"><input type="radio" name="character" value="Rudolph"/><span class="char-emoji" aria-hidden="true">🦌</span><span><strong>Rudolph</strong><span>The red-nosed reindeer, with stories from the sleigh team.</span></span></label>
-<label class="choice"><input type="radio" name="character" value="Frosty the Snowman"/><span class="char-emoji" aria-hidden="true">⛄</span><span><strong>Frosty the Snowman</strong><span>The snowman who came to life in a magic hat. Jolly, playful, and full of winter fun.</span></span></label>
+<label class="choice selected"><input type="radio" name="character" value="Santa Claus" checked/><img class="char-thumb" src="santa-scene.jpg" alt="" loading="lazy"/><span><strong>Santa Claus</strong><span>The big man himself. Warm, jolly, and he knows who has been good this year.</span></span></label>
+<label class="choice"><input type="radio" name="character" value="Jingle the Elf"/><img class="char-thumb" src="jingle-scene.jpg" alt="" loading="lazy"/><span><strong>Jingle the Elf</strong><span>Santa's cheeriest helper, reporting live from the toy workshop.</span></span></label>
+<label class="choice"><input type="radio" name="character" value="Pip the Junior Helper Elf"/><img class="char-thumb" src="pip-scene.jpg" alt="" loading="lazy"/><span><strong>Pip the Elf</strong><span>Santa's littlest helper, sweet and giggly, on a secret call from the candy cane machine.</span></span></label>
+<label class="choice"><input type="radio" name="character" value="Rudolph"/><img class="char-thumb" src="rudolph-scene.jpg" alt="" loading="lazy"/><span><strong>Rudolph</strong><span>The red-nosed reindeer, with stories from the sleigh team.</span></span></label>
+<label class="choice"><input type="radio" name="character" value="Frosty the Snowman"/><img class="char-thumb" src="frosty-scene.jpg" alt="" loading="lazy"/><span><strong>Frosty the Snowman</strong><span>The snowman who came to life in a magic hat. Jolly, playful, and full of winter fun.</span></span></label>
+<label class="choice"><input type="radio" name="character" value="The Reindeer Gang"/><img class="char-thumb" src="reindeer-gang.jpg" alt="" loading="lazy"/><span><strong>The Reindeer Gang</strong><span>The whole stable crew at once: Dasher, Blitzen, Comet, and Cupid talking over each other, goofy and excited, and just a little salty that Rudolph gets all the attention.</span></span></label>
 </fieldset>
 
 <fieldset>
@@ -150,6 +153,13 @@ gtag('config', 'G-Y4YW8589B1');
 <label class="choice selected"><input type="radio" name="package" value="One live call - $5" checked/><span><strong>One live call: $5</strong><span>One scheduled call, up to 3 minutes, recording emailed after.</span></span></label>
 <label class="choice"><input type="radio" name="package" value="Weekly surprise calls until Christmas Eve - $12"/><span><strong>Weekly surprise calls until Christmas Eve: $12</strong><span>One call a week, every week until Christmas Eve, and the North Pole surprises you: Santa, Jingle, Pip, Rudolph, and Frosty take turns, a different character calling each week. Your child never knows who is on the phone until it rings. A recording of every call is emailed to you. One payment of $12, no subscription.</span></span></label>
 </fieldset>
+
+<!-- VIDEO ADD-ON: held from this publish until the Ringception Stripe combo links land, then this fieldset is restored and LINKS.singleVideo / surpriseVideo point at the combo links.
+<fieldset>
+<legend>3. Add a personalized video? (optional)</legend>
+<label class="choice"><input type="checkbox" id="video-addon" name="video_addon" value="Personalized video - add $10"/><span><strong>Personalized video message: add $10</strong><span>The character you picked above records a video talking right to your child by name, with their Christmas wishes and proud moment woven in. It arrives in your email to keep, save, and share with family.</span></span></label>
+</fieldset>
+-->
 
 <fieldset>
 <legend>3. About you (the parent)</legend>
@@ -268,16 +278,24 @@ gtag('config', 'G-Y4YW8589B1');
   });
   var LINKS={
     single:'https://buy.stripe.com/28EbJ13v86F60Oc7Nu6c00u',
-    surprise:'https://buy.stripe.com/8x2eVd0iW1kM54sgk06c00y'
+    surprise:'https://buy.stripe.com/8x2eVd0iW1kM54sgk06c00y',
+    singleVideo:'https://buy.stripe.com/28EbJ13v86F60Oc7Nu6c00u',
+    surpriseVideo:'https://buy.stripe.com/8x2eVd0iW1kM54sgk06c00y'
   };
   function syncNext(){
     var pkg=document.querySelector('input[name="package"]:checked').value;
     var email=document.getElementById('p-email').value.trim();
-    var url=pkg.indexOf('surprise')!==-1?LINKS.surprise:LINKS.single;
+    var va=document.getElementById('video-addon');var video=va?va.checked:false;
+    var url;
+    if(pkg.indexOf('surprise')!==-1){url=video?LINKS.surpriseVideo:LINKS.surprise;}
+    else{url=video?LINKS.singleVideo:LINKS.single;}
     if(email){url+='?prefilled_email='+encodeURIComponent(email);}
     document.getElementById('fs-next').value=url;
   }
   document.getElementById('p-email').addEventListener('input',syncNext);
+  var vaEl=document.getElementById('video-addon');if(vaEl){vaEl.addEventListener('change',syncNext);}
+  document.querySelectorAll('input[name="package"]').forEach(function(r){r.addEventListener('change',syncNext);});
+  document.getElementById('santa-form').addEventListener('submit',syncNext);
   var dateInput=document.getElementById('call-date');
   var today=new Date();var max=new Date('2026-12-24T12:00:00');
   function iso(d){return d.toISOString().slice(0,10);}
