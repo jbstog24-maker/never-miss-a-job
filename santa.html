@@ -167,7 +167,7 @@ gtag('config', 'G-Y4YW8589B1');
 <section class="adults-only white"><div class="wrap">
 <div class="eyebrow">For the grown-ups, 18+</div>
 <h2>And for the adults on the naughty list: Fed-Up Santa</h2>
-<p class="lead-dark">Same Santa, zero holiday cheer left. He's overworked, underpaid, sarcastic, and completely over it, and he'll call your friend, your coworker, or your brother-in-law and roast their whole year. Book it like a normal call below: put the grown-up's name where it asks for the child's name, and know that the wishes and proud moment you type in become Santa's material. Adults only. <strong>Rated R:</strong> he swears, he complains nonstop, and he holds nothing back. Not for the easily offended. If a kid picks up, he turns jolly on the spot. If they do not pick up, he tries again, up to 3 attempts before he gives up, and he complains about every single one. The recording of the call is emailed to you, the buyer, never to them.</p>
+<p class="lead-dark">Same Santa, zero holiday cheer left. He's overworked, underpaid, sarcastic, and completely over it, and he'll call your friend, your coworker, or your brother-in-law and roast their whole year. Book it below: enter the grown-up's name and phone number, and know that the details you type in become the character's material. Adults only. <strong>Rated R:</strong> he swears, he complains nonstop, and he holds nothing back. Not for the easily offended. If a kid picks up, he turns jolly on the spot. If they do not pick up, he tries again, up to 3 attempts before he gives up, and he complains about every single one. The recording of the call is emailed to you, the buyer, never to them.</p>
 <div class="grid four">
 <article class="card char-card"><img class="char-img" src="fedup-scene.jpg" alt="Fed-Up Santa on the phone at the North Pole" loading="lazy"/><h3>Fed-Up Santa</h3><p>Centuries on the job, no raise, no vacation, and the elves just unionized. He has complaints about Rudolph, Frosty, and Mrs. Claus too, and he is not shy about sharing them. He's read your friend's whole year and he was not impressed.</p><button class="btn pick-char" type="button" data-character="Fed-Up Santa">Pick Fed-Up Santa</button><button class="btn hear-btn" type="button" data-audio="intro-fedup.mp3">🔊 Hear Fed-Up Santa</button></article>
 <article class="card char-card"><img class="char-img" src="grinch-scene.jpg" alt="The Grinch on the phone in his cave on Mount Crumpit" loading="lazy"/><h3>The Grinch</h3><p>Santa's neighbor on Mount Crumpit, and every bit as foul-mouthed as Fed-Up Santa when he gets going. He is rude, cynical, and gloriously offensive about Christmas itself. He hates the noise, the feasts, and especially the singing, and he will tell you all about it, right up until his heart grows a size or two against his will.</p><button class="btn pick-char" type="button" data-character="The Grinch">Pick the Grinch</button><button class="btn hear-btn" type="button" data-audio="intro-grinch.mp3">🔊 Hear the Grinch</button></article>
@@ -232,7 +232,7 @@ gtag('config', 'G-Y4YW8589B1');
 <fieldset>
 <legend>2. Pick your package</legend>
 <label class="choice selected"><input type="radio" name="package" value="One live call - $5" checked/><span><strong>One live call: $5</strong><span>One scheduled call, up to 3 minutes, recording emailed after.</span></span></label>
-<label class="choice"><input type="radio" name="package" value="Weekly surprise calls until Christmas Eve - $12"/><span><strong>Weekly surprise calls until Christmas Eve: $12</strong><span>One call a week, every week until Christmas Eve, and the North Pole surprises you: Santa, Jingle, Pip, Rudolph, and Frosty take turns, a different character calling each week. Your child never knows who is on the phone until it rings. A recording of every call is emailed to you. One payment of $12, no subscription.</span></span></label>
+<label class="choice" id="weekly-package-choice"><input type="radio" name="package" value="Weekly surprise calls until Christmas Eve - $12"/><span><strong>Weekly surprise calls until Christmas Eve: $12</strong><span>One call a week, every week until Christmas Eve, and the North Pole surprises you: Santa, Jingle, Pip, Rudolph, and Frosty take turns, a different character calling each week. Your child never knows who is on the phone until it rings. A recording of every call is emailed to you. One payment of $12, no subscription.</span></span></label>
 </fieldset>
 
 <fieldset>
@@ -241,28 +241,28 @@ gtag('config', 'G-Y4YW8589B1');
 </fieldset>
 
 <fieldset>
-<legend>4. About you (the parent)</legend>
+<legend id="buyer-legend">4. About you (the parent)</legend>
 <label for="p-name">Your name</label>
 <input id="p-name" name="parent_name" type="text" autocomplete="name" required/>
 <label for="p-email">Your email</label>
 <input id="p-email" name="parent_email" type="email" autocomplete="email" required/>
 <p class="hint">Your call recording is emailed here after the call, so please double-check it.</p>
-<label for="p-phone">Your phone number</label>
+<label for="p-phone" id="phone-label">Your phone number</label>
 <input id="p-phone" name="parent_phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567" required/>
-<p class="hint">The character calls this number. Please be with your child when it rings.</p>
+<p class="hint" id="phone-hint">The character calls this number. Please be with your child when it rings.</p>
 </fieldset>
 
 <fieldset>
-<legend>5. About your child</legend>
-<label for="c-name">Child's first name</label>
+<legend id="recipient-legend">5. About your child</legend>
+<label for="c-name" id="recipient-name-label">Child's first name</label>
 <input id="c-name" name="child_name" type="text" required/>
-<label for="c-age">Child's age (optional)</label>
-<input id="c-age" name="child_age" type="number" min="1" max="14"/>
-<label for="c-wish">What do they want for Christmas?</label>
+<div id="recipient-age-wrap"><label for="c-age">Child's age (optional)</label>
+<input id="c-age" name="child_age" type="number" min="1" max="14"/></div>
+<label for="c-wish" id="wishes-label">What do they want for Christmas?</label>
 <textarea id="c-wish" name="christmas_wishes" placeholder="A bike, a puppy coloring book, a telescope..." required></textarea>
 <label for="c-proud">One thing they did well this year, or a fun detail</label>
 <textarea id="c-proud" name="proud_moment" placeholder="Learned to ride without training wheels, helps her little brother, loves dinosaurs, has a dog named Biscuit..."></textarea>
-<p class="hint">This is the magic part. The character will mention it like they have been watching all year.</p>
+<p class="hint" id="recipient-hint">This is the magic part. The character will mention it like they have been watching all year.</p>
 </fieldset>
 
 <fieldset>
@@ -317,7 +317,7 @@ gtag('config', 'G-Y4YW8589B1');
 <p class="hint">For the weekly surprise package, this is the date of the first call. The calls then come at this same time every week until Christmas Eve.</p>
 </fieldset>
 
-<label class="choice"><input type="checkbox" id="consent" required/><span><strong>I am this child's parent or guardian</strong><span>I will be with my child for the call. I understand the call is recorded and the recording will be emailed to me.</span></span></label>
+<label class="choice"><input type="checkbox" id="consent" required/><span><strong id="consent-title">I am this child's parent or guardian</strong><span id="consent-text">I will be with my child for the call. I understand the call is recorded and the recording will be emailed to me.</span></span></label>
 
 <button class="btn" id="santa-submit" type="submit">Book it and go to payment 🎁</button>
 <p class="fineprint" id="santa-fineprint">After this form you will land on our secure Stripe payment page to finish. Your booking is confirmed once payment is complete. If we cannot reach you at call time, we will try once more, then email you to reschedule. Calls are answered by a friendly AI character voice from the North Pole hotline, powered by Ringception AI.</p>
@@ -400,8 +400,40 @@ gtag('config', 'G-Y4YW8589B1');
 <script>
 (function(){
   var btns = document.querySelectorAll('.mode-btn');
+  function setText(id, text){ var el = document.getElementById(id); if(el) el.textContent = text; }
+  function syncForm(mode){
+    var adult = mode === 'adults';
+    setText('buyer-legend', adult ? '4. About you (the buyer)' : '4. About you (the parent)');
+    setText('phone-label', adult ? "Adult's phone number" : 'Your phone number');
+    setText('phone-hint', adult ? 'The character calls this number. The recording is emailed to you, the buyer, at the email above.' : 'The character calls this number. Please be with your child when it rings.');
+    setText('recipient-legend', adult ? '5. About the adult receiving the call' : '5. About your child');
+    setText('recipient-name-label', adult ? "Adult's name" : "Child's first name");
+    var nameInput = document.getElementById('c-name');
+    if(nameInput) nameInput.name = adult ? 'adult_name' : 'child_name';
+    var ageWrap = document.getElementById('recipient-age-wrap');
+    if(ageWrap) ageWrap.style.display = adult ? 'none' : '';
+    var ageInput = document.getElementById('c-age');
+    if(ageInput) ageInput.disabled = adult;
+    setText('wishes-label', adult ? 'What should the character know about them?' : 'What do they want for Christmas?');
+    var wish = document.getElementById('c-wish');
+    if(wish) wish.placeholder = adult ? 'A promotion, a fantasy football disaster, an embarrassing story, a long-running joke...' : 'A bike, a puppy coloring book, a telescope...';
+    setText('recipient-hint', adult ? "This becomes the character's material for the call." : 'This is the magic part. The character will mention it like they have been watching all year.');
+    setText('consent-title', adult ? 'I confirm the person receiving this call is an adult' : "I am this child's parent or guardian");
+    setText('consent-text', adult ? 'They are 18 or older. I understand the call is recorded and the recording will be emailed to me, the buyer.' : 'I will be with my child for the call. I understand the call is recorded and the recording will be emailed to me.');
+    var weekly = document.getElementById('weekly-package-choice');
+    var weeklyRadio = weekly ? weekly.querySelector('input[name="package"]') : null;
+    if(weekly) weekly.style.display = adult ? 'none' : '';
+    if(weeklyRadio){
+      weeklyRadio.disabled = adult;
+      if(adult && weeklyRadio.checked){
+        var single = document.querySelector('input[name="package"][value="One live call - $5"]');
+        if(single){ single.checked = true; single.dispatchEvent(new Event('change', {bubbles:true})); }
+      }
+    }
+  }
   function setMode(mode){
     document.body.setAttribute('data-mode', mode);
+    syncForm(mode);
     btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-set-mode') === mode); });
     var fed = document.querySelector('input[name="character"][value="Fed-Up Santa"]');
     if(mode === 'adults' && fed && !fed.checked){ fed.checked = true; fed.dispatchEvent(new Event('change', {bubbles:true})); }
@@ -412,6 +444,7 @@ gtag('config', 'G-Y4YW8589B1');
     }
   }
   btns.forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-set-mode')); }); });
+  syncForm(document.body.getAttribute('data-mode') || 'kids');
 })();
 </script>
 
