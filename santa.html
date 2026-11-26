@@ -235,7 +235,7 @@ gtag('config', 'G-Y4YW8589B1');
 <label class="choice" id="weekly-package-choice"><input type="radio" name="package" value="Weekly surprise calls until Christmas Eve - $12"/><span><strong>Weekly surprise calls until Christmas Eve: $12</strong><span>One call a week, every week until Christmas Eve, and the North Pole surprises you: Santa, Jingle, Pip, Rudolph, and Frosty take turns, a different character calling each week. Your child never knows who is on the phone until it rings. A recording of every call is emailed to you. One payment of $12, no subscription.</span></span></label>
 </fieldset>
 
-<fieldset>
+<fieldset id="video-fieldset">
 <legend>3. Add a personalized video? (optional)</legend>
 <label class="choice"><input type="checkbox" id="video-addon" name="video_addon" value="Personalized video - add $7"/><span><strong>Personalized video message: add $7</strong><span>The character you picked above records a video talking right to your child by name, with their Christmas wishes and proud moment woven in. It arrives in your email to keep, save, and share with family.</span></span></label>
 </fieldset>
@@ -260,13 +260,13 @@ gtag('config', 'G-Y4YW8589B1');
 <input id="c-age" name="child_age" type="number" min="1" max="14"/></div>
 <label for="c-wish" id="wishes-label">What do they want for Christmas?</label>
 <textarea id="c-wish" name="christmas_wishes" placeholder="A bike, a puppy coloring book, a telescope..." required></textarea>
-<label for="c-proud">One thing they did well this year, or a fun detail</label>
+<label for="c-proud" id="proud-label">One thing they did well this year, or a fun detail</label>
 <textarea id="c-proud" name="proud_moment" placeholder="Learned to ride without training wheels, helps her little brother, loves dinosaurs, has a dog named Biscuit..."></textarea>
 <p class="hint" id="recipient-hint">This is the magic part. The character will mention it like they have been watching all year.</p>
 </fieldset>
 
 <fieldset>
-<legend>6. When should they call?</legend>
+<legend id="schedule-legend">6. When should they call?</legend>
 <div class="two">
 <div><label for="call-date">Date</label>
 <input id="call-date" name="call_date" type="date" required/></div>
@@ -314,7 +314,7 @@ gtag('config', 'G-Y4YW8589B1');
 <option value="America/Anchorage">Alaska</option>
 <option value="Pacific/Honolulu">Hawaii</option>
 </select>
-<p class="hint">For the weekly surprise package, this is the date of the first call. The calls then come at this same time every week until Christmas Eve.</p>
+<p class="hint" id="weekly-hint">For the weekly surprise package, this is the date of the first call. The calls then come at this same time every week until Christmas Eve.</p>
 </fieldset>
 
 <label class="choice"><input type="checkbox" id="consent" required/><span><strong id="consent-title">I am this child's parent or guardian</strong><span id="consent-text">I will be with my child for the call. I understand the call is recorded and the recording will be emailed to me.</span></span></label>
@@ -403,10 +403,11 @@ gtag('config', 'G-Y4YW8589B1');
   function setText(id, text){ var el = document.getElementById(id); if(el) el.textContent = text; }
   function syncForm(mode){
     var adult = mode === 'adults';
-    setText('buyer-legend', adult ? '4. About you (the buyer)' : '4. About you (the parent)');
+    setText('buyer-legend', adult ? '3. About you (the buyer)' : '4. About you (the parent)');
     setText('phone-label', adult ? "Adult's phone number" : 'Your phone number');
     setText('phone-hint', adult ? 'The character calls this number. The recording is emailed to you, the buyer, at the email above.' : 'The character calls this number. Please be with your child when it rings.');
-    setText('recipient-legend', adult ? '5. About the adult receiving the call' : '5. About your child');
+    setText('recipient-legend', adult ? '4. About the adult receiving the call' : '5. About your child');
+    setText('schedule-legend', adult ? '5. When should they call?' : '6. When should they call?');
     setText('recipient-name-label', adult ? "Adult's name" : "Child's first name");
     var nameInput = document.getElementById('c-name');
     if(nameInput) nameInput.name = adult ? 'adult_name' : 'child_name';
@@ -420,6 +421,16 @@ gtag('config', 'G-Y4YW8589B1');
     setText('recipient-hint', adult ? "This becomes the character's material for the call." : 'This is the magic part. The character will mention it like they have been watching all year.');
     setText('consent-title', adult ? 'I confirm the person receiving this call is an adult' : "I am this child's parent or guardian");
     setText('consent-text', adult ? 'They are 18 or older. I understand the call is recorded and the recording will be emailed to me, the buyer.' : 'I will be with my child for the call. I understand the call is recorded and the recording will be emailed to me.');
+    var videoFs = document.getElementById('video-fieldset');
+    if(videoFs) videoFs.style.display = adult ? 'none' : '';
+    var va = document.getElementById('video-addon');
+    if(va){
+      if(adult && va.checked){ va.checked = false; va.dispatchEvent(new Event('change', {bubbles:true})); }
+      va.disabled = adult;
+    }
+    var weeklyHint = document.getElementById('weekly-hint');
+    if(weeklyHint) weeklyHint.style.display = adult ? 'none' : '';
+    setText('proud-label', adult ? 'Something they did this year, or a fun detail the character can use' : 'One thing they did well this year, or a fun detail');
     var weekly = document.getElementById('weekly-package-choice');
     var weeklyRadio = weekly ? weekly.querySelector('input[name="package"]') : null;
     if(weekly) weekly.style.display = adult ? 'none' : '';
