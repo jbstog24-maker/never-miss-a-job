@@ -107,6 +107,17 @@ body[data-mode="adults"] .kids-only{display:none!important}
 .mode-btn{border:0;background:transparent;padding:9px 20px;border-radius:999px;font-weight:800;cursor:pointer;font-size:16px;color:#14532d}
 .mode-btn.active{background:#14532d;color:#fdf6ec}
 .mode-btn.active[data-set-mode="adults"]{background:#7a1f1f}
+
+/* Share control (added 2026-11-25) */
+.share-wrap{position:relative;display:inline-flex}
+.share-btn{border:2px solid var(--gold-soft);background:var(--red);color:#fff;padding:9px 20px;border-radius:999px;font-weight:800;cursor:pointer;font-size:16px;line-height:1.2;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.share-btn:hover,.share-btn:focus-visible{background:var(--red-dark)}
+.share-menu{position:absolute;top:calc(100% + 10px);right:0;z-index:1200;min-width:230px;background:var(--cream);color:var(--ink);border:2px solid var(--gold-soft);border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.35);padding:8px;text-align:left}
+.share-menu[hidden]{display:none}
+.share-menu a,.share-menu button{display:flex;width:100%;align-items:center;gap:10px;padding:11px 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);font:inherit;font-weight:700;text-decoration:none;cursor:pointer;text-align:left}
+.share-menu a:hover,.share-menu a:focus-visible,.share-menu button:hover,.share-menu button:focus-visible{background:#f3e5bd;text-decoration:none}
+.share-status{min-height:1.4em;padding:2px 12px 6px;color:var(--pine);font-size:.88rem;font-weight:700}
+@media(max-width:520px){.share-menu{position:fixed;left:16px;right:16px;top:auto;min-width:0}.share-btn{padding:9px 16px}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4YW8589B1"></script>
@@ -119,7 +130,7 @@ gtag('config', 'G-Y4YW8589B1');
 </head>
 <body data-mode="kids">
 <header class="site-header"><div class="wrap"><a aria-label="Ringception AI home" class="brand" href="index.html"><img alt="Ringception AI" class="brand-logo-img" height="56" src="logo.png" width="56"/><span>Ringception <span>AI</span></span></a><nav aria-label="Main navigation"><a class="nav-lang" href="es/index.html">Español</a><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><span class="nav-more"><button class="nav-more-btn" type="button" aria-haspopup="true">More <span aria-hidden="true">▾</span></button><span class="nav-drop"><a href="blog.html">Blog</a><a class="nav-portal" href="https://portal.ringceptionai.com">Portal</a><a class="nav-login" href="https://portal.ringceptionai.com">Log in</a></span></span></nav><span style="font-size:.9rem;color:#fdf8ec">Questions? Call the demo line: <a href="tel:+12147853805" style="color:#ffd166;font-weight:600">(214) 785-3805</a></span><a class="nav-signup" href="signup.html">Sign up</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu"><span></span><span></span><span></span></button></div><div class="mobile-menu" id="mobile-menu" hidden><nav aria-label="Mobile navigation"><a class="mobile-menu-signup" href="signup.html">Get started</a><a class="mobile-menu-portal" href="https://portal.ringceptionai.com">Portal</a><a href="how-it-works.html">How it works</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a href="https://portal.ringceptionai.com">Log in</a></nav></div></header>
-<div class="mode-bar"><div class="wrap mode-bar-in"><span class="mode-label">Who is the call for?</span><span class="mode-toggle"><button type="button" class="mode-btn active" data-set-mode="kids">🎄 For Kids</button><button type="button" class="mode-btn" data-set-mode="adults">🍸 For Grown-Ups · 18+</button></span></div></div>
+<div class="mode-bar"><div class="wrap mode-bar-in"><span class="mode-label">Who is the call for?</span><span class="mode-toggle"><button type="button" class="mode-btn active" data-set-mode="kids">🎄 For Kids</button><button type="button" class="mode-btn" data-set-mode="adults">🍸 For Grown-Ups · 18+</button></span><span class="share-wrap"><button type="button" class="share-btn" id="share-btn" aria-haspopup="true" aria-expanded="false" aria-controls="share-menu">↗ Share</button><span class="share-menu" id="share-menu" role="menu" hidden><a role="menuitem" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ringceptionai.com%2Fsanta.html">Share on Facebook</a><a role="menuitem" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=Book%20a%20live%20call%20from%20Santa%20and%20friends%20at%20the%20Santa%20Hotline&url=https%3A%2F%2Fwww.ringceptionai.com%2Fsanta.html">Share on X</a><a role="menuitem" target="_blank" rel="noopener" href="https://wa.me/?text=Book%20a%20live%20call%20from%20Santa%20and%20friends%20at%20the%20Santa%20Hotline%20https%3A%2F%2Fwww.ringceptionai.com%2Fsanta.html">Share on WhatsApp</a><a role="menuitem" href="mailto:?subject=Santa%20Hotline%20from%20Ringception%20AI&body=Book%20a%20live%20call%20from%20Santa%20and%20friends%20at%20the%20Santa%20Hotline%3A%0A%0Ahttps%3A%2F%2Fwww.ringceptionai.com%2Fsanta.html">Share by email</a><button type="button" id="copy-share-link" role="menuitem">Copy link</button><span class="share-status" id="share-status" aria-live="polite"></span></span></span></div></div>
 
 <main>
 <section class="kids-only hero"><div class="snow" id="snow" aria-hidden="true"></div><div class="wrap"><div class="lights" id="lights" aria-hidden="true"></div><div class="eyebrow light">🎄 The Santa Hotline 🎄</div><h1>A live call from the North Pole, just for your child.</h1><p class="lead">Pick Santa Claus, Jingle the Elf, Pip the Elf, Rudolph, or Frosty the Snowman. Tell us your child's name and what they are wishing for. At the time you choose, the phone rings, and they have a real, live conversation. Your child can ask questions and tell stories, and the character answers right back, in real time. After the call, we email you the recording to keep forever.</p><div class="char-strip"><span class="char-chip"><span class="char-emoji" aria-hidden="true">🎅</span>Santa Claus</span><span class="char-chip"><span class="char-emoji" aria-hidden="true">🧝</span>Jingle the Elf</span><span class="char-chip"><span class="char-emoji" aria-hidden="true">🍬</span>Pip the Elf</span><span class="char-chip"><span class="char-emoji" aria-hidden="true">🦌</span>Rudolph</span><span class="char-chip"><span class="char-emoji" aria-hidden="true">⛄</span>Frosty the Snowman</span></div><p class="escape">One call is $5. Or get the Christmas Eve package: a surprise character calls once a week until Christmas Eve for $12, one payment, no subscription. Every call is up to 3 minutes of pure Christmas magic. <a href="#book">Book a call ↓</a></p><img class="hero-art" src="santa-hero.gif" alt="Santa Claus on the phone at the North Pole workshop, with Rudolph, Jingle the Elf, Pip the Elf, and Frosty the Snowman gathered around" width="640" height="360"/></div></section>
@@ -401,6 +412,33 @@ gtag('config', 'G-Y4YW8589B1');
     }
   }
   btns.forEach(function(b){ b.addEventListener('click', function(){ setMode(b.getAttribute('data-set-mode')); }); });
+})();
+</script>
+
+<script>
+(function(){
+  var btn=document.getElementById('share-btn');
+  var menu=document.getElementById('share-menu');
+  var copy=document.getElementById('copy-share-link');
+  var status=document.getElementById('share-status');
+  if(!btn||!menu)return;
+  var pageUrl='https://www.ringceptionai.com/santa.html';
+  var shareData={title:'Santa Hotline | Ringception AI',text:'Book a live call from Santa and friends at the Santa Hotline',url:pageUrl};
+  function close(){menu.hidden=true;btn.setAttribute('aria-expanded','false');}
+  function open(){menu.hidden=false;btn.setAttribute('aria-expanded','true');}
+  btn.addEventListener('click',function(event){
+    event.stopPropagation();
+    if(navigator.share){navigator.share(shareData).catch(function(){});return;}
+    if(menu.hidden){open();}else{close();}
+  });
+  menu.addEventListener('click',function(event){event.stopPropagation();});
+  document.addEventListener('click',function(){if(!menu.hidden)close();});
+  document.addEventListener('keydown',function(event){if(event.key==='Escape')close();});
+  if(copy){copy.addEventListener('click',function(){
+    function done(){status.textContent='Link copied.';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(pageUrl).then(done).catch(function(){status.textContent=pageUrl;});}
+    else{status.textContent=pageUrl;}
+  });}
 })();
 </script>
 </body>
