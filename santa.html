@@ -154,15 +154,13 @@ gtag('config', 'G-Y4YW8589B1');
 <label class="choice"><input type="radio" name="package" value="Weekly surprise calls until Christmas Eve - $12"/><span><strong>Weekly surprise calls until Christmas Eve: $12</strong><span>One call a week, every week until Christmas Eve, and the North Pole surprises you: Santa, Jingle, Pip, Rudolph, and Frosty take turns, a different character calling each week. Your child never knows who is on the phone until it rings. A recording of every call is emailed to you. One payment of $12, no subscription.</span></span></label>
 </fieldset>
 
-<!-- VIDEO ADD-ON: held from this publish until the Ringception Stripe combo links land, then this fieldset is restored and LINKS.singleVideo / surpriseVideo point at the combo links.
 <fieldset>
 <legend>3. Add a personalized video? (optional)</legend>
 <label class="choice"><input type="checkbox" id="video-addon" name="video_addon" value="Personalized video - add $10"/><span><strong>Personalized video message: add $10</strong><span>The character you picked above records a video talking right to your child by name, with their Christmas wishes and proud moment woven in. It arrives in your email to keep, save, and share with family.</span></span></label>
 </fieldset>
--->
 
 <fieldset>
-<legend>3. About you (the parent)</legend>
+<legend>4. About you (the parent)</legend>
 <label for="p-name">Your name</label>
 <input id="p-name" name="parent_name" type="text" autocomplete="name" required/>
 <label for="p-email">Your email</label>
@@ -174,7 +172,7 @@ gtag('config', 'G-Y4YW8589B1');
 </fieldset>
 
 <fieldset>
-<legend>4. About your child</legend>
+<legend>5. About your child</legend>
 <label for="c-name">Child's first name</label>
 <input id="c-name" name="child_name" type="text" required/>
 <label for="c-age">Child's age (optional)</label>
@@ -187,7 +185,7 @@ gtag('config', 'G-Y4YW8589B1');
 </fieldset>
 
 <fieldset>
-<legend>5. When should they call?</legend>
+<legend>6. When should they call?</legend>
 <div class="two">
 <div><label for="call-date">Date</label>
 <input id="call-date" name="call_date" type="date" required/></div>
@@ -279,8 +277,8 @@ gtag('config', 'G-Y4YW8589B1');
   var LINKS={
     single:'https://buy.stripe.com/28EbJ13v86F60Oc7Nu6c00u',
     surprise:'https://buy.stripe.com/8x2eVd0iW1kM54sgk06c00y',
-    singleVideo:'https://buy.stripe.com/28EbJ13v86F60Oc7Nu6c00u',
-    surpriseVideo:'https://buy.stripe.com/8x2eVd0iW1kM54sgk06c00y'
+    singleVideo:'https://buy.stripe.com/cNi9AT6Hk2oQgNa4Bi6c00C',
+    surpriseVideo:'https://buy.stripe.com/9B6bJ12r4d3u68wffW6c00D'
   };
   function syncNext(){
     var pkg=document.querySelector('input[name="package"]:checked').value;
