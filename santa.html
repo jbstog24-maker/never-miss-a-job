@@ -166,6 +166,27 @@ gtag('config', 'G-Y4YW8589B1');
 <label class="choice"><input type="radio" name="character" value="Fed-Up Santa"/><img class="char-thumb" src="santa-scene.jpg" alt="" loading="lazy"/><span><strong>Fed-Up Santa (adults only, 18+)</strong><span>For grown-ups, not kids. Sarcastic, overworked, underpaid, and ready to roast the adult you book him for.</span></span></label>
 </fieldset>
 
+<fieldset id="call-from-fields" style="display:none">
+<legend>Who is this call from?</legend>
+<p class="hint">Fed-Up Santa opens the call by telling them exactly who sent him, and why. He will absolutely hold you responsible.</p>
+<label for="cf-name">Your name (Santa will say who sent him)</label>
+<input id="cf-name" name="call_from_name" type="text" placeholder="e.g. Marcus from the office"/>
+<label for="cf-reason">The occasion or reason</label>
+<input id="cf-reason" name="call_from_reason" type="text" placeholder="e.g. Payback for the fantasy football group chat"/>
+</fieldset>
+<script>
+(function(){
+  var fs = document.getElementById('call-from-fields');
+  function sync(){
+    var sel = document.querySelector('input[name="character"]:checked');
+    fs.style.display = (sel && sel.value === 'Fed-Up Santa') ? '' : 'none';
+  }
+  document.addEventListener('click', function(){ setTimeout(sync, 60); });
+  document.addEventListener('change', sync);
+  sync();
+})();
+</script>
+
 <fieldset>
 <legend>2. Pick your package</legend>
 <label class="choice selected"><input type="radio" name="package" value="One live call - $5" checked/><span><strong>One live call: $5</strong><span>One scheduled call, up to 3 minutes, recording emailed after.</span></span></label>
