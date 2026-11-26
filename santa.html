@@ -61,6 +61,8 @@ form .btn{width:100%;margin-top:22px}
 .char-thumb{width:64px;height:64px;border-radius:12px;object-fit:cover;flex:none;box-shadow:0 2px 8px rgba(90,40,20,.15)}
 .note-box{background:#eef7ee;border:1px solid #7fb069;border-radius:16px;padding:18px 20px;margin-top:18px;font-size:.94rem}
 .note-box strong{color:#14532d}
+.extra-line{border:1px solid #e9dfc4;border-radius:14px;padding:6px 16px 16px;margin-top:12px;background:#fffdf4}
+.extra-remove{margin-top:12px;background:none;border:0;color:var(--red);font-weight:700;cursor:pointer;padding:6px 2px;font-size:.9rem;font:inherit}
 footer{background:var(--deep);color:#fdf8ec;padding:36px 0}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}footer p{margin:8px 0 0;max-width:440px;font-size:.92rem;color:#cfe3c8}footer a{color:var(--gold-soft)}
 @media(min-width:760px){.grid.three{grid-template-columns:repeat(3,1fr)}.grid.four{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr 1fr}.form-card{padding:36px 42px}}
 @media(min-width:1020px){.grid.four{grid-template-columns:repeat(4,1fr)}}
@@ -240,6 +242,12 @@ gtag('config', 'G-Y4YW8589B1');
 <label class="choice" id="weekly-package-choice"><input type="radio" name="package" value="Weekly surprise calls until Christmas Eve - $12"/><span><strong>Weekly surprise calls until Christmas Eve: $12</strong><span>One call a week, every week until Christmas Eve, and the North Pole surprises you: Santa, Jingle, Pip, Rudolph, and Frosty take turns, a different character calling each week. Your child never knows who is on the phone until it rings. A recording of every call is emailed to you. One payment of $12, no subscription.</span></span></label>
 </fieldset>
 
+<fieldset id="pkg-schedule" style="display:none">
+<legend>Schedule your package calls</legend>
+<p class="hint">Your Christmas Eve package includes up to 4 calls between now and Christmas Eve. Pick a date and time for each call below, and a surprise character will call at each one. Leave a row blank to skip that call. The dates start out one week apart from the date in the schedule step below, but you can change any of them. If you leave every row blank, we will call once a week at the date and time in the schedule step below.</p>
+<div id="pkg-rows"></div>
+</fieldset>
+
 <fieldset id="video-fieldset">
 <legend>3. Add a personalized video? (optional)</legend>
 <label class="choice"><input type="checkbox" id="video-addon" name="video_addon" value="Personalized video - add $7"/><span><strong>Personalized video message: add $7</strong><span>The character you picked above records a video talking right to your child by name, with their Christmas wishes and proud moment woven in. It arrives in your email to keep, save, and share with family.</span></span></label>
@@ -268,6 +276,14 @@ gtag('config', 'G-Y4YW8589B1');
 <label for="c-proud" id="proud-label">One thing they did well this year, or a fun detail</label>
 <textarea id="c-proud" name="proud_moment" placeholder="Learned to ride without training wheels, helps her little brother, loves dinosaurs, has a dog named Biscuit..."></textarea>
 <p class="hint" id="recipient-hint">This is the magic part. The character will mention it like they have been watching all year.</p>
+</fieldset>
+
+<fieldset id="group-fieldset">
+<legend>Make it a group call (optional)</legend>
+<p class="hint">Want the same message to reach more people? Add extra phone numbers here and the same character delivers the same message to every number. It is a great way to share the moment with family, or to announce a group or family event so everyone hears it at once. Each extra number is $2.50, and you can add up to 5 extra numbers.</p>
+<div id="extra-lines"></div>
+<button type="button" class="btn" id="add-extra-btn" style="width:auto;min-height:44px;padding:9px 18px;margin-top:12px">+ Add another number</button>
+<p class="hint" id="extra-summary" aria-live="polite"></p>
 </fieldset>
 
 <fieldset>
@@ -360,25 +376,146 @@ gtag('config', 'G-Y4YW8589B1');
     });
   });
   var LINKS={
-    single:'https://buy.stripe.com/28EbJ13v86F60Oc7Nu6c00u',
-    surprise:'https://buy.stripe.com/8x2eVd0iW1kM54sgk06c00y',
-    singleVideo:'https://buy.stripe.com/9B68wPfdQ1kMcwU6Jq6c00E',
-    surpriseVideo:'https://buy.stripe.com/00weVdfdQ6F6cwU7Nu6c00F'
+    single:{0:'https://buy.stripe.com/28EbJ13v86F60Oc7Nu6c00u',1:'https://buy.stripe.com/6oU4gzfdQfbCfJ60l26c00G',2:'https://buy.stripe.com/5kQ4gzghUd3ugNa3xe6c00H',3:'https://buy.stripe.com/5kQ5kD6Hk9Ri68w1p66c00I',4:'https://buy.stripe.com/6oU3cve9M4wYbsQgk06c00J',5:'https://buy.stripe.com/3cI28rc1EaVmdAY6Jq6c00K'},
+    surprise:{0:'https://buy.stripe.com/8x2eVd0iW1kM54sgk06c00y',1:'https://buy.stripe.com/8x24gz0iW4wYdAY9VC6c00L',2:'https://buy.stripe.com/5kQ14n9Tw3sU9kI5Fm6c00M',3:'https://buy.stripe.com/8x24gz8PsgfG68w9VC6c00N',4:'https://buy.stripe.com/9B64gzfdQ2oQfJ67Nu6c00O',5:'https://buy.stripe.com/28EeVd2r49RifJ6ebS6c00P'},
+    singleVideo:{0:'https://buy.stripe.com/9B68wPfdQ1kMcwU6Jq6c00E',1:'https://buy.stripe.com/eVqcN5ghU0gIfJ6ffW6c00Q',2:'https://buy.stripe.com/9B6dR9d5I9RifJ68Ry6c00R',3:'https://buy.stripe.com/8x2fZh7Lo1kM54s0l26c00S',4:'https://buy.stripe.com/3cIbJ12r42oQ68w4Bi6c00T',5:'https://buy.stripe.com/14A5kD8PsbZq7cA0l26c00U'},
+    surpriseVideo:{0:'https://buy.stripe.com/00weVdfdQ6F6cwU7Nu6c00F',1:'https://buy.stripe.com/5kQaEXaXA4wY0Oc6Jq6c00V',2:'https://buy.stripe.com/fZufZh2r44wY0Occ3K6c00W',3:'https://buy.stripe.com/9B6fZh6HkgfGdAY1p66c00X',4:'https://buy.stripe.com/eVq00j7Lo3sUcwU9VC6c00Y',5:'https://buy.stripe.com/aFa6oHd5IaVm0Oc0l26c00Z'}
   };
+  var EXTRA_MAX=5,EXTRA_PRICE=2.50;
+  function pkgValue(){var p=document.querySelector('input[name="package"]:checked');return p?p.value:'';}
+  function extraPhoneInput(i){return document.getElementById('extra-phone-'+i);}
+  function activeExtraCount(){
+    var n=0;
+    for(var i=1;i<=EXTRA_MAX;i++){
+      var inp=extraPhoneInput(i);
+      if(inp&&!inp.disabled&&inp.value.trim())n++;
+    }
+    return Math.min(n,EXTRA_MAX);
+  }
   function syncNext(){
-    var pkg=document.querySelector('input[name="package"]:checked').value;
+    var pkg=pkgValue();
     var email=document.getElementById('p-email').value.trim();
     var va=document.getElementById('video-addon');var video=va?va.checked:false;
     var url;
-    if(pkg.indexOf('surprise')!==-1){url=video?LINKS.surpriseVideo:LINKS.surprise;}
-    else{url=video?LINKS.singleVideo:LINKS.single;}
+    if(pkg.indexOf('surprise')!==-1){url=(video?LINKS.surpriseVideo:LINKS.surprise)[activeExtraCount()];}
+    else{url=(video?LINKS.singleVideo:LINKS.single)[activeExtraCount()];}
     if(email){url+='?prefilled_email='+encodeURIComponent(email);}
     document.getElementById('fs-next').value=url;
   }
+  function setExtraLine(i,on){
+    var line=document.getElementById('extra-line-'+i);
+    var nm=document.getElementById('extra-name-'+i);
+    var ph=extraPhoneInput(i);
+    if(!line||!ph)return;
+    ph.disabled=!on;if(nm)nm.disabled=!on;
+    line.style.display=on?'':'none';
+  }
+  function activeLineCount(){
+    var n=0;
+    for(var i=1;i<=EXTRA_MAX;i++){
+      var inp=extraPhoneInput(i);
+      if(inp&&!inp.disabled)n++;
+    }
+    return n;
+  }
+  function syncGroupSummary(){
+    var sum=document.getElementById('extra-summary');
+    var btn=document.getElementById('add-extra-btn');
+    var n=activeExtraCount();
+    if(btn){btn.disabled=activeLineCount()>=EXTRA_MAX;}
+    if(!sum)return;
+    sum.textContent=n?('Extra numbers added: '+n+'. That is $'+(n*EXTRA_PRICE).toFixed(2)+' extra, included in the total on the payment page.'):'Each extra number is $2.50. You can add up to 5 extra numbers.';
+  }
+  function syncGroupUI(){
+    syncGroupSummary();
+    syncNext();
+  }
+  (function buildExtraLines(){
+    var wrap=document.getElementById('extra-lines');
+    if(!wrap)return;
+    for(var i=1;i<=EXTRA_MAX;i++){
+      var div=document.createElement('div');
+      div.className='extra-line two';div.id='extra-line-'+i;div.style.display='none';
+      div.innerHTML='<div><label for="extra-name-'+i+'">Extra recipient\u2019s name</label><input id="extra-name-'+i+'" name="extra_name_'+i+'" type="text" disabled/></div>'
+        +'<div><label for="extra-phone-'+i+'">Their phone number</label><input id="extra-phone-'+i+'" name="extra_phone_'+i+'" type="tel" disabled/></div>'
+        +'<button type="button" class="extra-remove" data-remove="'+i+'">Remove this number</button>';
+      wrap.appendChild(div);
+    }
+    wrap.addEventListener('click',function(e){
+      var b=e.target.closest?e.target.closest('[data-remove]'):null;
+      if(b){
+        var i=parseInt(b.getAttribute('data-remove'),10);
+        var nm=document.getElementById('extra-name-'+i);
+        var ph=extraPhoneInput(i);
+        if(nm)nm.value='';if(ph)ph.value='';
+        setExtraLine(i,false);
+        syncGroupUI();
+      }
+    });
+    wrap.addEventListener('input',function(){syncGroupSummary();syncNext();});
+    var addBtn=document.getElementById('add-extra-btn');
+    if(addBtn){addBtn.addEventListener('click',function(){
+      for(var i=1;i<=EXTRA_MAX;i++){
+        var inp=extraPhoneInput(i);
+        if(inp&&inp.disabled){setExtraLine(i,true);inp.focus();break;}
+      }
+      syncGroupUI();
+    });}
+  })();
   document.getElementById('p-email').addEventListener('input',syncNext);
   var vaEl=document.getElementById('video-addon');if(vaEl){vaEl.addEventListener('change',syncNext);}
   document.querySelectorAll('input[name="package"]').forEach(function(r){r.addEventListener('change',syncNext);});
+  document.querySelectorAll('input[name="package"]').forEach(function(r){r.addEventListener('change',function(){syncGroupUI();});});
   document.getElementById('santa-form').addEventListener('submit',syncNext);
+  syncGroupUI();
+  var PKG_TIMES=[];
+  for(var ph=7;ph<=22;ph++){['00','30'].forEach(function(pm){if(ph===22&&pm==='30')return;var hr=((ph+11)%12)+1;var ap=ph<12?'AM':'PM';PKG_TIMES.push(hr+':'+pm+' '+ap);});}
+  function pkgRowDate(i){return document.getElementById('pkg-date-'+i);}
+  function pkgRowTime(i){return document.getElementById('pkg-time-'+i);}
+  function buildPkgRows(){
+    var wrap=document.getElementById('pkg-rows');
+    if(!wrap)return;
+    for(var i=1;i<=4;i++){
+      var div=document.createElement('div');
+      div.className='two';
+      var opts=PKG_TIMES.map(function(t){return '<option value="'+t+'"'+(t==='6:00 PM'?' selected':'')+'>'+t+'</option>';}).join('');
+      div.innerHTML='<div><label for="pkg-date-'+i+'">Call '+i+' date</label><input id="pkg-date-'+i+'" name="pkg_call_'+i+'_date" type="date" min="'+iso(new Date())+'" max="2026-12-24"/></div>'
+        +'<div><label for="pkg-time-'+i+'">Call '+i+' time</label><select id="pkg-time-'+i+'" name="pkg_call_'+i+'_time">'+opts+'</select></div>';
+      wrap.appendChild(div);
+    }
+  }
+  function refreshPkgDefaults(){
+    var base=document.getElementById('call-date').value;
+    var tm=document.getElementById('call-time').value;
+    if(!base)return;
+    for(var i=1;i<=4;i++){
+      var d=pkgRowDate(i);if(!d)continue;
+      if(d.value&&!d.dataset.auto)continue;
+      var dt=new Date(base+'T12:00:00');dt.setDate(dt.getDate()+7*(i-1));
+      var s=iso(dt);
+      if(s>'2026-12-24'){d.value='';d.dataset.auto='';continue;}
+      d.value=s;d.dataset.auto='1';
+      var t=pkgRowTime(i);if(t)t.value=tm;
+    }
+  }
+  function syncPkgSchedule(){
+    var fs=document.getElementById('pkg-schedule');
+    if(!fs)return;
+    var weekly=pkgValue().indexOf('surprise')!==-1;
+    fs.style.display=weekly?'':'none';
+    if(weekly)refreshPkgDefaults();
+  }
+  buildPkgRows();
+  document.querySelectorAll('input[name="package"]').forEach(function(r){r.addEventListener('change',syncPkgSchedule);});
+  var cdEl=document.getElementById('call-date');if(cdEl){cdEl.addEventListener('change',function(){if(pkgValue().indexOf('surprise')!==-1)refreshPkgDefaults();});}
+  var ctEl=document.getElementById('call-time');if(ctEl){ctEl.addEventListener('change',function(){if(pkgValue().indexOf('surprise')!==-1)refreshPkgDefaults();});}
+  var pkgWrap=document.getElementById('pkg-rows');
+  if(pkgWrap){pkgWrap.addEventListener('change',function(e){
+    var id=e.target&&e.target.id?e.target.id:'';
+    var m=id.match(/^pkg-(?:date|time)-(\d)$/);
+    if(m){var d=pkgRowDate(parseInt(m[1],10));if(d)d.dataset.auto='';}
+  });}
+  syncPkgSchedule();
   var dateInput=document.getElementById('call-date');
   var today=new Date();var max=new Date('2026-12-24T12:00:00');
   function iso(d){return d.toISOString().slice(0,10);}
