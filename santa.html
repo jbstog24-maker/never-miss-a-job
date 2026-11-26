@@ -118,6 +118,11 @@ body[data-mode="adults"] .kids-only{display:none!important}
 .share-menu a:hover,.share-menu a:focus-visible,.share-menu button:hover,.share-menu button:focus-visible{background:#f3e5bd;text-decoration:none}
 .share-status{min-height:1.4em;padding:2px 12px 6px;color:var(--pine);font-size:.88rem;font-weight:700}
 @media(max-width:520px){.share-menu{position:fixed;left:16px;right:16px;top:auto;min-width:0}.share-btn{padding:9px 16px}}
+
+/* Mobile horizontal-shift guard (2026-11-25): nothing may widen the page past the screen */
+html,body{overflow-x:clip}
+img,video,svg{max-width:100%}
+@media(max-width:820px){.site-header .wrap>span{display:none}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4YW8589B1"></script>
