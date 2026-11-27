@@ -381,17 +381,12 @@ gtag('config', 'G-Y4YW8589B1');
 (function () {
   'use strict';
 
-  // ---------- API base resolution: ?api= > localStorage > localhost default ----------
-  function resolveApiBase() {
-    var fromQuery = null;
-    try { fromQuery = new URLSearchParams(window.location.search).get('api'); } catch (e) { fromQuery = null; }
-    if (fromQuery) return String(fromQuery).replace(/\/+$/, '');
-    var stored = null;
-    try { stored = window.localStorage.getItem('portalApiBase'); } catch (e) { stored = null; }
-    if (stored) return String(stored).replace(/\/+$/, '');
-    return 'http://localhost:4317';
-  }
-  var API = resolveApiBase();
+  // ---------- API base: fixed production portal origin ----------
+  // Security (2026-11-27): this used to accept a ?api= query parameter
+  // or a localStorage override, which let anyone hand a customer a link
+  // that pointed this page at an attacker's server. The API base is now
+  // hardcoded to the real portal origin.
+  var API = 'https://portal.ringceptionai.com';
 
   function fetchJSON(path) {
     return fetch(API + path, { headers: { 'Accept': 'application/json' } }).then(function (res) {
